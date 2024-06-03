@@ -18,11 +18,11 @@ public class ThreadStartMethod {
         });
         thread.start();
         // 抛出java.lang.IllegalThreadStateException，重复启动，但是此时线程是处于运行状态的
-        // thread.start();
+//         thread.start();
 
         TimeUnit.SECONDS.sleep(2);
 
         // 抛出java.lang.IllegalThreadStateException ，该启动时不允许的，此时没有线程，因为线程的生命周期已经被终结
-        thread.start();
+//        thread.start();
     }
 }
