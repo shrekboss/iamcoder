@@ -4,7 +4,7 @@ package org.coder.concurrency.programming.thread;
  * @author <a href="mailto:yeqi@banniuyun.com">夜骐</a>
  * @since 1.0.0
  */
-public class TicketWindowRunnable_WithShareRun implements Runnable{
+public class TicketWindowRunnable_WithSharingRun implements Runnable{
 
     private int index = 1;
     private final static int MAX = 50;
@@ -25,7 +25,7 @@ public class TicketWindowRunnable_WithShareRun implements Runnable{
      * Thread 的 run 方法不能共享，使用 Runnable 接口则很容易就实现这一点
      */
     public static void main(String[] args) {
-        final TicketWindowRunnable_WithShareRun task = new TicketWindowRunnable_WithShareRun();
+        final TicketWindowRunnable_WithSharingRun task = new TicketWindowRunnable_WithSharingRun();
 
         Thread windowThread1 = new Thread(task, "一号窗口");
         Thread windowThread2 = new Thread(task, "二号窗口");
