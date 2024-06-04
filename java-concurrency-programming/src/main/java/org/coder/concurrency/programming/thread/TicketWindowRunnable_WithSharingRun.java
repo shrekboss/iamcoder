@@ -1,6 +1,8 @@
 package org.coder.concurrency.programming.thread;
 
 /**
+ * Thread 的 run 方法不能共享，使用 Runnable 接口则很容易就实现这一点
+ *
  * @author <a href="mailto:yeqi@banniuyun.com">夜骐</a>
  * @since 1.0.0
  */

@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
  * @author <a href="mailto:yeqi@banniuyun.com">夜骐</a>
  * @since 1.0.0
  */
-public class ThreadStartMethod {
+public class ThreadStart {
 
     public static void main(String[] args) throws InterruptedException {
         Thread thread = new Thread(() -> {
