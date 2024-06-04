@@ -30,7 +30,7 @@ public class InterruptThreadExit {
             }
         };
         thread.start();
-        TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(1);
         System.out.println("System will be shutdown!!!");
         thread.interrupt();
     }

@@ -33,7 +33,7 @@ public class FlagThreadExit {
     public static void main(String[] args) throws InterruptedException {
         MyTask task = new MyTask();
         task.start();
-        TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(1);
         System.out.println("System will be shutdown!!!");
         task.closed();
     }

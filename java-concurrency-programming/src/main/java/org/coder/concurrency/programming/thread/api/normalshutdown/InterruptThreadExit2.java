@@ -14,7 +14,7 @@ public class InterruptThreadExit2 implements Runnable {
 
         Thread thread = new Thread(new InterruptThreadExit2());
         thread.start();
-        TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(1);
         System.out.println("System will be shutdown!!!");
         thread.interrupt();
     }
