@@ -1,6 +1,8 @@
 package org.coder.concurrency.programming.thread.api.priority;
 
 /**
+ * 线程关于组继承的问题
+ *
  * @author <a href="mailto:yeqi@banniuyun.com">夜骐</a>
  * @since 1.0.0
  */
