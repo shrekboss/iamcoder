@@ -4,7 +4,21 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
 /**
- * @author <a href="mailto:yeqi@banniuyun.com">夜骐</a>
+ * Thread constructor
+ * <p>
+ * 线程的默认命名构造函数
+ *
+ * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
+ * @see Thread#Thread()
+ * @see Thread#Thread(Runnable)
+ * @see Thread#Thread(ThreadGroup, Runnable)
+ * <p>
+ * 命名线程的构造函数
+ * @see Thread#Thread(String)
+ * @see Thread#Thread(ThreadGroup, String)
+ * @see Thread#Thread(Runnable, String)
+ * @see Thread#Thread(ThreadGroup, Runnable, String)
+ * @see Thread#Thread(ThreadGroup, Runnable, String, long)
  * @since 1.0.0
  */
 public class ThreadConstructors {

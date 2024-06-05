@@ -3,7 +3,7 @@ package org.coder.concurrency.programming.thread.api;
 /**
  * Thread.sleep 只会导致当前线程进入指定时间的休眠
  *
- * @author <a href="mailto:yeqi@banniuyun.com">夜骐</a>
+ * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0
  */
 public class ThreadSleep {

@@ -3,7 +3,8 @@ package org.coder.concurrency.programming.thread.api.priority;
 /**
  * 优先级不能小于 1 也不能大于 10
  * main 线程默认优先级是 5
- * @author <a href="mailto:yeqi@banniuyun.com">夜骐</a>
+ *
+ * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0
  */
 public class ThreadPriority1 {

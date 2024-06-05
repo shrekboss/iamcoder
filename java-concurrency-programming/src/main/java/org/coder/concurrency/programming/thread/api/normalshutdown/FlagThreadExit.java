@@ -5,10 +5,18 @@ import java.util.concurrent.TimeUnit;
 /**
  * 使用 volatile 开关控制
  *
- * @author <a href="mailto:yeqi@banniuyun.com">夜骐</a>
+ * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0
  */
 public class FlagThreadExit {
+
+    public static void main(String[] args) throws InterruptedException {
+        MyTask task = new MyTask();
+        task.start();
+        TimeUnit.SECONDS.sleep(1);
+        System.out.println("System will be shutdown!!!");
+        task.closed();
+    }
 
     static class MyTask extends Thread {
 
@@ -28,13 +36,5 @@ public class FlagThreadExit {
             this.closed = true;
             this.interrupt();
         }
-    }
-
-    public static void main(String[] args) throws InterruptedException {
-        MyTask task = new MyTask();
-        task.start();
-        TimeUnit.SECONDS.sleep(1);
-        System.out.println("System will be shutdown!!!");
-        task.closed();
     }
 }

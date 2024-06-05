@@ -3,7 +3,8 @@ package org.coder.concurrency.programming.thread;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author <a href="mailto:yeqi@banniuyun.com">夜骐</a>
+ * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
+ * @see Thread#start0()
  * @since 1.0.0
  */
 public class ThreadStart {

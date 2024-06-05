@@ -5,16 +5,16 @@ import java.util.concurrent.TimeUnit;
 /**
  * 1. interrupted 是一个静态方法，用于判断当前线程是否被中断；
  * 2. 和成员方法 isInterrupted 还是有很大的区别，调用该方法会直接擦除掉现成的 interrupt 标识
- *
+ * <p>
  * 需要注意的是，如果当前线程被打断了，那么第一次调用 interrupted 方法会返回 true，并且立即擦除了 interrupt 标识；
  * 第二次包括以后得调用永远都会返回 false。
- *
- *      public boolean isInterrupted() {
- *          return isInterrupted(true); // ClearInterrupted:true
- *      }
+ * <p>
+ * public boolean isInterrupted() {
+ * return isInterrupted(true); // ClearInterrupted:true
+ * }
  * private native boolean isInterrupted(boolean ClearInterrupted);
  *
- * @author <a href="mailto:yeqi@banniuyun.com">夜骐</a>
+ * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0
  */
 public class ThreadInterrupted {

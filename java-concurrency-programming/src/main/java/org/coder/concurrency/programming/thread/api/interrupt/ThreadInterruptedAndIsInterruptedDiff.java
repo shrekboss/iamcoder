@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
  * 如果一个线程在没有执行可中断方法之前就被中断，那么其接下来将执行可中断方法，比如 sleep 会发生什么样的情况?
  * ===> 如果一个线程设置了 interrupt 标识，那么接下来的可中断方法会立即中断，因此 注释5的信号捕获部分代码会被执行
  *
- * @author <a href="mailto:yeqi@banniuyun.com">夜骐</a>
+ * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0
  */
 public class ThreadInterruptedAndIsInterruptedDiff {

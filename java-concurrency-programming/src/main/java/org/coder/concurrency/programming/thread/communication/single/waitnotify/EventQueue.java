@@ -3,19 +3,14 @@ package org.coder.concurrency.programming.thread.communication.single.waitnotify
 import java.util.LinkedList;
 
 /**
- * @author <a href="mailto:yeqi@banniuyun.com">夜骐</a>
+ * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0
  */
 public class EventQueue {
 
-    private final int max;
-
-    static class Event {
-    }
-
-    private final LinkedList<Event> eventQueue = new LinkedList<>();
-
     private final static int DEFAULT_MAX_EVENT = 10;
+    private final int max;
+    private final LinkedList<Event> eventQueue = new LinkedList<>();
 
     public EventQueue() {
         this(DEFAULT_MAX_EVENT);
@@ -23,6 +18,10 @@ public class EventQueue {
 
     public EventQueue(int max) {
         this.max = max;
+    }
+
+    private static void console(String message) {
+        System.out.printf("%s:%s\n", Thread.currentThread().getName(), message);
     }
 
     public void offer(Event event) {
@@ -60,7 +59,6 @@ public class EventQueue {
         }
     }
 
-    private static void console(String message) {
-        System.out.printf("%s:%s\n", Thread.currentThread().getName(), message);
+    static class Event {
     }
 }

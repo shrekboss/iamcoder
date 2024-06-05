@@ -10,16 +10,16 @@ import static java.lang.System.currentTimeMillis;
 import static java.lang.Thread.currentThread;
 
 /**
- * @author <a href="mailto:yeqi@banniuyun.com">夜骐</a>
+ * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0
  */
 public class BooleanLock implements Lock {
 
+    // 用来存储哪些线程在获取当前线程时进入了阻塞状态
+    private final List<Thread> blockedThreads = new ArrayList<>();
     private Thread currentThread;
     // false 代表当前该锁没有被任何线程获得或者已经释放，true 代表该锁已经被某个县城获得，该线程就是 currentThread
     private boolean locked = false;
-    // 用来存储哪些线程在获取当前线程时进入了阻塞状态
-    private final List<Thread> blockedThreads = new ArrayList<>();
 
     @Override
     public void lock() throws InterruptedException {
@@ -60,7 +60,7 @@ public class BooleanLock implements Lock {
                         throw new TimeoutException("can not get the lock during " + mills + " ms.");
                     }
                     // 暂存当前线程
-                     Thread tempThread = currentThread();
+                    Thread tempThread = currentThread();
                     try {
                         if (!blockedThreads.contains(tempThread)) {
                             blockedThreads.add(tempThread);

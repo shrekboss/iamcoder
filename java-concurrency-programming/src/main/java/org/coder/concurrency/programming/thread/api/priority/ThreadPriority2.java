@@ -3,7 +3,7 @@ package org.coder.concurrency.programming.thread.api.priority;
 /**
  * 指定的线程优先级大于所在 group 的最大优先级，那么设置的优先级将会失效，取而代之的是 group 的最大优先级
  *
- * @author <a href="mailto:yeqi@banniuyun.com">夜骐</a>
+ * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0
  */
 public class ThreadPriority2 {

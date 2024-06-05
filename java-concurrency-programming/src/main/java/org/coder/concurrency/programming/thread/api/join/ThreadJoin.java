@@ -9,7 +9,7 @@ import static java.util.stream.Collectors.toList;
 /**
  * join 方法会适当前线程永远地等待下去，直到期间被另外的线程中断，或者 join 的线程执行结束！！！
  *
- * @author <a href="mailto:yeqi@banniuyun.com">夜骐</a>
+ * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0
  */
 public class ThreadJoin {
@@ -38,12 +38,12 @@ public class ThreadJoin {
     private static Thread create(int seq) {
 
         return new Thread(
-            () -> {
-                for (int i = 0; i < 10; i++) {
-                    System.out.println(Thread.currentThread().getName() + "#" + i);
-                    shortSleep();
-                }
-            }, String.valueOf(seq)
+                () -> {
+                    for (int i = 0; i < 10; i++) {
+                        System.out.println(Thread.currentThread().getName() + "#" + i);
+                        shortSleep();
+                    }
+                }, String.valueOf(seq)
         );
     }
 

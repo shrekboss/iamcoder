@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 一个 Producer 线程和一个 Consumer 线程，单线程间的通信
  *
- * @author <a href="mailto:yeqi@banniuyun.com">夜骐</a>
+ * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0
  */
 public class EventClient {

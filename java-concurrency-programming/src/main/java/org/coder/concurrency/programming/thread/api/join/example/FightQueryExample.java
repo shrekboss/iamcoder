@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 /**
  * 输出结果：
- *
+ * <p>
  * [CSA]-query from SH to BJ
  * [HNA]-query from SH to BJ
  * [CEA]-query from SH to BJ
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
  * [CEA]-2
  * [HNA]-1
  *
- * @author <a href="mailto:yeqi@banniuyun.com">夜骐</a>
+ * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0
  */
 public class FightQueryExample {

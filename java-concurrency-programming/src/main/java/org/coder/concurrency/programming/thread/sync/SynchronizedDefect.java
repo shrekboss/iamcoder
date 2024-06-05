@@ -7,20 +7,11 @@ import java.util.concurrent.TimeUnit;
  * 1. 无法控制阻塞时长
  * 2. 阻塞不可以中断(synchronized 不可以被中断)
  *
+ * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @see org.coder.concurrency.programming.thread.sync.explicitlock.BooleanLockTest 解决办法：通过 synchronizedI(隐式锁) 实现显式锁功能
- *
- * @author <a href="mailto:yeqi@banniuyun.com">夜骐</a>
  * @since 1.0.0
  */
 public class SynchronizedDefect {
-
-    public synchronized void syncMethod() {
-        try {
-            TimeUnit.HOURS.sleep(1);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 
     public static void main(String[] args) throws InterruptedException {
         SynchronizedDefect defect = new SynchronizedDefect();
@@ -41,5 +32,13 @@ public class SynchronizedDefect {
 //        t2.interrupt();
 //        System.out.println(t2.isInterrupted());
 //        System.out.println(t2.getState());
+    }
+
+    public synchronized void syncMethod() {
+        try {
+            TimeUnit.HOURS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

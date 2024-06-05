@@ -5,12 +5,23 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 /**
- * @author <a href="mailto:yeqi@banniuyun.com">夜骐</a>
+ * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0
  */
 public class BooleanLockTest {
 
     private final Lock lock = new BooleanLock();
+
+    // 验证阻塞超时，不是每次都出现
+    // java.util.concurrent.TimeoutException: can not get the lock during 1000 ms.
+    public static void main(String[] args) throws InterruptedException {
+        BooleanLockTest blt = new BooleanLockTest();
+        new Thread(blt::syncMethod, "T1").start();
+        TimeUnit.MILLISECONDS.sleep(2);
+        Thread t2 = new Thread(blt::syncMethodTimeout, "T2");
+        t2.start();
+        TimeUnit.MILLISECONDS.sleep(10);
+    }
 
     public void syncMethod() {
         try {
@@ -20,20 +31,6 @@ public class BooleanLockTest {
             System.out.println("syncMethod 执行时间：" + randomInt + "s");
             TimeUnit.SECONDS.sleep(randomInt);
         } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    public void syncMethodTimeout() {
-        try {
-            lock.lock(1000);
-            System.out.println(Thread.currentThread() + " get the lock.");
-            int randomInt = ThreadLocalRandom.current().nextInt(10);
-            System.out.println("syncMethodTimeout 执行时间：" + randomInt + "s");
-            TimeUnit.SECONDS.sleep(randomInt);
-        } catch (InterruptedException | TimeoutException e) {
             e.printStackTrace();
         } finally {
             lock.unlock();
@@ -59,14 +56,17 @@ public class BooleanLockTest {
 //        t2.interrupt();
 //    }
 
-    // 验证阻塞超时，不是每次都出现
-    // java.util.concurrent.TimeoutException: can not get the lock during 1000 ms.
-    public static void main(String[] args) throws InterruptedException {
-        BooleanLockTest blt = new BooleanLockTest();
-        new Thread(blt::syncMethod, "T1").start();
-        TimeUnit.MILLISECONDS.sleep(2);
-        Thread t2 = new Thread(blt::syncMethodTimeout, "T2");
-        t2.start();
-        TimeUnit.MILLISECONDS.sleep(10);
+    public void syncMethodTimeout() {
+        try {
+            lock.lock(1000);
+            System.out.println(Thread.currentThread() + " get the lock.");
+            int randomInt = ThreadLocalRandom.current().nextInt(10);
+            System.out.println("syncMethodTimeout 执行时间：" + randomInt + "s");
+            TimeUnit.SECONDS.sleep(randomInt);
+        } catch (InterruptedException | TimeoutException e) {
+            e.printStackTrace();
+        } finally {
+            lock.unlock();
+        }
     }
 }
