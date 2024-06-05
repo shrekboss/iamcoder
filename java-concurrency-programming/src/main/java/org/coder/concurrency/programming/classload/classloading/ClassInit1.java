@@ -1,4 +1,4 @@
-package org.coder.concurrency.programming.thread.classloading;
+package org.coder.concurrency.programming.classload.classloading;
 
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;

@@ -1,4 +1,4 @@
-package org.coder.concurrency.programming.thread.classloading;
+package org.coder.concurrency.programming.classload.classloading;
 
 /**
  * 1. 输出 1，1

@@ -1,4 +1,4 @@
-package org.coder.concurrency.programming.thread.classloading;
+package org.coder.concurrency.programming.classload.classloading;
 
 import java.util.Random;
 
@@ -55,15 +55,15 @@ public class ActiveLoadTest {
 //        ActiveLoadTest[] activeLoadTests = new ActiveLoadTest[10];
 
         // 2. 【首次】访问类的静态变量
-        System.out.println(org.coder.concurrency.programming.thread.classloading.ActiveLoadTest.x);
+        System.out.println(ActiveLoadTest.x);
         // 2.1. 在其他类中使用 MAX 不会导致 ActiveLoadTest 的初始化，静态代码块不会输出
 //        System.out.println(ActiveLoadTest.MAX);
 
 
         // 3. 【首次】访问类的静态方法
-        org.coder.concurrency.programming.thread.classloading.ActiveLoadTest.test();
+        ActiveLoadTest.test();
         // 4. 【首次】类的放射操作
-        Class.forName("org.coder.concurrency.programming.thread.classloading.ActiveLoadTest");
+        Class.forName("org.coder.concurrency.programming.classload.classloading.ActiveLoadTest");
         // 5. 【首次】初始化子类会导致父类的初始化
         System.out.println(Child.x);
         // 5.1. 【注意】通过子类使用父类的静态变量只会导致父类的初始化，子类则不会初始化

@@ -1,4 +1,4 @@
-package org.coder.concurrency.programming.thread.classloading;
+package org.coder.concurrency.programming.classload.classloading;
 
 /**
  * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
