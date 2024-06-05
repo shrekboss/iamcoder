@@ -16,6 +16,9 @@ public interface DenyPolicy {
     void reject(Runnable runnable, ThreadPool threadPool);
 
 
+    /**
+     * 该拒绝策略会直接将任务丢弃
+     */
     class DiscardDenyPolicy implements DenyPolicy {
 
         @Override
@@ -24,6 +27,9 @@ public interface DenyPolicy {
         }
     }
 
+    /**
+     * 该拒绝策略会向任务提交者抛出异常
+     */
     class AbortDenyPolicy implements DenyPolicy {
 
         @Override
@@ -32,6 +38,9 @@ public interface DenyPolicy {
         }
     }
 
+    /**
+     * 该拒绝策略会使任务在提交者所在的线程中执行任务
+     */
     class RunnerDenyPolicy implements DenyPolicy {
 
         @Override

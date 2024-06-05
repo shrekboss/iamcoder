@@ -24,6 +24,7 @@ public class ThreadPoolTest {
             });
 
         for (; ; ) {
+            // 不断输出线程池的信息
             System.out.println("getActiveCount:" + threadPool.getActiveCount());
             System.out.println("getQueueSize:" + threadPool.getQueueSize());
             System.out.println("getCoreSize:" + threadPool.getCoreSize());
@@ -36,6 +37,7 @@ public class ThreadPoolTest {
 //        TimeUnit.SECONDS.sleep(12);
 //        threadPool.shutdown();
 //
+//        // 使用 main 线程 join，方便通过工具观察线程堆栈信息
 //        Thread.currentThread().join();
     }
 }

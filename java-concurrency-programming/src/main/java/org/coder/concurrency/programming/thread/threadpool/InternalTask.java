@@ -19,6 +19,7 @@ public class InternalTask implements Runnable {
 
     @Override
     public void run() {
+        // 如果当前任务为 running 并且没有被中断，则其将不断地从 queue 中获取 runnable，然后执行 run 方法
         while (running && !Thread.currentThread().isInterrupted()) {
             try {
                 Runnable task = runnableQueue.take();
@@ -31,6 +32,9 @@ public class InternalTask implements Runnable {
         }
     }
 
+    /**
+     * 停止当前任务，主要会在线程池的 shutdown 方法中使用
+     */
     public void stop() {
         this.running = false;
     }
