@@ -7,9 +7,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>java-concurrency-programming</artifactId>
+    <artifactId>concurrency-in-action</artifactId>
     <packaging>jar</packaging>
 
-    <name>java-concurrency-programming</name>
+    <name>concurrency-in-action</name>
 
 </project>
