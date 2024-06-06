@@ -45,6 +45,7 @@ public class ObservableThread<T> extends Thread implements Observable {
         try {
             this.update(Cycle.RUNNING, null, null);
             T result = this.task.call();
+            System.out.println("输出结果：" + result);
             this.update(DONE, result, null);
         } catch (Exception e) {
             this.update(ERROR, null, e);
