@@ -16,6 +16,9 @@ public interface Observable {
     // 获取当前任务的生命周期状态
     Cycle getCycle();
 
+    // 设置当前任务的生命周期状态
+    void setCycle(Cycle cycle);
+
     // 定义启动线程的方法，主要作用是为了屏蔽 Thread 的其他方法
     void start();
 

@@ -1,5 +1,7 @@
 package org.coder.concurrency.programming.pattern._1_observer;
 
+import static org.coder.concurrency.programming.pattern._1_observer.Observable.Cycle.*;
+
 /**
  * ObserverThread 是任务监控的关键
  *
@@ -39,21 +41,26 @@ public class ObservableThread<T> extends Thread implements Observable {
     @Override
     public final void run() {
         // 在执行线程逻辑单元的时候，分别触发相应的时间
-        this.update(Cycle.STARTED, null, null);
+        this.update(STARTED, null, null);
         try {
             this.update(Cycle.RUNNING, null, null);
             T result = this.task.call();
-            this.update(Cycle.DONE, result, null);
+            this.update(DONE, result, null);
         } catch (Exception e) {
-            this.update(Cycle.ERROR, null, e);
+            this.update(ERROR, null, e);
         }
     }
 
     private void update(Cycle cycle, T result, Exception e) {
         this.cycle = cycle;
+        this.setCycle(cycle);
+
         if (lifecycle == null) {
             return;
         }
+
+        System.out.println("The thread's status: " + this.getCycle());
+
         try {
             switch (cycle) {
                 case STARTED:
@@ -70,7 +77,7 @@ public class ObservableThread<T> extends Thread implements Observable {
                     break;
             }
         } catch (Exception ex) {
-            if (cycle == Cycle.ERROR) {
+            if (cycle == ERROR) {
                 throw ex;
             }
         }
@@ -79,5 +86,10 @@ public class ObservableThread<T> extends Thread implements Observable {
     @Override
     public Cycle getCycle() {
         return this.cycle;
+    }
+
+    @Override
+    public void setCycle(Cycle cycle) {
+        this.cycle = cycle;
     }
 }

@@ -15,7 +15,11 @@ public class ObservableThreadTest {
         final TaskLifecycle<String> lifecycle = new TaskLifecycle.EmptyLifecycle<String>() {
             @Override
             public void onStart(Thread thread) {
-                System.out.println("The thread's status: " + Observable.Cycle.STARTED);
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
@@ -25,7 +29,6 @@ public class ObservableThreadTest {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                System.out.println("The thread's status: " + Observable.Cycle.RUNNING);
             }
 
             @Override
@@ -35,7 +38,15 @@ public class ObservableThreadTest {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                System.out.println("The thread's status: " + Observable.Cycle.DONE);
+            }
+
+            @Override
+            public void onError(Thread thread, Exception e) {
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
             }
         };
 
