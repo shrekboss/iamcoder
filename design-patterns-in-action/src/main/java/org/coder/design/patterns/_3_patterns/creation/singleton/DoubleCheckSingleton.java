@@ -1,4 +1,4 @@
-package org.coder.design.patterns._4_patterns.creation.singleton;
+package org.coder.design.patterns._3_patterns.creation.singleton;
 
 import java.net.Socket;
 import java.sql.Connection;

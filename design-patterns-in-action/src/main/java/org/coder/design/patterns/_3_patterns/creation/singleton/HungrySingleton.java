@@ -1,4 +1,4 @@
-package org.coder.design.patterns._4_patterns.creation.singleton;
+package org.coder.design.patterns._3_patterns.creation.singleton;
 
 /**
  * 1. 饿汉式单例模式
