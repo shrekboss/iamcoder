@@ -40,11 +40,11 @@ public class ObservableThreadTest {
         };
 
         final Observable observableThread = new ObservableThread<>(lifecycle, () -> {
-//            try {
-//                TimeUnit.SECONDS.sleep(5);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
+            try {
+                TimeUnit.SECONDS.sleep(5);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             System.out.println(" finished done.");
             return "Hello Observer";
         });
