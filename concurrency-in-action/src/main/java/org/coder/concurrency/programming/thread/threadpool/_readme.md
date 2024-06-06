@@ -1,15 +1,15 @@
 ### 实现步骤
-2. 定义线程池基本操作和方法
-2. 用任务队列，主要用户缓存提交到线程池中的任务
-3. 提供创建线程的接口
-4. 主要用于当 Queue 中的 runnable 达到了 limit 上限时，决定采取何种策略通知提交者
-该接口定义了三种默认的实现
-5. RunnableDenyException 是 RuntimeException 的子类，主要用于通知任务提交者，任务队列已无法再接受新的任务
-6. 是 Runnable 的一个实现，主要用户线程池内部，该类会使用到 RunnableQueue，然后不断地从 queue 中取出某个 runnable，并运行 runnable
-的 run 方法
-7. RunnableQueue 队列的实现
-8. ThreadPool 的基础实现
-9. 自定义线程池测试测试类
+1. [定义线程池基本操作和方法](ThreadPool.java)
+2. [用任务队列，主要用户缓存提交到线程池中的任务](RunnableQueue.java)
+3. [提供创建线程的接口](ThreadFactory.java)
+4. [拒绝策略](DenyPolicy.java)：该接口定义了三种默认的实现
+5. [RunnableDenyException.java](RunnableDenyException.java)：RunnableDenyException 是 RuntimeException 的子类，主要用于通知
+   任务提交者，任务队列已无法再接受新的任务
+6. [任务提交者](InternalTask.java)：是 Runnable 的一个实现，主要用户线程池内部，该类会使用到 RunnableQueue，然后不断地从 queue 中取出
+   某个 runnable，并运行 runnable 的 run 方法
+7. [RunnableQueue 队列的实现](LinkedRunnableQueue.java)
+8. [ThreadPool 的基础实现](BasicThreadPool.java)
+9. [自定义线程池测试测试类](ThreadPoolTest.java)
 
 ### 存在的问题：
 1. BasicThreadPool 和 Thread 不应该是继承关系，采用组合关系更为妥当，这样就可以避免调用者直接使用 BasicThreadPool 中的 Thread 的方法
