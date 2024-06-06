@@ -6,12 +6,13 @@
 
     <groupId>org.coder</groupId>
     <artifactId>iamcoder</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>${revision}</version>
 
     <packaging>pom</packaging>
 
     <modules>
-        <module>java-concurrency-programming</module>
+        <module>concurrency-in-action</module>
+        <module>design-patterns-in-action</module>
     </modules>
 
     <properties>

@@ -1,0 +1,8 @@
+1. [饿汉式单例模式](HungrySingleton.java)
+2. [懒汉式的单例模式](LazySingleton.java)
+3. [懒汉式 + 同步方法的单例模式](LazySyncSingleton.java)
+4. [Double-Check的单例模式](DoubleCheckSingleton.java)
+5. [volatile + Double-Check的单例模式](DoubleCheckSingletonWithVolatile.java)
+6. [Holder 方式的单例模式](HolderSingleton.java)
+7. [枚举方式的单例模式](EnumSingleton.java)
+8. [枚举 + Holder 方式的单例模式](EnumLazySingleton.java)
