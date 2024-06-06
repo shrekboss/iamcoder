@@ -31,7 +31,7 @@ public interface TaskLifecycle<T> {
 
     /**
      * 生命周期接口的空实现(Adaptor)
-     * @param <T>
+     * 主要是为了让使用者保持对 Thread 类的使用习惯
      */
     class EmptyLifecycle<T> implements TaskLifecycle<T> {
 
