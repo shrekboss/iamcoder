@@ -1,6 +1,8 @@
 package org.coder.concurrency.programming.pattern._1_observer;
 
 /**
+ * 任务执行接口
+ *
  * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0
  */

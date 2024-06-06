@@ -9,6 +9,13 @@
 > 接收者则是通知接受者一方，严格意义上的观察者模式是需要 Observer 的集合的，这里不需要完全遵守这样的规则，只需要将执行任务的每
 > 个阶段都通知给观察者即可。
 
+### 程序结构
+- [Observable 接口定义，主要是暴露调用者使用的](Observable.java)
+- [事件回调的响应者](TaskLifecycle.java)
+- [观察者](ObservableThread.java)
+- [任务执行接口](Task.java)
+- [测试入口](ObservableThreadTest.java)
+
 ### 关键点总结
 1. Observable 中定义和 Thread 同样的方法用于屏蔽 Thread 的 API。
 2. ObservableThread 中的 run 方法修饰为 final，或者将 ObservableThread 类修饰为 final，防止子类继承重写，导致整个生命周期的监控时效。
