@@ -1,7 +1,7 @@
 package org.coder.concurrency.programming.pattern._1_observer;
 
 /**
- * Observable 接口定义，主要是暴露调用者使用的
+ * Observable 被观察者接口定义，主要是暴露调用者使用的
  *
  * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0

@@ -1,4 +1,4 @@
-package org.coder.design.patterns._3_patterns.creation.singleton;
+package org.coder.design.patterns._3_patterns.creation.singleton._template_code;
 
 /**
  * 3. 懒汉式 + 同步方法的单例模式

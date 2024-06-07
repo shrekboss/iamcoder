@@ -13,4 +13,13 @@
 
     <name>design-patterns-in-action</name>
 
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.sonatype.nexus/google-guava-eventbus -->
+        <dependency>
+            <groupId>org.sonatype.nexus</groupId>
+            <artifactId>google-guava-eventbus</artifactId>
+            <version>3.2.0-01</version>
+        </dependency>
+    </dependencies>
+
 </project>

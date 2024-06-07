@@ -10,9 +10,9 @@
 > 个阶段都通知给观察者即可。
 
 ### 程序结构
-- [Observable 接口定义，主要是暴露调用者使用的](Observable.java)
+- [Observable 被观察者接口定义，主要是暴露调用者使用的](Observable.java)
 - [事件回调的响应者](TaskLifecycle.java)
-- [观察者](ObservableThread.java)
+- [被观察者](ObservableThread.java)
 - [任务执行接口](Task.java)
 - [测试入口](ObservableThreadTest.java)
 
