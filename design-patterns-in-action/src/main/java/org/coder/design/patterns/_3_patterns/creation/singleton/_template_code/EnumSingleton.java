@@ -24,15 +24,22 @@ public enum EnumSingleton {
         System.out.println("INSTANCE will be initialized immediately.");
     }
 
-    //
+    /**
+     * 这样的方法意义不大：可以直接使用 EnumSingleton.INSTANCE
+     */
     public static EnumSingleton getInstance() {
         return INSTANCE;
     }
 
     public static void main(String[] args) {
         IntStream.range(0,5).mapToObj(i -> new Thread(() -> {
-            System.out.println(Thread.currentThread().getName() + " --> " + (EnumSingleton.getInstance().data[i] = (byte) i));
-        }, "Test-Tread-" + i)).forEach(Thread::start);
+//            System.out.println(Thread.currentThread().getName() + " --> " + (EnumSingleton.getInstance().data[i] = (byte) i));
+            System.out.println(Thread.currentThread().getName() + " --> " + (EnumSingleton.INSTANCE.data[i] = (byte) i));
+        }, "EnumSingleton-Tread-" + i)).forEach(Thread::start);
+
+        IntStream.range(0,5).mapToObj(i -> new Thread(() -> {
+            System.out.println(Thread.currentThread().getName() + " --> " + (EnumLazySingleton.getInstance().getData()[i] = (byte) i));
+        }, "EnumLazySingleton-Tread-" + i)).forEach(Thread::start);
     }
 
 }

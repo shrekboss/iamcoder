@@ -32,4 +32,10 @@ public final class HolderSingleton {
         return Holder.instance;
     }
 
+    public static void main(String[] args) {
+        System.out.println(HolderSingleton.getInstance());
+        System.out.println(HolderSingleton.getInstance());
+        System.out.println(HolderSingleton.getInstance());
+    }
+
 }

@@ -1,5 +1,7 @@
 package org.coder.design.patterns._3_patterns.creation.singleton._template_code;
 
+import java.util.stream.IntStream;
+
 /**
  * 7.1. 枚举 + Holder 方式的单例模式
  * <p>
@@ -19,6 +21,10 @@ public final class EnumLazySingleton {
 
     }
 
+    public byte[] getData() {
+        return data;
+    }
+
     // 使用枚举充当 holder
     private enum EnumHolder {
 
@@ -33,11 +39,19 @@ public final class EnumLazySingleton {
             return instance;
         }
 
-        //
         public static EnumLazySingleton getInstance() {
             return INSTANCE.getSingleton();
         }
+    }
 
+    public static EnumLazySingleton getInstance() {
+        return EnumHolder.getInstance();
+    }
+
+    public static void main(String[] args) {
+        IntStream.range(0,5).mapToObj(i -> new Thread(() -> {
+            System.out.println(Thread.currentThread().getName() + " --> " + (EnumLazySingleton.getInstance().data[i] = (byte) i));
+        }, "Test-Tread-" + i)).forEach(Thread::start);
     }
 
 }
