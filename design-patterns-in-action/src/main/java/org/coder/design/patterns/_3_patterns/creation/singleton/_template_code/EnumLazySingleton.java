@@ -39,7 +39,7 @@ public final class EnumLazySingleton {
             return instance;
         }
 
-        public static EnumLazySingleton getInstance() {
+        private static EnumLazySingleton getInstance() {
             return INSTANCE.getSingleton();
         }
     }
