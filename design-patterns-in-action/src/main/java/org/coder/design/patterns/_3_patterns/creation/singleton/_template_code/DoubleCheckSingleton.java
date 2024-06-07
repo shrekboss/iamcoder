@@ -35,8 +35,8 @@ public final class DoubleCheckSingleton {
 
     // 私有构造函数，不允许外部 new
     private DoubleCheckSingleton() {
-        // this.conn 初始化
-        // this.socket 初始化
+        // this.conn 模拟初始化
+        // this.socket 模拟初始化
     }
 
     public static DoubleCheckSingleton getInstance() {

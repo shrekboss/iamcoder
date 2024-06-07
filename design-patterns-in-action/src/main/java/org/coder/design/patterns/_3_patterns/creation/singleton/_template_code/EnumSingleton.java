@@ -1,5 +1,7 @@
 package org.coder.design.patterns._3_patterns.creation.singleton._template_code;
 
+import java.util.stream.IntStream;
+
 /**
  * 7. 枚举方式的单例模式
  * <p>
@@ -25,6 +27,12 @@ public enum EnumSingleton {
     //
     public static EnumSingleton getInstance() {
         return INSTANCE;
+    }
+
+    public static void main(String[] args) {
+        IntStream.range(0,5).mapToObj(i -> new Thread(() -> {
+            System.out.println(Thread.currentThread().getName() + " --> " + (EnumSingleton.getInstance().data[i] = (byte) i));
+        }, "Test-Tread-" + i)).forEach(Thread::start);
     }
 
 }
