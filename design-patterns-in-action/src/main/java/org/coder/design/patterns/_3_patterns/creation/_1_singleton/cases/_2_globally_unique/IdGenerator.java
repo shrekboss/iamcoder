@@ -1,4 +1,4 @@
-package org.coder.design.patterns._3_patterns.creation.singleton.cases._2_globally_unique;
+package org.coder.design.patterns._3_patterns.creation._1_singleton.cases._2_globally_unique;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicLong;

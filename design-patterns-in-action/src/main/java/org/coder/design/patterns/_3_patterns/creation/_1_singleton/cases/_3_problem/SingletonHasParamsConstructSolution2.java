@@ -1,4 +1,4 @@
-package org.coder.design.patterns._3_patterns.creation.singleton.cases._3_problem;
+package org.coder.design.patterns._3_patterns.creation._1_singleton.cases._3_problem;
 
 /**
  * 单例不支持有参数的构造函数第二种解决办法

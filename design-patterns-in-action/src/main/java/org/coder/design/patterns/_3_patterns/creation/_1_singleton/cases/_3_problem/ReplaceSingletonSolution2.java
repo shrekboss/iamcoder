@@ -1,6 +1,6 @@
-package org.coder.design.patterns._3_patterns.creation.singleton.cases._3_problem;
+package org.coder.design.patterns._3_patterns.creation._1_singleton.cases._3_problem;
 
-import org.coder.design.patterns._3_patterns.creation.singleton.cases._2_globally_unique.IdGenerator;
+import org.coder.design.patterns._3_patterns.creation._1_singleton.cases._2_globally_unique.IdGenerator;
 
 /**
  * 有何替代解决方案？依赖注入

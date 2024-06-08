@@ -1,7 +1,7 @@
-package org.coder.design.patterns._3_patterns.creation.singleton.cases._3_problem;
+package org.coder.design.patterns._3_patterns.creation._1_singleton.cases._3_problem;
 
-import static org.coder.design.patterns._3_patterns.creation.singleton.cases._3_problem.SingletonHasParamsConstructSolution3.Config.PARAM_A;
-import static org.coder.design.patterns._3_patterns.creation.singleton.cases._3_problem.SingletonHasParamsConstructSolution3.Config.PARAM_B;
+import static org.coder.design.patterns._3_patterns.creation._1_singleton.cases._3_problem.SingletonHasParamsConstructSolution3.Config.PARAM_A;
+import static org.coder.design.patterns._3_patterns.creation._1_singleton.cases._3_problem.SingletonHasParamsConstructSolution3.Config.PARAM_B;
 
 /**
  * 单例不支持有参数的构造函数第三种解决办法

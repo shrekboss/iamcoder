@@ -1,4 +1,4 @@
-package org.coder.design.patterns._3_patterns.creation.singleton.cases._1_resource_confic;
+package org.coder.design.patterns._3_patterns.creation._1_singleton.cases._1_resource_confic;
 
 import java.io.File;
 import java.io.FileWriter;

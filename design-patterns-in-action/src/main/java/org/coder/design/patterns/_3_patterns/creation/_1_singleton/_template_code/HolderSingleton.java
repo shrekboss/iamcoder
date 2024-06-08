@@ -1,4 +1,4 @@
-package org.coder.design.patterns._3_patterns.creation.singleton._template_code;
+package org.coder.design.patterns._3_patterns.creation._1_singleton._template_code;
 
 /**
  * 6. Holder 方式的单例模式
