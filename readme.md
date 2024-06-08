@@ -1,8 +1,8 @@
-### 并发编程实战
+### 1. 并发编程实战
 
 [concurrency-in-action](concurrency-in-action)
 
-### 设计模式实战
+### 2. 设计模式实战
 
 [design-patterns-in-action](design-patterns-in-action)
 
