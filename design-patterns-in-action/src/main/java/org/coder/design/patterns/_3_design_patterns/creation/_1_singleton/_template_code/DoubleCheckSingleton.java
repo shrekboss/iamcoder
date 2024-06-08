@@ -8,7 +8,9 @@ import java.sql.Connection;
  * <p>
  * Double-Check的单例模式支持类的懒加载
  * <p>
- * 缺点：性能相比 {@link LazySyncSingleton } 好一些，但是多线程的情况下有可能会引起空指针异常
+ * 缺点：
+ * 1. 性能相比 {@link LazySyncSingleton } 好一些，但是多线程的情况下有可能会引起空指针异常
+ * 2. 会受到 JVM 运行时指令重排序的影响
  * <p>
  * a.根据 JVM 运行时指令重排序和 Happens-Before规则，conn、socket 和 instance 这三者之间的实例化顺序并无前后关系约束，那么极有可能
  * 是 instance 先被实例化，而 conn 和 socket 未完成实例化，未完成初始化的实例调用其方法将会抛出空指针 NPE 异常
@@ -18,6 +20,10 @@ import java.sql.Connection;
  * 1. 分配对象的内存空间
  * 2. 初始化对象
  * 3. 设置 instance 指向刚分配的内存地址
+ * <p>
+ * 解决方法：
+ * 1. {@link DoubleCheckSingletonWithVolatile} 不让指令重排序
+ * 2. {@link HolderSingleton} 可以指令重排序，但是不让外部看见
  *
  * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0

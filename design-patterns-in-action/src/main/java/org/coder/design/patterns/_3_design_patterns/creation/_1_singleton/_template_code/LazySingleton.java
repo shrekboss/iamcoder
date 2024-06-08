@@ -5,7 +5,8 @@ package org.coder.design.patterns._3_design_patterns.creation._1_singleton._temp
  * <p>
  * 懒汉式的单例设计模式不能保证实例的唯一性，但是可以保证实例的懒加载
  * <p>
- * 缺点：无法保证实例的唯一性
+ * 缺点：
+ * 1. 无法保证实例的唯一性;
  *
  * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0
