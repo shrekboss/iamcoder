@@ -18,27 +18,26 @@
 
 ### 面向对象的四大特性
 
-1. [封装 - Encapsulation](_1_encapsulation)
+#### [封装 - Encapsulation](_1_encapsulation)
 
-> 之所以这样设计，是因为从业务的角度来说，id、createTime 在创建钱包的时候就确定好了，之后不应该再被改动，所以，我们并没有在
-> Wallet 类中，暴露 id、createTime 这两个属性的任何修改方法，比如 set 方法。而且，这两个属性的初始化设置，对于 Wallet
-> 类的调用者来说，也应该是透明的，所以，我们在 Wallet 类的构造函数内部将其初始化设置好，而不是通过构造函数的参数来外部赋值。
+之所以这样设计，是因为从业务的角度来说，id、createTime 在创建钱包的时候就确定好了，之后不应该再被改动，所以，我们并没有在
+Wallet 类中，暴露 id、createTime 这两个属性的任何修改方法，比如 set 方法。而且，这两个属性的初始化设置，对于 Wallet
+类的调用者来说，也应该是透明的，所以，我们在 Wallet 类的构造函数内部将其初始化设置好，而不是通过构造函数的参数来外部赋值。
 
-> 对于钱包余额 balance 这个属性，从业务的角度来说，只能增或者减，不会被重新设置。所以，我们在 Wallet 类中，只暴露了
-> increaseBalance() 和 decreaseBalance() 方法，并没有暴露 set 方法。对于 balanceLastModifiedTime 这个属性，它完全是跟
-> balance
-> 这个属性的修改操作绑定在一起的。只有在 balance 修改的时候，这个属性才会被修改。所以，我们把 balanceLastModifiedTime
-> 这个属性的修改操作完全封装在了 increaseBalance() 和 decreaseBalance() 两个方法中，不对外暴露任何修改这个属性的方法和业务细节。这样也可以保证
-> balance 和 balanceLastModifiedTime 两个数据的一致性。
+对于钱包余额 balance 这个属性，从业务的角度来说，只能增或者减，不会被重新设置。所以，我们在 Wallet 类中，只暴露了
+increaseBalance() 和 decreaseBalance() 方法，并没有暴露 set 方法。对于 balanceLastModifiedTime 这个属性，它完全是跟 balance
+这个属性的修改操作绑定在一起的。只有在 balance 修改的时候，这个属性才会被修改。所以，我们把 balanceLastModifiedTime
+这个属性的修改操作完全封装在了 increaseBalance() 和 decreaseBalance() 两个方法中，不对外暴露任何修改这个属性的方法和业务细节。这样也可以保证
+balance 和 balanceLastModifiedTime 两个数据的一致性。
 
 - [Wallet.java](_1_encapsulation%2FWallet.java)
 
-2. [抽象 - Abstraction](_2_abstraction)
+#### [抽象 - Abstraction](_2_abstraction)
 
 - [IPictureStorage.java](_2_abstraction%2FIPictureStorage.java)
 - [PictureStorage.java](_2_abstraction%2FPictureStorage.java)
 
-3. [继承 - Inheritance](_3_inheritance)
+#### [继承 - Inheritance](_3_inheritance)
 
 - case 1:
     - [ImageStore.java](_3_inheritance%2Fimagestore%2FImageStore.java)
@@ -56,7 +55,7 @@
     - [Ostrich.java](_3_inheritance%2Fbird%2FOstrich.java)
     - [Sparrow.java](_3_inheritance%2Fbird%2FSparrow.java)
 
-4. [多态 - Polymorphism](_4_polymorphism)
+#### [多态 - Polymorphism](_4_polymorphism)
 
 - case 1:
     - [SortedDynamicArray.java](_4_polymorphism%2FSortedDynamicArray.java)
