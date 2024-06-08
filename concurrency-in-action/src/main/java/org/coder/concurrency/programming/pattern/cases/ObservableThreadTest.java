@@ -1,4 +1,4 @@
-package org.coder.concurrency.programming.pattern._1_observer;
+package org.coder.concurrency.programming.pattern.cases;
 
 import java.util.concurrent.TimeUnit;
 

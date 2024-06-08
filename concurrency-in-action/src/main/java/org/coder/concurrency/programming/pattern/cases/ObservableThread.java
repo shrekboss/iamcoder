@@ -1,6 +1,6 @@
-package org.coder.concurrency.programming.pattern._1_observer;
+package org.coder.concurrency.programming.pattern.cases;
 
-import static org.coder.concurrency.programming.pattern._1_observer.Observable.Cycle.*;
+import static org.coder.concurrency.programming.pattern.cases.Observable.Cycle.*;
 
 /**
  * ObserverThread 是任务监控的关键

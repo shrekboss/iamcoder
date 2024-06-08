@@ -1,4 +1,4 @@
-package org.coder.concurrency.programming.pattern._1_observer;
+package org.coder.concurrency.programming.pattern.cases;
 
 /**
  * TaskLifecycle 接口定义：任务执行的生命周期中会触发的接口，其中 EmptyLifecycle 是一个空实现，主要是为了让使用者

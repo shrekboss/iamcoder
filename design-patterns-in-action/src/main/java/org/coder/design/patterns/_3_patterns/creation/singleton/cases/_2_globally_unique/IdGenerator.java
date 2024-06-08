@@ -27,6 +27,13 @@ public final class IdGenerator {
         return id.incrementAndGet();
     }
 
+    @Override
+    public String toString() {
+        return "IdGenerator{" +
+                "id=" + id +
+                '}';
+    }
+
     public static void main(String[] args) throws InterruptedException {
 
         CountDownLatch countDownLatch = new CountDownLatch(10);
