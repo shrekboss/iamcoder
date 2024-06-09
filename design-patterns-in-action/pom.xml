@@ -14,6 +14,12 @@
     <name>design-patterns-in-action</name>
 
     <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.sonatype.nexus/google-guava-eventbus -->
         <dependency>
             <groupId>org.sonatype.nexus</groupId>
@@ -21,10 +27,11 @@
             <version>3.2.0-01</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
         </dependency>
     </dependencies>
 
