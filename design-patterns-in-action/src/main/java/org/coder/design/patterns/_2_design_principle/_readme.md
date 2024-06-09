@@ -19,10 +19,10 @@
 ### [SOLID 原则 -DIP 依赖倒置原则](_5_dip)
 
 
-###  [DRY 原则](_6_dry)
+###  [KISS 原则 && YAGNI 原则](_6_kiss%24yagni)
 
 
-###  [KISS 原则 && YAGNI 原则](_7_kiss%24yagni)
+###  [DRY 原则](_7_dry)
 
 
 ###  [LOD 法则](_8_lod)
