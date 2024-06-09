@@ -2,7 +2,7 @@
 > 这种编程语言中第一次使用。而面向对象编程这个概念第一次 被使用是在 Smalltalk 这种编程语言中。Smalltalk
 > 被认为是第一个真正意义上的面向对象编程语言。
 
-### 面相对象编程(OOP)
+## 面相对象编程(OOP)
 
 > 现在，主流的编程范式或者是编程风格有三种，它们分别是面向过程、面向对象和函数式编程。面向对象这种编程风格又是这其中最主流的。现在比较流行的编
 > 程语言大部分都是面向对象编程语言。大部分项目也都是基于面向对象编程风格开发的。面向对象编程因为其具有丰富的特性（封装、抽象、继承、多态），可
@@ -65,3 +65,8 @@ balance 和 balanceLastModifiedTime 两个数据的一致性。
     - [Array.java](_4_polymorphism%2FArray.java)
     - [LinkedList.java](_4_polymorphism%2FLinkedList.java)
     - [IteratorTest.java](_4_polymorphism%2FIteratorTest.java)
+
+### [案例分析](cases)
+
+- [case 1: 虚拟钱包设计](cases%2Fvirtualwallet)
+- [case 2: 接口鉴权设计](cases%2Fauthentication)
