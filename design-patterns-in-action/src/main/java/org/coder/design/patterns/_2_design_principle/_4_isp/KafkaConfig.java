@@ -1,0 +1,22 @@
+package org.coder.design.patterns._2_design_principle._4_isp;
+
+import org.coder.design.patterns._2_design_principle._4_isp.mock.ConfigSource;
+
+/**
+ * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
+ * @since 1.0.0
+ */
+public class KafkaConfig implements Updater {
+
+    //配置中心（比如zookeeper）
+    private ConfigSource configSource;
+
+    public KafkaConfig(ConfigSource configSource) {
+        this.configSource = configSource;
+    }
+
+    @Override
+    public void update() {
+
+    }
+}
