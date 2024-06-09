@@ -32,41 +32,37 @@ balance 和 balanceLastModifiedTime 两个数据的一致性。
 
 - [Wallet.java](_1_encapsulation%2FWallet.java)
 
-#### [抽象 - Abstraction](_2_abstraction)
+- [抽象 - Abstraction](_2_abstraction)
+    - [IPictureStorage.java](_2_abstraction%2FIPictureStorage.java)
+    - [PictureStorage.java](_2_abstraction%2FPictureStorage.java)
+- [继承 - Inheritance](_3_inheritance)
+    - case 1:
+        - [ImageStore.java](_3_inheritance%2Fimagestore%2FImageStore.java)
+        - [AliyunImageStore.java](_3_inheritance%2Fimagestore%2FAliyunImageStore.java)
+        - [PrivateImageStore.java](_3_inheritance%2Fimagestore%2FPrivateImageStore.java)- [IPictureStorage.java](_3_inheritance)
+        - [ImageProcessingJob.java](_3_inheritance%2Fimagestore%2FImageProcessingJob.java)
+    - case 2: 【接口 + 组合 + 委派】 --替换--> 【继承关系】
+        - [Flyable.java](_3_inheritance%2Fbird%2FFlyable.java)
+        - [Tweetable.java](_3_inheritance%2Fbird%2FTweetable.java)
+        - [EggLayable.java](_3_inheritance%2Fbird%2FEggLayable.java)
+        - [FlyAbility.java](_3_inheritance%2Fbird%2FFlyAbility.java)
+        - [TweetAbility.java](_3_inheritance%2Fbird%2FTweetAbility.java)
+        - [EggLayAbility.java](_3_inheritance%2Fbird%2FEggLayAbility.java)
+        - [Ostrich.java](_3_inheritance%2Fbird%2FOstrich.java)
+        - [Sparrow.java](_3_inheritance%2Fbird%2FSparrow.java)
 
-- [IPictureStorage.java](_2_abstraction%2FIPictureStorage.java)
-- [PictureStorage.java](_2_abstraction%2FPictureStorage.java)
+- [多态 - Polymorphism](_4_polymorphism)
+    - case 1:
+        - [SortedDynamicArray.java](_4_polymorphism%2FSortedDynamicArray.java)
+        - [SortedDynamicArrayTest.java](_4_polymorphism%2FSortedDynamicArrayTest.java)
+    - case 2:
+        - [Iterator.java](_4_polymorphism%2FIterator.java)
+        - [Array.java](_4_polymorphism%2FArray.java)
+        - [LinkedList.java](_4_polymorphism%2FLinkedList.java)
+        - [IteratorTest.java](_4_polymorphism%2FIteratorTest.java)
 
-#### [继承 - Inheritance](_3_inheritance)
-
-- case 1:
-    - [ImageStore.java](_3_inheritance%2Fimagestore%2FImageStore.java)
-    - [AliyunImageStore.java](_3_inheritance%2Fimagestore%2FAliyunImageStore.java)
-    - [PrivateImageStore.java](_3_inheritance%2Fimagestore%2FPrivateImageStore.java)- [IPictureStorage.java](_3_inheritance)
-    - [ImageProcessingJob.java](_3_inheritance%2Fimagestore%2FImageProcessingJob.java)
-
-- case 2: 【接口 + 组合 + 委派】 --替换--> 【继承关系】
-    - [Flyable.java](_3_inheritance%2Fbird%2FFlyable.java)
-    - [Tweetable.java](_3_inheritance%2Fbird%2FTweetable.java)
-    - [EggLayable.java](_3_inheritance%2Fbird%2FEggLayable.java)
-    - [FlyAbility.java](_3_inheritance%2Fbird%2FFlyAbility.java)
-    - [TweetAbility.java](_3_inheritance%2Fbird%2FTweetAbility.java)
-    - [EggLayAbility.java](_3_inheritance%2Fbird%2FEggLayAbility.java)
-    - [Ostrich.java](_3_inheritance%2Fbird%2FOstrich.java)
-    - [Sparrow.java](_3_inheritance%2Fbird%2FSparrow.java)
-
-#### [多态 - Polymorphism](_4_polymorphism)
-
-- case 1:
-    - [SortedDynamicArray.java](_4_polymorphism%2FSortedDynamicArray.java)
-    - [SortedDynamicArrayTest.java](_4_polymorphism%2FSortedDynamicArrayTest.java)
-- case 2:
-    - [Iterator.java](_4_polymorphism%2FIterator.java)
-    - [Array.java](_4_polymorphism%2FArray.java)
-    - [LinkedList.java](_4_polymorphism%2FLinkedList.java)
-    - [IteratorTest.java](_4_polymorphism%2FIteratorTest.java)
-
-### [案例分析](cases)
-
-- [case 1: 虚拟钱包设计](cases%2Fvirtualwallet)
-- [case 2: 接口鉴权设计](cases%2Fauthentication)
+- [案例分析](cases)
+    - [case 1: 虚拟钱包设计](cases%2Fvirtualwallet)
+        - [_readme.md](cases%2Fvirtualwallet%2F_readme.md)
+    - [case 2: 接口鉴权设计](cases%2Fauthentication)
+        - [_readme.md](cases%2Fauthentication%2F_readme.md)
