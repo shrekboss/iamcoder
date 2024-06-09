@@ -12,6 +12,7 @@ public class Demo {
         apiStatInfo.setRequestCount(1000);
         apiStatInfo.setDurationOfSeconds(60);
         apiStatInfo.setErrorCount(9);
+        apiStatInfo.setTimeoutCount(289);
         ApplicationContext.getInstance().getAlert().check(apiStatInfo);
     }
 }

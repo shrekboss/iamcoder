@@ -13,4 +13,6 @@ public class ApiStatInfo {
     private long requestCount;
     private long errorCount;
     private long durationOfSeconds;
+    // 改动一：添加新字段
+    private long timeoutCount;
 }
