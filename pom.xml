@@ -42,7 +42,7 @@
 <!--        <swagger.version>2.9.2</swagger.version>-->
 
         <!-- Testing 版本 -->
-        <junit.version>4.13</junit.version>
+        <junit.version>4.13.1</junit.version>
     </properties>
 
     <dependencyManagement>

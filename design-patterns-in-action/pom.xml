@@ -17,21 +17,18 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.12.0</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.sonatype.nexus/google-guava-eventbus -->
+        <!-- Test -->
         <dependency>
-            <groupId>org.sonatype.nexus</groupId>
-            <artifactId>google-guava-eventbus</artifactId>
-            <version>3.2.0-01</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
         </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
         <dependency>
@@ -39,10 +36,13 @@
             <artifactId>gson</artifactId>
             <version>2.10.1</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.sonatype.nexus/google-guava-eventbus -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>org.sonatype.nexus</groupId>
+            <artifactId>google-guava-eventbus</artifactId>
+            <version>3.2.0-01</version>
         </dependency>
+
     </dependencies>
 
 </project>
