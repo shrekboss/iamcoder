@@ -1,9 +1,9 @@
 package org.coder.design.patterns._3_programming_specification._2_testability;
 
 import lombok.Getter;
-import org.coder.design.patterns._3_programming_specification._2_testability.mock.IdGenerator;
-import org.coder.design.patterns._3_programming_specification._2_testability.mock.STATUS;
-import org.coder.design.patterns._3_programming_specification._2_testability.mock.WalletRpcService;
+import org.coder.design.patterns._3_programming_specification._2_testability.simulate.IdGenerator;
+import org.coder.design.patterns._3_programming_specification._2_testability.simulate.STATUS;
+import org.coder.design.patterns._3_programming_specification._2_testability.simulate.WalletRpcService;
 
 import javax.transaction.InvalidTransactionException;
 
@@ -85,7 +85,7 @@ public class Transaction {
         if (status == STATUS.EXECUTED) return true;
         boolean isLocked = false;
         try {
-            // 变更点，mock 获取分布式锁
+            // 变更点，simulate 获取分布式锁
             isLocked = transactionLock.lock(id);
             if (!isLocked) {
                 return false; // 锁定未成功，返回false，job兜底执行
@@ -113,7 +113,7 @@ public class Transaction {
             }
         } finally {
             if (isLocked) {
-                // 变更点，mock 释放分布式锁
+                // 变更点，simulate 释放分布式锁
                 transactionLock.unlock();
             }
         }

@@ -1,6 +1,6 @@
 package org.coder.design.patterns._3_programming_specification._2_testability;
 
-import org.coder.design.patterns._3_programming_specification._2_testability.mock.STATUS;
+import org.coder.design.patterns._3_programming_specification._2_testability.simulate.STATUS;
 import org.junit.Test;
 
 import javax.transaction.InvalidTransactionException;

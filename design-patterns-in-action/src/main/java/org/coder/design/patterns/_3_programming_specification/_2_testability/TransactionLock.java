@@ -1,6 +1,6 @@
 package org.coder.design.patterns._3_programming_specification._2_testability;
 
-import org.coder.design.patterns._3_programming_specification._2_testability.mock.RedisDistributedLock;
+import org.coder.design.patterns._3_programming_specification._2_testability.simulate.RedisDistributedLock;
 
 /**
  * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>

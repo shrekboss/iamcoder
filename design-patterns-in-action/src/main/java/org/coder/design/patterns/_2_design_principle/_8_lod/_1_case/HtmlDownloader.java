@@ -1,7 +1,7 @@
 package org.coder.design.patterns._2_design_principle._8_lod._1_case;
 
-import org.coder.design.patterns._2_design_principle._8_lod._1_case.mock.Html;
-import org.coder.design.patterns._2_design_principle._8_lod._1_case.mock.HtmlRequest;
+import org.coder.design.patterns._2_design_principle._8_lod._1_case.simulate.Html;
+import org.coder.design.patterns._2_design_principle._8_lod._1_case.simulate.HtmlRequest;
 
 /**
  * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>

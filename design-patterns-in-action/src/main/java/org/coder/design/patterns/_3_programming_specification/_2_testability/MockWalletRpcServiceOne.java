@@ -1,6 +1,6 @@
 package org.coder.design.patterns._3_programming_specification._2_testability;
 
-import org.coder.design.patterns._3_programming_specification._2_testability.mock.WalletRpcService;
+import org.coder.design.patterns._3_programming_specification._2_testability.simulate.WalletRpcService;
 
 /**
  * Mock {@link WalletRpcService } moveMoney() 方法实现

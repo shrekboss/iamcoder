@@ -1,7 +1,7 @@
 package org.coder.design.patterns._2_design_principle._4_isp;
 
 import lombok.Getter;
-import org.coder.design.patterns._2_design_principle._4_isp.mock.ConfigSource;
+import org.coder.design.patterns._2_design_principle._4_isp.simulate.ConfigSource;
 
 import java.util.Collections;
 import java.util.Map;

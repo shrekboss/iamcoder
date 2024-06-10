@@ -1,4 +1,4 @@
-package org.coder.design.patterns._2_design_principle._8_lod._1_case.mock;
+package org.coder.design.patterns._2_design_principle._8_lod._1_case.simulate;
 
 import lombok.Data;
 

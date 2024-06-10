@@ -1,4 +1,4 @@
-package org.coder.design.patterns._2_design_principle._8_lod._1_case.mock;
+package org.coder.design.patterns._2_design_principle._8_lod._1_case.simulate;
 
 /**
  * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>

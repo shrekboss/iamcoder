@@ -1,8 +1,8 @@
 package org.coder.design.patterns._1_oop._2_abstraction;
 
-import org.coder.design.patterns._1_oop._2_abstraction.mock.Image;
-import org.coder.design.patterns._1_oop._2_abstraction.mock.Picture;
-import org.coder.design.patterns._1_oop._2_abstraction.mock.PictureMetaInfo;
+import org.coder.design.patterns._1_oop._2_abstraction.simulate.Image;
+import org.coder.design.patterns._1_oop._2_abstraction.simulate.Picture;
+import org.coder.design.patterns._1_oop._2_abstraction.simulate.PictureMetaInfo;
 
 /**
  * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>

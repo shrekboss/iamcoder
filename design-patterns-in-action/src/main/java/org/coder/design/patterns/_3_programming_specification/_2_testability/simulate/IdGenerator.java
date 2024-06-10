@@ -1,4 +1,4 @@
-package org.coder.design.patterns._3_programming_specification._2_testability.mock;
+package org.coder.design.patterns._3_programming_specification._2_testability.simulate;
 
 /**
  * 模拟

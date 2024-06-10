@@ -1,7 +1,7 @@
 package org.coder.design.patterns._2_design_principle._8_lod._1_case;
 
-import org.coder.design.patterns._2_design_principle._8_lod._1_case.mock.Html;
-import org.coder.design.patterns._2_design_principle._8_lod._1_case.mock.HtmlDownloader;
+import org.coder.design.patterns._2_design_principle._8_lod._1_case.simulate.Html;
+import org.coder.design.patterns._2_design_principle._8_lod._1_case.simulate.HtmlDownloader;
 
 /**
  * 通过一个工厂方法来创建 Document

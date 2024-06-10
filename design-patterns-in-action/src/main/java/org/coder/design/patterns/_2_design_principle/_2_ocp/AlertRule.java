@@ -15,7 +15,7 @@ public class AlertRule {
     private long maxErrorCount = 10;
 
     public AlertRule getMatchedRule(String api) {
-        // mock
+        // simulate
         return new AlertRule();
     }
 

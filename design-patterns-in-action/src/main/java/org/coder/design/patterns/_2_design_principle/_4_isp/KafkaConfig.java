@@ -1,6 +1,6 @@
 package org.coder.design.patterns._2_design_principle._4_isp;
 
-import org.coder.design.patterns._2_design_principle._4_isp.mock.ConfigSource;
+import org.coder.design.patterns._2_design_principle._4_isp.simulate.ConfigSource;
 
 /**
  * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
