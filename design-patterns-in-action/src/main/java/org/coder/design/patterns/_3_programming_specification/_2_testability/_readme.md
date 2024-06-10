@@ -50,7 +50,7 @@ public class Transaction {
             }
             if (status == STATUS.EXECUTED) return true; // double check
             long executionInvokedTimestamp = System.currentTimestamp();
-            if ((executionInvokedTimestamp - createTimestamp) / 86400000 > 14){
+            if ((executionInvokedTimestamp - createTimestamp) / 86400000 > 14) {
                 this.status = STATUS.EXPIRED;
                 return false;
             }
@@ -78,11 +78,11 @@ public class Transaction {
 - 正常情况下，交易执行成功，回填用于对账（交易与钱包的交易流水）用的 walletTransactionId，交易状态设置为 EXECUTED，函数返回
   true。
     - TransactionTest.testExecute()
-    - 针对 walletRpcService 服务 
-      - [MockWalletRpcServiceOne.java](MockWalletRpcServiceOne.java)
-      - [MockWalletRpcServiceTwo.java](MockWalletRpcServiceTwo.java)
+    - 针对 walletRpcService 服务
+        - [MockWalletRpcServiceOne.java](MockWalletRpcServiceOne.java)
+        - [MockWalletRpcServiceTwo.java](MockWalletRpcServiceTwo.java)
     - 针对单例的 RedisDistributedLock 服务
-      - [TransactionLock.java](TransactionLock.java)
+        - [TransactionLock.java](TransactionLock.java)
     - [Transaction.java](Transaction.java)
 - buyerId、sellerId 为 null、amount 小于 0，返回 InvalidTransactionException。
     - 略
@@ -97,3 +97,21 @@ public class Transaction {
     - 略
 - 交易正在执行着，不会被重复执行，函数直接返回 false。
     - 略
+
+## 全局变量
+
+> 全局变量是一种面向过程的编程风格，有种种弊端。实际上，滥用全局变量也让编写单元测试变得困难。
+
+参考代码：[RangeLimiterTest.java](RangeLimiterTest.java)
+
+- 上面的单元测试有可能会运行失败。
+    - 假设单元测试框架顺序依次执行两个测试用例。
+    - 在第一个测试用例执行完成之后，position 的值变成了 -1；
+    - 再执行第二个测试用例的时候，position 变成了 5，move() 函数返回 true，assertFalse 语句判定失败。
+    - 所以，第二个测试用例运行失败。
+
+当然，如果 RangeLimiter 类有暴露重设（reset）position 值的函数，可以在每次执行单元测试用例之前，把 position 重设为
+0，这样就能解决刚刚的问题。
+
+不过，每个单元测试框架执行单元测试用例的方式可能是不同的。有的是顺序执行，有的是并发执行。对于并发执行的情况，即便我们每次都把
+position 重设为 0，也并不奏效。如果两个测试用例并发执行，第 16、17、18、23 这四行代码可能会交叉执行，影响到 move() 函数的执行结果。
