@@ -20,7 +20,7 @@ public class Bootstrap {
         consoleReporter.startRepeatedReport(60, 60);
 
         EmailReporter emailReporter = new EmailReporter(storage);
-        emailReporter.addToAddress("wangzheng@xzg.com");
+        emailReporter.addToAddress("crazyer.chen@gmail.com");
         emailReporter.startDailyReport();
 
         MetricsCollector collector = new MetricsCollector(storage);

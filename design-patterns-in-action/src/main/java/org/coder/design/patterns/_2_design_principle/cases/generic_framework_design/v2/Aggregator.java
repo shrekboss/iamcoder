@@ -46,16 +46,36 @@ public class Aggregator {
         requestStat.setP999ResponseTime(percentile999(respTimes));
         requestStat.setP99ResponseTime(percentile99(respTimes));
         requestStat.setCount(respTimes.size());
-        requestStat.setTps((long) tps(respTimes.size(), (double) durationInMillis /1000));
+        requestStat.setTps((long) tps(respTimes.size(), (double) durationInMillis / 1000));
         return requestStat;
     }
 
     // 以下的函数的代码实现均省略...
-    private double max(List<Double> dataset) {return 0;}
-    private double min(List<Double> dataset) {return 0;}
-    private double avg(List<Double> dataset) {return 0;}
-    private double tps(int count, double duration) {return 0;}
-    private double percentile999(List<Double> dataset) {return 0;}
-    private double percentile99(List<Double> dataset) {return 0;}
-    private double percentile(List<Double> dataset, double ratio) {return 0;}
+    private double max(List<Double> dataset) {
+        return 0;
+    }
+
+    private double min(List<Double> dataset) {
+        return 0;
+    }
+
+    private double avg(List<Double> dataset) {
+        return 0;
+    }
+
+    private double tps(int count, double duration) {
+        return 0;
+    }
+
+    private double percentile999(List<Double> dataset) {
+        return 0;
+    }
+
+    private double percentile99(List<Double> dataset) {
+        return 0;
+    }
+
+    private double percentile(List<Double> dataset, double ratio) {
+        return 0;
+    }
 }

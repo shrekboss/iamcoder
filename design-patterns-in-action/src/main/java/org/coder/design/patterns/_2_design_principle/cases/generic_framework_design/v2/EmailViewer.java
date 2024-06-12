@@ -19,7 +19,7 @@ import java.util.Map;
 public class EmailViewer implements StatViewer {
 
     private EmailSender emailSender;
-    private List toAddresses = new ArrayList<>();
+    private List<String> toAddresses = new ArrayList<>();
 
     public EmailViewer() {
         this.emailSender = new EmailSender(/*省略参数*/);
@@ -27,6 +27,10 @@ public class EmailViewer implements StatViewer {
 
     public EmailViewer(EmailSender emailSender) {
         this.emailSender = emailSender;
+    }
+
+    public EmailViewer(List<String> emailToAddresses) {
+        this.toAddresses = emailToAddresses;
     }
 
     public void addToAddress(String address) {
