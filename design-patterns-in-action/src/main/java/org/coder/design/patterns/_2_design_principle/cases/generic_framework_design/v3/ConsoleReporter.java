@@ -26,9 +26,6 @@ import java.util.concurrent.TimeUnit;
  */
 public class ConsoleReporter extends ScheduledReporter {
 
-    private MetricsStorage metricsStorage;
-    private Aggregator aggregator;
-    private StatViewer viewer;
     private final ScheduledExecutorService executor;
 
     // 兼顾代码的易用性，新增一个封装了默认依赖的构造函数

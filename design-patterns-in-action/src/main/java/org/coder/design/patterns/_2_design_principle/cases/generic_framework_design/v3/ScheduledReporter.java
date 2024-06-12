@@ -67,6 +67,7 @@ public abstract class ScheduledReporter {
             String apiName = entry.getKey();
             RequestStat stat = entry.getValue();
             List<RequestStat> statList = segmentStats.putIfAbsent(apiName, new ArrayList<>());
+            assert statList != null;
             statList.add(stat);
         }
     }
