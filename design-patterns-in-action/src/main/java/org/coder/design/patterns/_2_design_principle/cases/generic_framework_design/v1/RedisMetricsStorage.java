@@ -1,6 +1,6 @@
 package org.coder.design.patterns._2_design_principle.cases.generic_framework_design.v1;
 
-import org.coder.design.patterns._2_design_principle.cases.generic_framework_design.simulate.RequestInfo;
+import org.coder.design.patterns._2_design_principle.cases.generic_framework_design._simulate.RequestInfo;
 
 import java.util.Collections;
 import java.util.List;

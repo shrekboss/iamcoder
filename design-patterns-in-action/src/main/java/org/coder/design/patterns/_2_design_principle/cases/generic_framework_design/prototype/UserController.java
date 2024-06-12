@@ -1,6 +1,6 @@
 package org.coder.design.patterns._2_design_principle.cases.generic_framework_design.prototype;
 
-import org.coder.design.patterns._2_design_principle.cases.generic_framework_design.simulate.UserVo;
+import org.coder.design.patterns._2_design_principle.cases.generic_framework_design._simulate.UserVo;
 
 import java.util.concurrent.TimeUnit;
 

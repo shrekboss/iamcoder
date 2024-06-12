@@ -1,6 +1,9 @@
-package org.coder.design.patterns._2_design_principle.cases.generic_framework_design.v1;
+package org.coder.design.patterns._2_design_principle.cases.generic_framework_design.v2;
 
 import org.coder.design.patterns._2_design_principle.cases.generic_framework_design._simulate.RequestInfo;
+import org.coder.design.patterns._2_design_principle.cases.generic_framework_design.v1.MetricsCollector;
+import org.coder.design.patterns._2_design_principle.cases.generic_framework_design.v1.MetricsStorage;
+import org.coder.design.patterns._2_design_principle.cases.generic_framework_design.v1.RedisMetricsStorage;
 
 /**
  * (what)
@@ -12,17 +15,23 @@ import org.coder.design.patterns._2_design_principle.cases.generic_framework_des
  * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0
  */
-public class Bootstrap {
-
+public class PerfCounterTest {
     public static void main(String[] args) {
         MetricsStorage storage = new RedisMetricsStorage();
-        ConsoleReporter consoleReporter = new ConsoleReporter(storage);
+        Aggregator aggregator = new Aggregator();
+
+        // 定时触发统计并将结果显示到终端
+        ConsoleViewer consoleViewer = new ConsoleViewer();
+        ConsoleReporter consoleReporter = new ConsoleReporter(storage, aggregator, consoleViewer);
         consoleReporter.startRepeatedReport(60, 60);
 
-        EmailReporter emailReporter = new EmailReporter(storage);
-        emailReporter.addToAddress("wangzheng@xzg.com");
+        // 定时触发统计并将结果输出到邮件
+        EmailViewer emailViewer = new EmailViewer();
+        emailViewer.addToAddress("crayzer.chen@gmail.com");
+        EmailReporter emailReporter = new EmailReporter(storage, aggregator, emailViewer);
         emailReporter.startDailyReport();
 
+        // 收集接口访问数据
         MetricsCollector collector = new MetricsCollector(storage);
         collector.recordRequest(new RequestInfo("register", 123, 10234));
         collector.recordRequest(new RequestInfo("register", 223, 11234));

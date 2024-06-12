@@ -1,7 +1,7 @@
 package org.coder.design.patterns._2_design_principle.cases.generic_framework_design.v1;
 
-import org.coder.design.patterns._2_design_principle.cases.generic_framework_design.simulate.RequestInfo;
-import org.coder.design.patterns._2_design_principle.cases.generic_framework_design.simulate.RequestStat;
+import org.coder.design.patterns._2_design_principle.cases.generic_framework_design._simulate.RequestInfo;
+import org.coder.design.patterns._2_design_principle.cases.generic_framework_design._simulate.RequestStat;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -41,7 +41,7 @@ public class Aggregator {
         if (count != 0) {
             avgRespTime = sumRespTime / count;
         }
-        long tps = (long) (count / durationInMillis * 1000);
+        long tps = (count / durationInMillis * 1000);
         Collections.sort(requestInfos, new Comparator<RequestInfo>() {
             @Override
             public int compare(RequestInfo o1, RequestInfo o2) {

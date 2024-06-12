@@ -1,8 +1,8 @@
 package org.coder.design.patterns._2_design_principle.cases.generic_framework_design.v1;
 
 import com.google.gson.Gson;
-import org.coder.design.patterns._2_design_principle.cases.generic_framework_design.simulate.RequestInfo;
-import org.coder.design.patterns._2_design_principle.cases.generic_framework_design.simulate.RequestStat;
+import org.coder.design.patterns._2_design_principle.cases.generic_framework_design._simulate.RequestInfo;
+import org.coder.design.patterns._2_design_principle.cases.generic_framework_design._simulate.RequestStat;
 
 import java.util.HashMap;
 import java.util.List;

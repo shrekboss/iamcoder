@@ -108,6 +108,8 @@ public class RequestHeadersInterceptor implements RequestInterceptor {
 - ConsoleReporter 类、EmailReporter 类分别负责以一定频率统计并发送统计数据到命令行和邮件。至于 ConsoleReporter 和
   EmailReporter 是否可以抽象出可复用的抽象类，或者抽象出一个公共的接口，暂时还不能确定。
 
+#### 定义类及属性和方法，定义类与类之间的关系
+
 统计显示所要完成的功能逻辑细分一下的话，主要包含下面 4 点：
 
 1. 根据给定的时间区间，从数据库中拉取数据；

@@ -85,7 +85,7 @@ public class Transaction {
         if (status == STATUS.EXECUTED) return true;
         boolean isLocked = false;
         try {
-            // 变更点，simulate 获取分布式锁
+            // 变更点，_simulate 获取分布式锁
             isLocked = transactionLock.lock(id);
             if (!isLocked) {
                 return false; // 锁定未成功，返回false，job兜底执行
@@ -113,7 +113,7 @@ public class Transaction {
             }
         } finally {
             if (isLocked) {
-                // 变更点，simulate 释放分布式锁
+                // 变更点，_simulate 释放分布式锁
                 transactionLock.unlock();
             }
         }
