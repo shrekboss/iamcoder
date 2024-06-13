@@ -15,6 +15,7 @@ import org.apache.commons.lang3.StringUtils;
  */
 @Getter
 public class ResourcePoolConfig {
+
     private String name;
     private int maxTotal;
     private int maxIdle;
@@ -25,16 +26,6 @@ public class ResourcePoolConfig {
         this.maxTotal = builder.maxTotal;
         this.maxIdle = builder.maxIdle;
         this.minIdle = builder.minIdle;
-    }
-
-    @Override
-    public String toString() {
-        return "ResourcePoolConfig{" +
-                "name='" + name + '\'' +
-                ", maxTotal=" + maxTotal +
-                ", maxIdle=" + maxIdle +
-                ", minIdle=" + minIdle +
-                '}';
     }
 
     /**
@@ -96,6 +87,16 @@ public class ResourcePoolConfig {
             this.minIdle = minIdle;
             return this;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "ResourcePoolConfig{" +
+                "name='" + name + '\'' +
+                ", maxTotal=" + maxTotal +
+                ", maxIdle=" + maxIdle +
+                ", minIdle=" + minIdle +
+                '}';
     }
 
     public static void main(String[] args) {
