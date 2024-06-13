@@ -1,8 +1,8 @@
-package org.coder.design.patterns._4_design_patterns._2_behavior._1_observer.cases._2_eventbus;
+package org.coder.design.patterns._4_design_patterns._3_behavior._1_observer.cases._2_eventbus;
 
 import com.google.common.eventbus.Subscribe;
-import org.coder.design.patterns._4_design_patterns._2_behavior._1_observer.cases._1_sync_blocking.NotificationService;
-import org.coder.design.patterns._4_design_patterns._2_behavior._1_observer.cases._1_sync_blocking.RegObserver;
+import org.coder.design.patterns._4_design_patterns._3_behavior._1_observer.cases._1_sync_blocking.NotificationService;
+import org.coder.design.patterns._4_design_patterns._3_behavior._1_observer.cases._1_sync_blocking.RegObserver;
 
 /**
  * 促销观察者

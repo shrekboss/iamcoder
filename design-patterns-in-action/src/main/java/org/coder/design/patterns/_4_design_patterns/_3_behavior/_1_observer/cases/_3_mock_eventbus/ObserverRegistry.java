@@ -1,4 +1,4 @@
-package org.coder.design.patterns._4_design_patterns._2_behavior._1_observer.cases._3_mock_eventbus;
+package org.coder.design.patterns._4_design_patterns._3_behavior._1_observer.cases._3_mock_eventbus;
 
 import com.google.common.base.Preconditions;
 

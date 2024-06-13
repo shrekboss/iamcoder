@@ -1,4 +1,4 @@
-package org.coder.design.patterns._4_design_patterns._2_behavior._1_observer._template_code;
+package org.coder.design.patterns._4_design_patterns._3_behavior._1_observer._template_code;
 
 /**
  * 观察者的接口定义

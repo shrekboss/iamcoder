@@ -1,4 +1,4 @@
-package org.coder.design.patterns._4_design_patterns._2_behavior._1_observer.cases._1_sync_blocking;
+package org.coder.design.patterns._4_design_patterns._3_behavior._1_observer.cases._1_sync_blocking;
 
 /**
  * 促销观察者
