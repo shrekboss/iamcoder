@@ -68,7 +68,7 @@ public class UserAuthenticator {
 
 重构后，参考代码：
 
-- [UserAuthenticatorV2.java](UserAuthenticatorV2.java)
+- [UserAuthenticator.java](UserAuthenticator.java)
 
 经过重构之后，代码行数减少了，也没有重复的代码了，是不是更好了呢？答案是否定的。
 

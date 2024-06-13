@@ -8,7 +8,7 @@ import org.apache.commons.lang3.StringUtils;
  * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0
  */
-public class UserAuthenticatorV2 {
+public class UserAuthenticator {
 
     public void authenticate(String userName, String password) {
         if (!isValidUsernameOrPassword(userName)) {
