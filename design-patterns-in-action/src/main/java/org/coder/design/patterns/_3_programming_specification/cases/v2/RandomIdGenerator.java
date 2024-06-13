@@ -28,8 +28,7 @@ public class RandomIdGenerator implements LogTraceIdGenerator {
         String substrOfHostName = getLastFieldOfHostName();
         long currentTimeMillis = System.currentTimeMillis();
         String randomString = generateRandomAlphameric(8);
-        return String.format("%s-%d-%s",
-                substrOfHostName, currentTimeMillis, randomString);
+        return String.format("%s-%d-%s", substrOfHostName, currentTimeMillis, randomString);
     }
 
     private String getLastFieldOfHostName() {
@@ -48,8 +47,7 @@ public class RandomIdGenerator implements LogTraceIdGenerator {
     protected String getLastSubstrSplitByDot(String hostName) {
 
         String[] tokens = hostName.split("\\.");
-        String substrOfHostName = tokens[tokens.length - 1];
-        return substrOfHostName;
+        return tokens[tokens.length - 1];
     }
 
     @VisibleForTesting

@@ -49,8 +49,7 @@ public class RandomIdGeneratorTest {
         }
     }
 
-    // 此单元测试会失败，因为我们在代码中没有处理length<=0的情况
-    // 这部分优化留在第36、37节课中讲解
+    // 此单元测试会失败，因为在代码中没有处理 length <= 0 的情况
     @Test
     public void testGenerateRandomAlphameric_lengthEqualsOrLessThanZero() {
         RandomIdGenerator idGenerator = new RandomIdGenerator();
