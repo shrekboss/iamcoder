@@ -1,6 +1,6 @@
 ## 代理模式
 
-### 静态代理
+### [静态代理](_1_static_proxy)
 
 MetricsCollector 类，用来收集接口请求的原始数据，比如访问时间、处理时长等。在业务系统中，我们采用如下方式来使用这个
 MetricsCollector 类：
@@ -50,5 +50,4 @@ public class UserController {
 
 参考代码：[UserControllerProxy2.java](_1_static_proxy%2FUserControllerProxy2.java)
 
-### 动态代理
-
+### [动态代理](_2_dynamic_proxy)
