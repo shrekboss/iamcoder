@@ -1,5 +1,7 @@
 package org.coder.design.patterns._4_design_patterns._3_behavior._1_observer.cases._1_sync_blocking;
 
+import org.coder.design.patterns.common.service.UserService;
+
 import java.util.ArrayList;
 import java.util.List;
 

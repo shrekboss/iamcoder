@@ -1,12 +1,12 @@
 package org.coder.design.patterns._2_design_principle.cases.generic_framework_design.v3;
 
 import com.google.common.annotations.VisibleForTesting;
-import org.coder.design.patterns._2_design_principle.cases.generic_framework_design._simulate.RequestInfo;
 import org.coder.design.patterns._2_design_principle.cases.generic_framework_design.v1.MetricsStorage;
 import org.coder.design.patterns._2_design_principle.cases.generic_framework_design.v1.RedisMetricsStorage;
 import org.coder.design.patterns._2_design_principle.cases.generic_framework_design.v2.Aggregator;
 import org.coder.design.patterns._2_design_principle.cases.generic_framework_design.v2.EmailViewer;
 import org.coder.design.patterns._2_design_principle.cases.generic_framework_design.v2.StatViewer;
+import org.coder.design.patterns.common.vo.RequestInfo;
 
 import java.util.*;
 

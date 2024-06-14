@@ -1,4 +1,4 @@
-package org.coder.design.patterns._2_design_principle.cases.generic_framework_design._simulate;
+package org.coder.design.patterns.common.vo;
 
 import lombok.Data;
 

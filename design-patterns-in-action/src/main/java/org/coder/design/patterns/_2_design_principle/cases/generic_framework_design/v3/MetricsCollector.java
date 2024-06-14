@@ -4,9 +4,9 @@ import com.google.common.eventbus.AsyncEventBus;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import org.apache.commons.lang3.StringUtils;
-import org.coder.design.patterns._2_design_principle.cases.generic_framework_design._simulate.RequestInfo;
 import org.coder.design.patterns._2_design_principle.cases.generic_framework_design.v1.MetricsStorage;
 import org.coder.design.patterns._2_design_principle.cases.generic_framework_design.v1.RedisMetricsStorage;
+import org.coder.design.patterns.common.vo.RequestInfo;
 
 import java.util.concurrent.Executors;
 

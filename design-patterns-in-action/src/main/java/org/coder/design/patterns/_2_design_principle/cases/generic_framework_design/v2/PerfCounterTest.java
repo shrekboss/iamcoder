@@ -1,9 +1,9 @@
 package org.coder.design.patterns._2_design_principle.cases.generic_framework_design.v2;
 
-import org.coder.design.patterns._2_design_principle.cases.generic_framework_design._simulate.RequestInfo;
 import org.coder.design.patterns._2_design_principle.cases.generic_framework_design.v1.MetricsCollector;
 import org.coder.design.patterns._2_design_principle.cases.generic_framework_design.v1.MetricsStorage;
 import org.coder.design.patterns._2_design_principle.cases.generic_framework_design.v1.RedisMetricsStorage;
+import org.coder.design.patterns.common.vo.RequestInfo;
 
 /**
  * (what)

@@ -3,7 +3,7 @@ package org.coder.design.patterns._4_design_patterns._3_behavior._1_observer.cas
 import com.google.common.eventbus.AsyncEventBus;
 import com.google.common.eventbus.EventBus;
 import org.coder.design.patterns._4_design_patterns._3_behavior._1_observer.cases._1_sync_blocking.RegObserver;
-import org.coder.design.patterns._4_design_patterns._3_behavior._1_observer.cases._1_sync_blocking.UserService;
+import org.coder.design.patterns.common.service.UserService;
 
 import java.util.ArrayList;
 import java.util.List;

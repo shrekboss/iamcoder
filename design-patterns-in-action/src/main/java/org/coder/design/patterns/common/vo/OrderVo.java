@@ -1,4 +1,4 @@
-package org.coder.design.patterns._2_design_principle.cases.generic_framework_design._simulate;
+package org.coder.design.patterns.common.vo;
 
 /**
  * (what)
@@ -10,5 +10,5 @@ package org.coder.design.patterns._2_design_principle.cases.generic_framework_de
  * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0
  */
-public class UserVo {
+public class OrderVo {
 }

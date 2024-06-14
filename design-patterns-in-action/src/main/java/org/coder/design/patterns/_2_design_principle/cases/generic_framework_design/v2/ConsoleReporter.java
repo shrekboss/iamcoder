@@ -1,7 +1,7 @@
 package org.coder.design.patterns._2_design_principle.cases.generic_framework_design.v2;
 
-import org.coder.design.patterns._2_design_principle.cases.generic_framework_design._simulate.RequestInfo;
 import org.coder.design.patterns._2_design_principle.cases.generic_framework_design.v1.MetricsStorage;
+import org.coder.design.patterns.common.vo.RequestInfo;
 
 import java.util.List;
 import java.util.Map;
