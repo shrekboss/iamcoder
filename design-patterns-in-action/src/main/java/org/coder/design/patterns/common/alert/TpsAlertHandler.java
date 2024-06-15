@@ -19,7 +19,7 @@ public class TpsAlertHandler extends AlertHandler {
         long tps = apiStatInfo.getRequestCount() / apiStatInfo.getDurationOfSeconds();
         if (tps > rule.getMatchedRule(apiStatInfo.getApi()).getMaxTps()) {
             System.out.println("TpsAlertHandler: 不通过");
-            notification.notify("...");
+            notification.notify("TpsAlertHandler");
         } else {
             System.out.println("TpsAlertHandler: 通过");
         }
