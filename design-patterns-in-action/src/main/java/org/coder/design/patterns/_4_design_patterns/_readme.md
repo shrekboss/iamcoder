@@ -22,9 +22,9 @@
 
 不常用的有：
 
-- 门面模式
-- 组合模式
-- 享元模式
+- [门面模式](_2_structural%2F_5_facade)
+- [组合模式](_2_structural%2F_6_composite)
+- [享元模式](_2_structural%2F_7_flyweight)
 
 ### [行为型(10)](_3_behavior)
 
