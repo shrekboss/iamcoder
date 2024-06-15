@@ -1,4 +1,8 @@
-package org.coder.design.patterns._2_design_principle._2_ocp;
+package org.coder.design.patterns.common.alert;
+
+import org.coder.design.patterns._2_design_principle._2_ocp.AlertRule;
+import org.coder.design.patterns._2_design_principle._2_ocp.ApiStatInfo;
+import org.coder.design.patterns.common.Notification;
 
 /**
  * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>

@@ -36,8 +36,6 @@ public class JdkProxyApp {
      * _jdk 实现动态代理为什么需要接口
      * 原因：public final class $Proxy0 extends Proxy implements IUserDao
      * java 是单继承的 那么代理类要实现方法的动态代理只能通过实现接口的方式
-     *
-     * @throws IOException
      */
     private static void getByteContent() {
         byte[] bytes = ProxyGenerator.generateProxyClass("$Proxy", new Class[]{IUserDao.class});
