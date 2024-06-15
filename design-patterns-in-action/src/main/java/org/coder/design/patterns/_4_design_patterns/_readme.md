@@ -15,10 +15,10 @@
 
 ### [结构型(7)](_2_structural)
 
-- **代理模式**
-- **桥接模式**
-- **装饰者模式**
-- **适配器模式**
+- [代理模式](_2_structural%2F_1_proxy)
+- [桥接模式](_2_structural%2F_2_Bridge)
+- [装饰者模式](_2_structural%2F_3_decorator)
+- [适配器模式](_2_structural%2F_4_adapter)
 
 不常用的有：
 
