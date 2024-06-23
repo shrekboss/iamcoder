@@ -33,7 +33,7 @@
 - [策略模式](_3_behavior%2F_3_strategy)
 - [职责链模式](_3_behavior%2F_4_responsibility)
 - [状态模式](_3_behavior%2F_5_state)
-- 迭代器模式
+- [迭代器模式](_3_behavior%2F_6_iterator)
 
 不常用的有：
 
