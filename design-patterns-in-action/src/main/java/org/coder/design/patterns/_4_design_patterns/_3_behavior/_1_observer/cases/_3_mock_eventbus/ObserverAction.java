@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 
 /**
  * ObserverAction 类用来表示 @Subscribe 注解的方法
- *
+ * <p>
  * 主要用在 ObserverRegistry 观察者注册表中
  * <a href="https://github.com/google/guava">Google Guava EventBus 的源码</a>
  *
@@ -33,7 +33,6 @@ public class ObserverAction {
     }
 
     /**
-     *
      * @param event method 方法的参数
      */
     public void execute(Object event) {

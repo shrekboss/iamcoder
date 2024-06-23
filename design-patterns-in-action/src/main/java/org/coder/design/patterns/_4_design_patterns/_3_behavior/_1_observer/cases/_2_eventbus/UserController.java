@@ -15,14 +15,12 @@ import java.util.concurrent.Executors;
  */
 public class UserController {
 
+    private static final int DEFAULT_EVENTBUS_THREAD_POOL_SIZE = 20;
     // 模拟依赖注入
     private UserService userService = new UserService();
-
     private List<RegObserver> regObservers = new ArrayList<>();
-
     // 更新点 1：
     private EventBus eventBus;
-    private static final int DEFAULT_EVENTBUS_THREAD_POOL_SIZE = 20;
 
     // 更新点 2：
     public UserController() {
