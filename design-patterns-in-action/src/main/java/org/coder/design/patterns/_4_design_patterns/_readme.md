@@ -29,8 +29,8 @@
 ### [行为型(10)](_3_behavior)
 
 - [观察者模式](_3_behavior%2F_1_observer)
-- 模板模式
-- 策略模式
+- [模板模式](_3_behavior%2F_2_template)
+- [策略模式](_3_behavior%2F_3_strategy)
 - 职责链模式
 - 迭代器模式
 - 状态模式

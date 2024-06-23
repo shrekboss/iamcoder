@@ -61,8 +61,8 @@ balance 和 balanceLastModifiedTime 两个数据的一致性。
         - [LinkedList.java](_4_polymorphism%2FLinkedList.java)
         - [IteratorTest.java](_4_polymorphism%2FIteratorTest.java)
 
-- [案例分析](cases)
-    - [case 1: 虚拟钱包设计](cases%2Fvirtualwallet)
-        - [_readme.md](cases%2Fvirtualwallet%2F_readme.md)
-    - [case 2: 接口鉴权设计](cases%2Fauthentication)
-        - [_readme.md](cases%2Fauthentication%2F_readme.md)
+- [案例分析](_cases)
+    - [case 1: 虚拟钱包设计](_cases%2Fvirtualwallet)
+        - [_readme.md](_cases%2Fvirtualwallet%2F_readme.md)
+    - [case 2: 接口鉴权设计](_cases%2Fauthentication)
+        - [_readme.md](_cases%2Fauthentication%2F_readme.md)

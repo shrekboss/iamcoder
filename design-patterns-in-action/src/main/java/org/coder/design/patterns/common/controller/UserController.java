@@ -1,7 +1,7 @@
 package org.coder.design.patterns.common.controller;
 
-import org.coder.design.patterns._2_design_principle.cases.generic_framework_design.prototype.Metrics;
-import org.coder.design.patterns._4_design_patterns._1_creation._1_singleton.cases._1_resource_confic.Logger;
+import org.coder.design.patterns._2_design_principle._cases.generic_framework_design.prototype.Metrics;
+import org.coder.design.patterns._4_design_patterns._1_creation._1_singleton._cases._1_resource_confic.Logger;
 import org.coder.design.patterns.common.IUserController;
 import org.coder.design.patterns.common.vo.UserVo;
 
