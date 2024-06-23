@@ -31,9 +31,9 @@
 - [观察者模式](_3_behavior%2F_1_observer)
 - [模板模式](_3_behavior%2F_2_template)
 - [策略模式](_3_behavior%2F_3_strategy)
-- 职责链模式
+- [职责链模式](_3_behavior%2F_4_responsibility)
+- [状态模式](_3_behavior%2F_5_state)
 - 迭代器模式
-- 状态模式
 
 不常用的有：
 
