@@ -3,7 +3,7 @@ package org.coder.design.patterns._4_design_patterns._3_behavior._5_state.state_
 import org.coder.design.patterns._4_design_patterns._3_behavior._5_state.State;
 
 /**
- * (what)
+ * (what) 所有状态类的接口
  * <p>
  * (why)
  * <p>
@@ -12,10 +12,10 @@ import org.coder.design.patterns._4_design_patterns._3_behavior._5_state.State;
  * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0
  */
-public interface IMario { //所有状态类的接口
+public interface IMario {
     State getName();
 
-    //以下是定义的事件
+    // 以下是定义的事件
     void obtainMushRoom(MarioStateMachine stateMachine);
 
     void obtainCape(MarioStateMachine stateMachine);
