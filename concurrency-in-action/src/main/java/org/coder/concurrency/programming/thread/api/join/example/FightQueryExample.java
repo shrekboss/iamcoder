@@ -43,7 +43,7 @@ public class FightQueryExample {
             try {
                 t.join();
             } catch (InterruptedException e) {
-
+                e.printStackTrace();
             }
         });
 

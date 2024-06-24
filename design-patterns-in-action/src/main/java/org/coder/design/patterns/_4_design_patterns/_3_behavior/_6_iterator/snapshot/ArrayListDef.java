@@ -1,7 +1,7 @@
 package org.coder.design.patterns._4_design_patterns._3_behavior._6_iterator.snapshot;
 
 import org.coder.design.patterns._4_design_patterns._3_behavior._6_iterator.Iterator;
-import org.coder.design.patterns._4_design_patterns._3_behavior._6_iterator.List;
+import org.coder.design.patterns._4_design_patterns._3_behavior._6_iterator.ListDef;
 
 /**
  * (what)
@@ -13,17 +13,19 @@ import org.coder.design.patterns._4_design_patterns._3_behavior._6_iterator.List
  * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0
  */
-public class ArrayList<E> extends java.util.ArrayList<E> implements List<E> {
+public class ArrayListDef<E> extends java.util.ArrayList<E> implements ListDef<E> {
     private static final int DEFAULT_CAPACITY = 10;
 
-    private int actualSize; //不包含标记删除元素
-    private int totalSize; //包含标记删除元素
+    //不包含标记删除元素
+    private int actualSize;
+    //包含标记删除元素
+    private int totalSize;
 
     private final Object[] elements;
     private final long[] addTimestamps;
     private final long[] delTimestamps;
 
-    public ArrayList() {
+    public ArrayListDef() {
         this.elements = new Object[DEFAULT_CAPACITY];
         this.addTimestamps = new long[DEFAULT_CAPACITY];
         this.delTimestamps = new long[DEFAULT_CAPACITY];
@@ -79,7 +81,7 @@ public class ArrayList<E> extends java.util.ArrayList<E> implements List<E> {
         return delTimestamps[i];
     }
 
-
+    // ================ todo ================
     @Override
     public Iterator iterator1() {
         return null;

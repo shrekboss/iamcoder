@@ -11,8 +11,8 @@ Iterator 接口有两种定义方式。
 
 参考完整代码如下：
 
-- [List.java](List.java)
-- [ArrayList.java](ArrayList.java)
+- [ListDef.java](ListDef.java)
+- [ArrayListDef.java](ArrayListDef.java)
 - [Iterator.java](Iterator.java)
 - [ArrayIterator.java](ArrayIterator.java)
 - [Demo.java](Demo.java)
@@ -77,5 +77,5 @@ import java.util.ConcurrentModificationException;import java.util.NoSuchElementE
 ### 支持“快照”功能的迭代器
 
 参考代码如下：
-- [ArrayList.java](snapshot%2FArrayList.java)
+- [ArrayListDef.java](snapshot%2FArrayListDef.java)
 - [SnapshotArrayIterator.java](snapshot%2FSnapshotArrayIterator.java)

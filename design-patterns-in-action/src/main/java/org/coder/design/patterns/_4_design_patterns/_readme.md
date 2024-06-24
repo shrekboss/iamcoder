@@ -37,8 +37,8 @@
 
 不常用的有：
 
-- 访问者模式
-- 备忘录模式
-- 命令模式
-- 解释器模式
-- 中介模式
+- [访问者模式](_3_behavior%2F_7_visitor)
+- [备忘录模式](_3_behavior%2F_8_notepad)
+- [命令模式](_3_behavior%2F_9_command)
+- [解释器模式](_3_behavior%2F_10_interpreter)
+- [中介模式](_3_behavior%2F_11_mediator)

@@ -13,7 +13,7 @@ package org.coder.design.patterns._4_design_patterns._3_behavior._6_iterator;
 public class Demo {
     public static void main(String[] args) {
 
-        List<String> names = new ArrayList();
+        ListDef<String> names = new ArrayListDef();
         names.add("a");
         names.add("b");
         names.add("c");

@@ -33,7 +33,7 @@ public class FightQueryTask extends Thread implements FightQuery {
             this.fightList.add(getName() + "-" + randomValue);
             System.out.printf("The fight: %s list query successful\n", getName());
         } catch (InterruptedException e) {
-
+            e.printStackTrace();
         }
     }
 

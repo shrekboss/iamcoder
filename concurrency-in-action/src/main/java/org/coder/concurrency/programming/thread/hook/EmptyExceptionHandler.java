@@ -30,7 +30,7 @@ public class EmptyExceptionHandler {
             try {
                 TimeUnit.SECONDS.sleep(2);
             } catch (InterruptedException e) {
-
+                e.printStackTrace();
             }
             // here will throw unchecked exception.
             System.out.println(1 / 0);

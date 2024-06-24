@@ -14,10 +14,10 @@ import java.util.ConcurrentModificationException;
  */
 public class ArrayIterator<E> implements Iterator<E> {
     private int cursor;
-    private ArrayList<E> arrayList;
+    private ArrayListDef<E> arrayList;
     private int expectedModCount;
 
-    public ArrayIterator(ArrayList<E> arrayList) {
+    public ArrayIterator(ArrayListDef<E> arrayList) {
         this.cursor = 0;
         this.arrayList = arrayList;
         this.expectedModCount = arrayList.modCount;

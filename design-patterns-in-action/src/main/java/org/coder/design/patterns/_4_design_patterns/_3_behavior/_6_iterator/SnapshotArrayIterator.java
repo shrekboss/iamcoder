@@ -12,11 +12,11 @@ package org.coder.design.patterns._4_design_patterns._3_behavior._6_iterator;
  */
 public class SnapshotArrayIterator<E> implements Iterator<E> {
     private int cursor;
-    private ArrayList<E> snapshot;
+    private ArrayListDef<E> snapshot;
 
-    public SnapshotArrayIterator(ArrayList<E> arrayList) {
+    public SnapshotArrayIterator(ArrayListDef<E> arrayList) {
         this.cursor = 0;
-        this.snapshot = new ArrayList<>();
+        this.snapshot = new ArrayListDef<>();
         this.snapshot.addAll(arrayList);
     }
 

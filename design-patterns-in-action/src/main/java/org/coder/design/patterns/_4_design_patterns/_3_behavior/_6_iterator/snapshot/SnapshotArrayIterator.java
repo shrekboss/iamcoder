@@ -14,11 +14,13 @@ import org.coder.design.patterns._4_design_patterns._3_behavior._6_iterator.Iter
  */
 public class SnapshotArrayIterator<E> implements Iterator<E> {
     private long snapshotTimestamp;
-    private int cursorInAll; // 在整个容器中的下标，而非快照中的下标
-    private int leftCount; // 快照中还有几个元素未被遍历
-    private ArrayList<E> arrayList;
+    // 在整个容器中的下标，而非快照中的下标
+    private int cursorInAll;
+    // 快照中还有几个元素未被遍历
+    private int leftCount;
+    private ArrayListDef<E> arrayList;
 
-    public SnapshotArrayIterator(ArrayList<E> arrayList) {
+    public SnapshotArrayIterator(ArrayListDef<E> arrayList) {
         this.snapshotTimestamp = System.currentTimeMillis();
         this.cursorInAll = 0;
         this.leftCount = arrayList.actualSize();
