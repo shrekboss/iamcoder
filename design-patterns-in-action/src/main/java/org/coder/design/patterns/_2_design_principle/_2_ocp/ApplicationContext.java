@@ -2,10 +2,10 @@ package org.coder.design.patterns._2_design_principle._2_ocp;
 
 import lombok.Getter;
 import org.coder.design.patterns._4_design_patterns._2_structural._2_Bridge.EmailMsgSender;
-import org.coder.design.patterns.common.Notification;
-import org.coder.design.patterns.common.alert.ErrorAlertHandler;
-import org.coder.design.patterns.common.alert.TimeoutAlertHandler;
-import org.coder.design.patterns.common.alert.TpsAlertHandler;
+import org.coder.design.patterns.simulate.Notification;
+import org.coder.design.patterns.simulate.alert.ErrorAlertHandler;
+import org.coder.design.patterns.simulate.alert.TimeoutAlertHandler;
+import org.coder.design.patterns.simulate.alert.TpsAlertHandler;
 
 import java.util.Collections;
 

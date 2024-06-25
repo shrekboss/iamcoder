@@ -1,9 +1,9 @@
-package org.coder.design.patterns.common.controller;
+package org.coder.design.patterns.simulate.controller;
 
 import org.coder.design.patterns._2_design_principle._cases.generic_framework_design.prototype.Metrics;
 import org.coder.design.patterns._4_design_patterns._1_creation._1_singleton._cases._1_resource_confic.Logger;
-import org.coder.design.patterns.common.IUserController;
-import org.coder.design.patterns.common.vo.UserVo;
+import org.coder.design.patterns.simulate.IUserController;
+import org.coder.design.patterns.simulate.vo.UserVo;
 
 import java.util.concurrent.TimeUnit;
 

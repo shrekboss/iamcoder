@@ -1,7 +1,7 @@
 package org.coder.design.patterns._2_design_principle._cases.generic_framework_design.v2;
 
 import org.coder.design.patterns._2_design_principle._cases.generic_framework_design._simulate.RequestStat;
-import org.coder.design.patterns.common.vo.RequestInfo;
+import org.coder.design.patterns.simulate.vo.RequestInfo;
 
 import java.util.ArrayList;
 import java.util.HashMap;

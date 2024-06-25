@@ -1,4 +1,4 @@
-package org.coder.design.patterns.common;
+package org.coder.design.patterns.simulate;
 
 import lombok.Data;
 import org.coder.design.patterns._2_design_principle._5_dip.di.MessageSender;

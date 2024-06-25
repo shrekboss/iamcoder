@@ -6,7 +6,7 @@ import org.coder.design.patterns._2_design_principle._cases.generic_framework_de
 import org.coder.design.patterns._2_design_principle._cases.generic_framework_design.v2.Aggregator;
 import org.coder.design.patterns._2_design_principle._cases.generic_framework_design.v2.EmailViewer;
 import org.coder.design.patterns._2_design_principle._cases.generic_framework_design.v2.StatViewer;
-import org.coder.design.patterns.common.vo.RequestInfo;
+import org.coder.design.patterns.simulate.vo.RequestInfo;
 
 import java.util.*;
 

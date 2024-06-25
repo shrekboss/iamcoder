@@ -6,7 +6,7 @@ MetricsCollector 类，用来收集接口请求的原始数据，比如访问时
 MetricsCollector 类：
 
 ```java
-import org.coder.design.patterns.common.vo.UserVo;
+import org.coder.design.patterns.simulate.vo.UserVo;
 
 public class UserController {
     //...省略其他属性和方法...

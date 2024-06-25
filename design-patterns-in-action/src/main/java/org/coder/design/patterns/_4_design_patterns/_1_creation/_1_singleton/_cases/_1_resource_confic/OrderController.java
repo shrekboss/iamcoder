@@ -1,6 +1,6 @@
 package org.coder.design.patterns._4_design_patterns._1_creation._1_singleton._cases._1_resource_confic;
 
-import org.coder.design.patterns.common.vo.OrderVo;
+import org.coder.design.patterns.simulate.vo.OrderVo;
 
 /**
  * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>

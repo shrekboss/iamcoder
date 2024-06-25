@@ -1,4 +1,4 @@
-package org.coder.design.patterns.common.service;
+package org.coder.design.patterns.simulate.service;
 
 /**
  * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>

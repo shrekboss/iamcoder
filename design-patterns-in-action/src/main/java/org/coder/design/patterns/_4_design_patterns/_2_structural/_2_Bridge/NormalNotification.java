@@ -1,6 +1,6 @@
 package org.coder.design.patterns._4_design_patterns._2_structural._2_Bridge;
 
-import org.coder.design.patterns.common.Notification;
+import org.coder.design.patterns.simulate.Notification;
 
 /**
  * (what)

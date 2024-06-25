@@ -1,9 +1,9 @@
 package org.coder.design.patterns._4_design_patterns._2_structural._1_proxy._2_dynamic_proxy;
 
 import org.coder.design.patterns._2_design_principle._cases.generic_framework_design.v3.MetricsCollector;
-import org.coder.design.patterns.common.IUserController;
-import org.coder.design.patterns.common.controller.UserController;
-import org.coder.design.patterns.common.vo.RequestInfo;
+import org.coder.design.patterns.simulate.IUserController;
+import org.coder.design.patterns.simulate.controller.UserController;
+import org.coder.design.patterns.simulate.vo.RequestInfo;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

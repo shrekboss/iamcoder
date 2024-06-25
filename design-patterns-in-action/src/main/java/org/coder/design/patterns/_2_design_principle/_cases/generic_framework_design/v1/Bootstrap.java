@@ -1,6 +1,6 @@
 package org.coder.design.patterns._2_design_principle._cases.generic_framework_design.v1;
 
-import org.coder.design.patterns.common.vo.RequestInfo;
+import org.coder.design.patterns.simulate.vo.RequestInfo;
 
 /**
  * (what)

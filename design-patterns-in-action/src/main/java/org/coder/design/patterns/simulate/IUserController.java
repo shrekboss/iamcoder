@@ -1,6 +1,6 @@
-package org.coder.design.patterns.common;
+package org.coder.design.patterns.simulate;
 
-import org.coder.design.patterns.common.vo.UserVo;
+import org.coder.design.patterns.simulate.vo.UserVo;
 
 /**
  * (what)

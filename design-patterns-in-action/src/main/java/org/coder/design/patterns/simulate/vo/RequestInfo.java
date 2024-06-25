@@ -1,4 +1,4 @@
-package org.coder.design.patterns.common.vo;
+package org.coder.design.patterns.simulate.vo;
 
 import lombok.Data;
 
