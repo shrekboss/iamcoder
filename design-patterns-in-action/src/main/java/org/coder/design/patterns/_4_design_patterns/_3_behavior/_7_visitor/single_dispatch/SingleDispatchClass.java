@@ -17,9 +17,11 @@ public class SingleDispatchClass {
 
     public void overloadFunction(ParentClass p) {
         System.out.println("I am overloadFunction(ParentClass p).");
+        p.f();
     }
 
     public void overloadFunction(ChildClass c) {
         System.out.println("I am overloadFunction(ChildClass c).");
+        c.f();
     }
 }

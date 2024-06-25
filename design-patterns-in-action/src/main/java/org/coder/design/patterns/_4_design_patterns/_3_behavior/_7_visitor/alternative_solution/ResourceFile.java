@@ -17,8 +17,3 @@ public abstract class ResourceFile {
     }
     public abstract ResourceFileType getType();
 }
-
-//...PPTFile/WordFile跟PdfFile代码结构类似，此处省略...
-
-//...PPTExtractor/WordExtractor跟PdfExtractor代码结构类似，此处省略...
-
