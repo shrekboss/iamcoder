@@ -72,8 +72,7 @@ public class RandomIdGenerator implements LogTraceIdGenerator {
             throw new IllegalArgumentException("...");
         }
         String[] tokens = hostName.split("\\.");
-        String substrOfHostName = tokens[tokens.length - 1];
-        return substrOfHostName;
+        return tokens[tokens.length - 1];
     }
 
     /**
