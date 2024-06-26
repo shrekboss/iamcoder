@@ -6,3 +6,11 @@
 参考代码：
 
 - [ImmutableDemo.java](ImmutableDemo.java)
+
+- 不变模式可以分为两类
+    - 一类是普通不变模式
+        - [User.java](general_immutable_pattern%2FUser.java)
+        - [Address.java](general_immutable_pattern%2FAddress.java)
+    - 另一类是深度不变模式（Deeply Immutable Pattern）
+        - [User.java](deeply_immutable_pattern%2FUser.java)
+        - [Address.java](deeply_immutable_pattern%2FAddress.java)
