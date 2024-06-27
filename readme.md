@@ -11,7 +11,8 @@
 - [design_principle](design-patterns-in-action%2Fsrc%2Fmain%2Fjava%2Forg%2Fcoder%2Fdesign%2Fpatterns%2F_2_design_principle)
 - [programming_specification](design-patterns-in-action%2Fsrc%2Fmain%2Fjava%2Forg%2Fcoder%2Fdesign%2Fpatterns%2F_3_programming_specification)
 - [design_patterns](design-patterns-in-action%2Fsrc%2Fmain%2Fjava%2Forg%2Fcoder%2Fdesign%2Fpatterns%2F_4_design_patterns)
-- [code_refactoring](design-patterns-in-action%2Fsrc%2Fmain%2Fjava%2Forg%2Fcoder%2Fdesign%2Fpatterns%2F_5_code_refactoring)
+- [open_source_practices](design-patterns-in-action%2Fsrc%2Fmain%2Fjava%2Forg%2Fcoder%2Fdesign%2Fpatterns%2F_5_open_source_practices)
+- [project_practices](design-patterns-in-action%2Fsrc%2Fmain%2Fjava%2Forg%2Fcoder%2Fdesign%2Fpatterns%2F_6_project_practices)
 
 ### 管理模块版本
 

@@ -43,7 +43,3 @@
 - [解释器模式](_3_behavior%2F_10_interpreter)
 - [中介模式](_3_behavior%2F_11_mediator)
 
-### 补充内容
-
-- [不可变模式](_immutable)
-- [函数式编程](_functional_programming)

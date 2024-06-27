@@ -1,4 +1,4 @@
-package org.coder.design.patterns._4_design_patterns._functional_programming;
+package org.coder.design.patterns._5_open_source_practices._functional_programming;
 
 import java.util.Comparator;
 import java.util.Optional;

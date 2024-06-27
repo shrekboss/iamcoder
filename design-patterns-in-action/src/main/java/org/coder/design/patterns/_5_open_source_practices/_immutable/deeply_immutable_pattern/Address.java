@@ -1,4 +1,4 @@
-package org.coder.design.patterns._4_design_patterns._immutable.general_immutable_pattern;
+package org.coder.design.patterns._5_open_source_practices._immutable.deeply_immutable_pattern;
 
 /**
  * (what)
@@ -18,5 +18,5 @@ public class Address {
         this.province = province;
         this.city = city;
     }
-    // 有getter方法，也有setter方法...
+    // 只有getter方法，无setter方法..
 }

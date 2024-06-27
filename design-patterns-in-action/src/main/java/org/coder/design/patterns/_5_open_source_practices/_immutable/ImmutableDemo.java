@@ -1,4 +1,4 @@
-package org.coder.design.patterns._4_design_patterns._immutable;
+package org.coder.design.patterns._5_open_source_practices._immutable;
 
 import com.google.common.collect.ImmutableList;
 
