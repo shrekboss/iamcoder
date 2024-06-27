@@ -1,4 +1,4 @@
-package org.coder.design.patterns._5_open_source_practices._immutable.deeply_immutable_pattern;
+package org.coder.design.patterns._5_open_source_practices._1_immutable.deeply_immutable_pattern;
 
 /**
  * (what)

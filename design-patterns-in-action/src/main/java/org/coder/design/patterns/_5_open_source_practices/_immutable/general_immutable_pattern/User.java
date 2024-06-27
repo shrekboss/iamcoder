@@ -1,4 +1,4 @@
-package org.coder.design.patterns._5_open_source_practices._immutable.general_immutable_pattern;
+package org.coder.design.patterns._5_open_source_practices._1_immutable.general_immutable_pattern;
 
 /**
  * (what) 普通不变模式
