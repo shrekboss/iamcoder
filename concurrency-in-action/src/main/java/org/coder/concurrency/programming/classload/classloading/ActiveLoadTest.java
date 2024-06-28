@@ -62,7 +62,7 @@ public class ActiveLoadTest {
 
         // 3. 【首次】访问类的静态方法
         ActiveLoadTest.test();
-        // 4. 【首次】类的放射操作
+        // 4. 【首次】类的反射操作
         Class.forName("org.coder.concurrency.programming.classload.classloading.ActiveLoadTest");
         // 5. 【首次】初始化子类会导致父类的初始化
         System.out.println(Child.x);
