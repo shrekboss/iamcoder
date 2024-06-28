@@ -9,9 +9,8 @@
     </parent>
 
     <artifactId>design-patterns-in-action</artifactId>
-    <packaging>jar</packaging>
-
     <name>design-patterns-in-action</name>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -41,11 +40,6 @@
             <groupId>org.sonatype.nexus</groupId>
             <artifactId>google-guava-eventbus</artifactId>
             <version>3.2.0-01</version>
-        </dependency>
-        <!-- 通用功能类库 -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
         </dependency>
 
         <dependency>

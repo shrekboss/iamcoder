@@ -1,4 +1,4 @@
-package org.coder.design.patterns._5_open_source_practices._1_immutable.deeply_immutable_pattern;
+package org.coder.concurrency.programming.pattern._4_immutable.deeply_immutable_pattern;
 
 /**
  * (what) 深度不变模式

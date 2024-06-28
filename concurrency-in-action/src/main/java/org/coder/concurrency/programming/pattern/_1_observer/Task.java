@@ -1,4 +1,4 @@
-package org.coder.concurrency.programming.pattern._1_observer._cases;
+package org.coder.concurrency.programming.pattern._1_observer;
 
 /**
  * 任务执行接口

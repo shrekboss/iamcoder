@@ -1,4 +1,4 @@
-package org.coder.concurrency.programming.pattern._1_observer._cases;
+package org.coder.concurrency.programming.pattern._1_observer;
 
 /**
  * Observable 被观察者接口定义，主要是暴露调用者使用的
