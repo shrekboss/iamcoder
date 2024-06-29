@@ -19,12 +19,15 @@ public class FutureTest {
 
         Future<?> future = service.submit(() -> {
             try {
-                TimeUnit.SECONDS.sleep(1);
+                TimeUnit.SECONDS.sleep(3);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            System.out.println("I am finish done!");
         });
-        future.get();
+
+        // get 方法会使当前线程进入阻塞
+        System.out.println("future.get(): " + future.get());
 
         Future<Integer> futureResult = service.submit(input -> {
             try {

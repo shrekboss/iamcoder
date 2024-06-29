@@ -3,7 +3,7 @@ package org.coder.concurrency.programming.pattern._5_future;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * (what)
+ * (what) 主要作用在于当前提交任务时创建一个新的线程来受理该任务，进而达到任务异步执行的效果。
  * <p>
  * (why)
  * <p>
@@ -40,7 +40,8 @@ public class FutureServiceImpl<IN, OUT> implements FutureService<IN, OUT> {
         new Thread(() -> {
             OUT result = task.get(input);
             future.finish(result);
-
+            // 使用任务完成时回调的机制可以让调用者不再进行显示地通过 get 的方式获取数据而导致进入阻塞，
+            // 可以提交任务的时候将回调接口一并注入
             if (null != callback) {
                 callback.call(result);
             }
