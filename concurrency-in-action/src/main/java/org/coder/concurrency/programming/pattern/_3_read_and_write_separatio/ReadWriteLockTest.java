@@ -20,8 +20,7 @@ public class ReadWriteLockTest {
     public static void main(String[] args) {
         final ShareData shareData = new ShareData(50);
         for (int i = 0; i < 2; i++) {
-            new Thread(() ->
-            {
+            new Thread(() -> {
                 for (int index = 0; index < text.length(); index++) {
                     try {
                         char c = text.charAt(index);
@@ -35,14 +34,12 @@ public class ReadWriteLockTest {
         }
 
         for (int i = 0; i < 10; i++) {
-            new Thread(() ->
-            {
-                while (true)
-                    try {
-                        System.out.println(currentThread() + " read " + new String(shareData.read()));
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+            new Thread(() -> {
+                while (true) try {
+                    System.out.println(currentThread() + " read " + new String(shareData.read()));
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }).start();
         }
     }
