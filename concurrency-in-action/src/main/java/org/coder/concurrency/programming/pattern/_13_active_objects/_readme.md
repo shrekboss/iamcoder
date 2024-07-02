@@ -13,3 +13,16 @@ Active Objects 模式既能够完整地保留接口方法的调用形式，又�
 
 Active Objects 模式中使用了很多其他设计模式，代理类的生成(代理设计模式)、ActiveMessageQueue(Guarded Suspension Pattern 以及
 Worker-Thread Pattern)、findOrderDetails 方法(Future 设计模式)。
+
+参考代码如下
+
+- [OrderService.java](OrderService.java)
+    - [OrderServiceImpl.java](OrderServiceImpl.java)
+- [ActiveDaemonThread.java](ActiveDaemonThread.java)
+- [ActiveFuture.java](ActiveFuture.java)
+- [ActiveMessage.java](ActiveMessage.java)
+- [ActiveMessageQueue.java](ActiveMessageQueue.java)
+- [ActiveMethod.java](ActiveMethod.java)
+- [ActiveServiceFactory.java](ActiveServiceFactory.java)
+- [IllegalActiveMethod.java](IllegalActiveMethod.java)
+- [ActiveOrderServiceTest.java](ActiveOrderServiceTest.java)
