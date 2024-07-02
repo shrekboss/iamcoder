@@ -65,7 +65,7 @@ public class ReferenceExample {
         cache.get("Leo");
 
         cache.get("Jenny");
-        System.out.println(cache.toString());
+        System.out.println(cache);
     }
 }
 
