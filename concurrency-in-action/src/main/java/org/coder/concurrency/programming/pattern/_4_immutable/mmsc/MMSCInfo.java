@@ -2,7 +2,7 @@ package org.coder.concurrency.programming.pattern._4_immutable.mmsc;
 
 /**
  * 彩信中心信息
- * 
+ * <p>
  * 模式角色：ImmutableObject.ImmutableObject
  */
 public final class MMSCInfo {
