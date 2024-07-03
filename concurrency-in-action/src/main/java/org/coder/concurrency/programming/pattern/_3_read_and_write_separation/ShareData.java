@@ -1,4 +1,4 @@
-package org.coder.concurrency.programming.pattern._3_read_and_write_separatio;
+package org.coder.concurrency.programming.pattern._3_read_and_write_separation;
 
 import java.util.ArrayList;
 import java.util.List;
