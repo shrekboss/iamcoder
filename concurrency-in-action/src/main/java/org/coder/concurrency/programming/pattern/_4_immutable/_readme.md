@@ -6,7 +6,8 @@
 >
 > 不可变对象最核心的地方在于不给外部修改共享资源的机会，这样就会避免多线程情况下的数据冲突而导致的数据不一致的情况，又能避免因为对锁的依赖而带来的性能降低。
 
-**Immutable Object 模式的意图是通过使用对外可见的状态不可变的对象(即 Immutable Object)，使得共享对象“天生”具有线程安全性，而无需额外地同步访问控制。**
+**Immutable Object 模式的意图是通过使用对外可见的状态不可变的对象(即 Immutable Object)，使得共享对象“天生”具有线程安全性，而无需额外地同步访问控制。
+**
 
 所谓状态不可变对象，即对象一经创建，其对外可见的状态就保持不变。
 
@@ -18,6 +19,18 @@
     - 在对象的创建过程中，this 关键字没有泄露给其他类：防止其他类(如该类的内部匿名类)在对象创建过程中修改器状态。
     - 任何字段，若其引用了其他状态可变的对象(如集合、数组等)，则这些字段必须是 private
       修饰的，并且这些字段不能对外泄露。若有相关方法要返回这些字段值，应该进行防御性复制(Defensive copy)。
+
+### 适用场景
+
+- 被建模对象的状态变化不能频繁；
+- 同时对一组相关的数据进行写操作，因此需要保证原子性；
+- 使用某个对象安全的 HashMap 的 key
+
+### 需要注意的问题
+
+- 被建模对象的状态变更比较频繁；
+- 使用等效或者近似的不可变对象；
+- 防御性复制。
 
 ### 累加器
 
@@ -47,6 +60,14 @@
     - 另一类是深度不变模式（Deeply Immutable Pattern）
         - [User.java](deeply_immutable_pattern%2FUser.java)
         - [Address.java](deeply_immutable_pattern%2FAddress.java)
+
+### MMSC(Multimedia Messaging Service center) 彩信中心
+
+参考代码：
+
+- [MMSCInfo.java](mmsc%2FMMSCInfo.java)
+- [MMSCRouter.java](mmsc%2FMMSCRouter.java)
+- [OMCAgent.java](mmsc%2FOMCAgent.java)
 
 ### 总结
 
