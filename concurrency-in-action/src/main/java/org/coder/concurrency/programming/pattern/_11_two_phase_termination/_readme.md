@@ -1,4 +1,4 @@
-## Two Phase Termination
+## Two-phase Termination 设计模式
 
 > 当一个线程正常结束，或者因被打断而结束，或者因出现异常而结束时，我们需要考虑如何同时释放线程中资源，比如文件句柄、socket
 > 套接字句柄、数据库连接等比较稀缺的资源。
@@ -17,6 +17,76 @@ Two Phase Termination 与其说是一个模式，还不如说是线程使用的�
 参考代码：
 
 - [ClientHandler.java](ClientHandler.java)
+
+### 模式简介
+
+> Two-phase Termination 模式通过将停止线程这个动作分解为准备阶段和执行阶段这两个阶段，提供了一种通用的用于优雅地停止线程的方法。所谓“优雅”是指可以等要停止的线程在其处理完待处理的任务后才停止，而不是强行停止。
+
+准备阶段
+
+- 该阶段的主要动作是“通知”目标线程(欲停止的线程)准备进行停止。这一步会设置一个标志变量用于指示目标线程可以准备停止了。
+- 还需要通过调用目标线程的 interrupt 方法，以期望目标线程能够通过捕获相关的异常侦测到该方法调用，从而中断其阻塞状态、等待状态。
+- 对于能够 interrupt 方法调用做出相应的方法
+    - **Object.wait()、Object.wait(long timeout)、Object.wait(long timeout, int nanos)**
+        - 响应 interrupt 调用抛出异常：InterruptedException
+    - **Thread.sleep(long millis)、Thread.sleep(long millis, int nanos)**
+        - 响应 interrupt 调用抛出异常：InterruptedException
+    - **Thread.join()、Thread.join(long millis)、Thread.join(long millis, int nanos)**
+        - 响应 interrupt 调用抛出异常：InterruptedException
+    - **java.util.concurrent.BlockingQueue.take()**
+        - 响应 interrupt 调用抛出异常：InterruptedException
+    - **java.util.concurrent.locks.Lock.lockInterruptibly()**
+        - 响应 interrupt 调用抛出异常：InterruptedException
+    - **java.nio.channels.InterruptiblyChannel**
+        - 响应 interrupt 调用抛出异常：java.nio.channels.ClosedInterruptedException
+
+执行阶段
+
+- 该阶段的主要动作是检查准备阶段所设置的线程停止标志和信号，再次基础上决定线程停止的时机，并进行适当的“清理”操作。
+
+参考代码：
+
+- [AlarmMgr.java](alarm%2FAlarmMgr.java)
+- [Terminatable.java](alarm%2FTerminatable.java)
+    - [AbstractTerminatableThread.java](alarm%2FAbstractTerminatableThread.java)
+        - [AlarmSendingThread.java](alarm%2FAlarmSendingThread.java)
+- [TerminationToken.java](alarm%2FTerminationToken.java)
+
+AbstractTerminatableThread 是一个可复用的 Terminatable 参与者实例， 其 terminate 方法完成了线程停止的准备阶段。该方法首先将
+terminationToken 的 toShutdown 属性设置为 true，此时目标线程可以准备停止了。但是目标线程可能处于一些阻塞(Blocking)
+方法的调用，如调用 Thread.sleep、InputStream.read 等，无法检测该变量的值。调用目标线程的 interrupt
+方法可以使一些阻塞方法抛出异常从而使目标线程停止。但是也有些阻塞方法如 InputStream.read 并不对 interrupt 方法调用做出响应，此时需要有
+AbstractTerminatableThread 的子类实现 doTerminate 方法，在该方法中实现一些关闭目标线程所需要的额外操作。
+
+执行阶段在 AbstractTerminatableThread 的 run 方法中完成。该方法通过 TerminationToken 的 toShutdown 属性和 reservations
+属性的判断或者通过捕获有 interrupt 方法调用而抛出的异常来终止线程，并在线程终止前调用由 AbstractTerminatableThread 子类实现的
+doCleanup 方法用于执行一些清理动作。
+
+解决：目标线程停止前可以保证处理完待处理的任务
+
+规避：目标线程发送完队列中现有的告警信息后，doRun 方法不再被调用，从而避免了队列为空时 BlockingQueue.take 调用导致的阻塞。
+
+### 模式的评价与实现考量
+
+#### 线程停止标志
+
+TerminationToken 使用了 toShutdown 这个 boolean 变量作为主要的停止标志，而非使用 Thread.isInterrupted()。这是因为，调用目标线程的
+interrupt 方法无法保证目标线程的 isInterrupted() 方法返回值为 true：目标线程可能调用一些代码，它们捕获
+InterruptedException 后没有通过设置 Thread.currentThread().interrupt() 保留线程中断状态。另外，toShutdown
+这个变量保证了内存可见性而又避免了使用显示锁的开销，采用了 volatile 修饰。
+
+#### 生产者-消费者问题中的线程停止
+
+参考代码：
+
+- [SomeService.java](SomeService.java)
+
+#### 隐藏而非暴露可停止的线程
+
+参考代码：
+
+- [AlarmMgr.java](alarm%2FAlarmMgr.java)
+  - `private final AlarmSendingThread alarmSendingThread;`
 
 ### Reference(Strong/soft/weak/phantom)
 

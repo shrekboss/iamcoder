@@ -12,8 +12,6 @@ import java.util.concurrent.Callable;
 
 /**
  * 本程序是为了演示“嵌套监视器锁死“而写的，因此本程序需要通过手工终止进程才能结束。
- *
- * @author Viscent Huang
  */
 public class NestedMonitorLockoutExample {
 
