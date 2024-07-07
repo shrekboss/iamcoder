@@ -18,6 +18,8 @@
 - [Callback.java](Callback.java)
 - [Task.java](Task.java)
 - [FutureTest.java](FutureTest.java)
+- [FakeFTPUploader.java](FakeFTPUploader.java)
+- [CaseRunner.java](CaseRunner.java)
 
 ### 模式实战案例解析
 
