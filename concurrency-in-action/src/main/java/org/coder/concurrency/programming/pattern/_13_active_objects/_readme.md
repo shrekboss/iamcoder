@@ -1,6 +1,7 @@
 ## Active Objects 设计模式
 
 > Active 是“主动”的意思，Active Objects 是“主动对象”的意思，所谓主动对象是指其拥有自己的独立线程，比如 java.lang.Thread
+>
 > 实例就是一个主动对象，不过 Active Objects Pattern 不仅仅是拥有独立的线程，它还可以接受异步消息，并且能够返回处理的结果。
 >
 > System.gc() 方法就是一个“接受异步消息的主动对象”，调用 gc 方法的线程和 gc 自身执行线程并不是同一个线程。
@@ -26,3 +27,18 @@ Worker-Thread Pattern)、findOrderDetails 方法(Future 设计模式)。
 - [ActiveServiceFactory.java](ActiveServiceFactory.java)
 - [IllegalActiveMethod.java](IllegalActiveMethod.java)
 - [ActiveOrderServiceTest.java](ActiveOrderServiceTest.java)
+
+### 模式简介
+
+> Active Object 模式是一种异步编程模型。它通过对方法的调用(Method Invocation) 与方法的执行(Method Execution) 进行解耦(
+> Decoupling) 来提高并发性。
+
+参考代码如下：
+
+- [MMSDeliveryServlet.java](mmsc%2FMMSDeliveryServlet.java)
+- [RequestPersistence.java](mmsc%2FRequestPersistence.java)
+    - [AsyncRequestPersistence.java](mmsc%2FAsyncRequestPersistence.java)
+    - [DiskbasedRequestPersistence.java](mmsc%2FDiskbasedRequestPersistence.java)
+
+Active Object 模式的 Proxy 参与者相当于 Promise 模式中的 Promisor 参与者，其 asyncService 异步方法的返回值类型 Future 相当于
+Promise 模式中的 Promise 参与者。
