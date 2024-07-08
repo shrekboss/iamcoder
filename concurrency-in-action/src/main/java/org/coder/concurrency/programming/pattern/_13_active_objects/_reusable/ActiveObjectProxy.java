@@ -12,15 +12,14 @@ import java.util.concurrent.*;
 public abstract class ActiveObjectProxy {
     /**
      * 生成一个实现指定接口的Active Object proxy实例。
-     * 对interf所定义的异步方法的调用会被转发到servant的相应doXXX方法。
+     * 对 interf 所定义的异步方法的调用会被转发到servant的相应doXXX方法。
      *
      * @param interf    要实现的Active Object接口
      * @param servant   Active Object的Servant参与者实例
      * @param scheduler Active Object的Scheduler参与者实例
      * @return Active Object的Proxy参与者实例
      */
-    public static <T> T newInstance(Class<T> interf, Object servant,
-                                    ExecutorService scheduler) {
+    public static <T> T newInstance(Class<T> interf, Object servant, ExecutorService scheduler) {
 
         @SuppressWarnings("unchecked")
         T f = (T) Proxy.newProxyInstance(interf.getClassLoader(),
