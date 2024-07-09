@@ -1,4 +1,4 @@
-package org.coder.concurrency.programming.pattern._17_thread_pool;
+package org.coder.concurrency.programming.pattern._7_context;
 
 import java.lang.ref.WeakReference;
 import java.util.AbstractMap;

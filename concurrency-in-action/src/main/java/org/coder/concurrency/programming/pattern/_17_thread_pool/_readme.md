@@ -68,13 +68,6 @@
 > 实际开发中需要注意另外一种可以事实上造成线程泄露的场景：如果线程池中的某个工作者线程执行的任务涉及外部资源等待，如等待
 > I/O，而该任务有没有对这种等待指定时间限制。那么，外部资源如果一直没有返回该任务所等待的结果，就会导致执行该任务的工作者线程一直处于等待状态而无法执行其他任务，这就形成了事实上的线程泄露。
 
-参考代码：
-
-- [Counter.java](memoryleak%2FCounter.java)
-- [MemoryLeakingServlet.java](memoryleak%2FMemoryLeakingServlet.java)
-- [MemoryLeakPreventingServlet.java](memoryleak%2FMemoryLeakPreventingServlet.java)
-- [MemoryPseudoLeakingServlet.java](memoryleak%2FMemoryPseudoLeakingServlet.java)
-
 #### 可靠性与线程池饱和处理策略
 
 - ThreadPoolExecutor.AbortPolicy

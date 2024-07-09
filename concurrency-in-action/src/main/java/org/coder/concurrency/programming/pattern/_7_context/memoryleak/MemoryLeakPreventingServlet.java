@@ -1,6 +1,6 @@
-package org.coder.concurrency.programming.pattern._17_thread_pool.memoryleak;
+package org.coder.concurrency.programming.pattern._7_context.memoryleak;
 
-import org.coder.concurrency.programming.pattern._17_thread_pool.ManagedThreadLocal;
+import org.coder.concurrency.programming.pattern._7_context.ManagedThreadLocal;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -13,6 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * 使用 ManagedThreadLocal 类防止 ThreadLocal 内存泄露
+ *
+ * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
+ * @since 1.0.0
+ */
 @WebServlet("/noleak")
 @WebListener
 @SuppressWarnings("serial")
