@@ -29,7 +29,7 @@ public class TerminatableWorkerThread<T, V> extends AbstractTerminatableThread {
      * 接收并行任务，并将其串行化。
      *
      * @param task 任务
-     * @return 可借以获取任务处理结果的Promise（参见第6章，Promise模式）实例。
+     * @return 可借以获取任务处理结果的Promise实例。
      * @throws InterruptedException
      */
     public Future<V> submit(final T task) throws InterruptedException {

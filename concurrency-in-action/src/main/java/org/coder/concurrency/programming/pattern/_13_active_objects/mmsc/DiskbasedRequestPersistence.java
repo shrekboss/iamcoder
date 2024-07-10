@@ -18,7 +18,6 @@ public class DiskbasedRequestPersistence implements RequestPersistence {
     final static Logger logger =
             Logger.getLogger(DiskbasedRequestPersistence.class);
 
-    // 类MMSDeliverRequest的源码参见本书的配套下载。
     @Override
     public void store(MMSDeliverRequest request) {
         // 申请缓存文件的文件名

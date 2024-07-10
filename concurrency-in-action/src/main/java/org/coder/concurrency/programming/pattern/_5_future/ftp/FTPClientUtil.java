@@ -8,15 +8,51 @@ import org.apache.commons.net.ftp.FTPReply;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.*;
 
-//模式角色：Promise.Result
-public class FTPClientUtil implements FTPUploader {
-    final FTPClient ftp = new FTPClient();
-    final Map<String, Boolean> dirCreateMap = new HashMap<>();
+//模式角色：Promise.Promisor、Promise.Result
+public class FTPClientUtil {
+    private final FTPClient ftp = new FTPClient();
 
-    public void init(String ftpServer, String userName, String password,
-            String serverDir)
-            throws Exception {
+    private final Map<String, Boolean> dirCreateMap = new HashMap<String, Boolean>();
+    /*
+     * helperExecutor是个静态变量，这使得newInstance方法在生成不同的FTPClientUtil实例时可以共用同一个线程池。
+     * 模式角色：Promise.TaskExecutor
+     */
+    private volatile static ExecutorService helperExecutor;
+
+    static {
+
+        helperExecutor = new ThreadPoolExecutor(1, Runtime.getRuntime().availableProcessors() * 2, 60, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(10), new ThreadFactory() {
+            public Thread newThread(Runnable r) {
+                Thread t = new Thread(r);
+                t.setDaemon(true);
+                return t;
+            }
+        }, new ThreadPoolExecutor.CallerRunsPolicy());
+    }
+
+    // 私有构造器
+    private FTPClientUtil() {
+
+    }
+
+    // 模式角色：Promise.Promisor.compute
+    public static Future<FTPClientUtil> newInstance(final String ftpServer, final String userName, final String password) {
+
+        Callable<FTPClientUtil> callable = () -> {
+            FTPClientUtil self = new FTPClientUtil();
+            self.init(ftpServer, userName, password);
+            return self;
+        };
+
+        // task相当于模式角色：Promise.Promise
+        final FutureTask<FTPClientUtil> task = new FutureTask<>(callable);
+        helperExecutor.execute(task);
+        return task;
+    }
+
+    private void init(String ftpServer, String userName, String password) throws Exception {
 
         FTPClientConfig config = new FTPClientConfig();
         ftp.configure(config);
@@ -37,16 +73,13 @@ public class FTPClientUtil implements FTPUploader {
             System.out.println(ftp.getReplyString());
 
         } else {
-            throw new RuntimeException(
-                    "Failed to login." + ftp.getReplyString());
+            throw new RuntimeException("Failed to login." + ftp.getReplyString());
         }
 
-        reply = ftp.cwd(serverDir);
+        reply = ftp.cwd("~/subspsync");
         if (!FTPReply.isPositiveCompletion(reply)) {
             ftp.disconnect();
-            throw new RuntimeException(
-                    "Failed to change working directory.reply:"
-                            + reply);
+            throw new RuntimeException("Failed to change working directory.reply:" + reply);
         } else {
 
             System.out.println(ftp.getReplyString());
@@ -56,17 +89,12 @@ public class FTPClientUtil implements FTPUploader {
 
     }
 
-    @Override
     public void upload(File file) throws Exception {
-        InputStream dataIn =
-                new BufferedInputStream(new FileInputStream(file),
-                        1024 * 8);
+        InputStream dataIn = new BufferedInputStream(new FileInputStream(file), 1024 * 8);
         boolean isOK;
         String dirName = file.getParentFile().getName();
         String fileName = dirName + '/' + file.getName();
-        ByteArrayInputStream checkFileInputStream =
-                new ByteArrayInputStream(
-                        "".getBytes());
+        ByteArrayInputStream checkFileInputStream = new ByteArrayInputStream("".getBytes());
 
         try {
             if (!dirCreateMap.containsKey(dirName)) {
@@ -83,7 +111,8 @@ public class FTPClientUtil implements FTPUploader {
                 ftp.storeFile(fileName + ".c", checkFileInputStream);
 
             } else {
-                throw new RuntimeException("Failed to upload " + file + ",reply:" + ftp.getReplyString());
+
+                throw new RuntimeException("Failed to upload " + file + ",reply:" + "," + ftp.getReplyString());
             }
         } finally {
             dataIn.close();
@@ -91,7 +120,6 @@ public class FTPClientUtil implements FTPUploader {
 
     }
 
-    @Override
     public void disconnect() {
         if (ftp.isConnected()) {
             try {
@@ -100,6 +128,5 @@ public class FTPClientUtil implements FTPUploader {
                 // 什么也不做
             }
         }
-        // 省略与清单6-2中相同的代码
     }
 }

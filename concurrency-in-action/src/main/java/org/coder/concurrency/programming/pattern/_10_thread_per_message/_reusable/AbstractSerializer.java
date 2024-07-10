@@ -29,7 +29,7 @@ public abstract class AbstractSerializer<T, V> {
      * 含义具体的服务方法（如downloadFile）可直接调用该方法。
      *
      * @param params 客户端代码调用该方法时所传递的参数列表
-     * @return 可借以获取任务处理结果的Promise（参见第6章，Promise模式）实例。
+     * @return 可借以获取任务处理结果的Promise实例。
      * @throws InterruptedException
      */
     protected Future<V> service(Object... params) throws InterruptedException {
