@@ -6,6 +6,7 @@ import org.coder.concurrency.programming.util.Tools;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Objects;
 import java.util.Properties;
 import java.util.Scanner;
 import java.util.zip.GZIPInputStream;
@@ -17,8 +18,7 @@ public class CaseRunner {
 
     public static void main(String[] args) throws IOException {
         Properties config = Tools.loadProperties(
-                CaseRunner.class.getPackage().getName().replaceAll("\\.", "/")
-                        + "/conf.properties");
+                CaseRunner.class.getPackage().getName().replaceAll("\\.", "/")+ "/conf.properties");
 
         DataSyncTask dst;
         // dst = new DataSyncTask(config);
@@ -37,7 +37,6 @@ public class CaseRunner {
         };
 
         dst.run();
-
     }
 
     // 模拟从数据库中读取数据
@@ -46,9 +45,7 @@ public class CaseRunner {
         private final GZIPInputStream gis;
         public FakeRecordSource() throws IOException {
             this.gis = new GZIPInputStream(
-                    new BufferedInputStream(CaseRunner.class
-                            .getResourceAsStream(
-                                    "/data/ch13/subscriptions.csv.gz")));
+                    new BufferedInputStream(Objects.requireNonNull(CaseRunner.class.getResourceAsStream("subscriptions.csv.gz"))));
             this.scanner = new Scanner(gis, "UTF-8");
         }
 
