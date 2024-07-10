@@ -1,7 +1,7 @@
 ### 不使用锁的情况下保证线程安全
-- 不可变对象模式 - Immutable Object
-- 线程特有存储模式 - Thread Special Storage 
-- 串行线程封闭模式 - Serial Thread Confinement
+1. [不可变对象模式 - Immutable Object](_4_immutable)
+2. [线程上下文(特有存储模式) - Context / Thread Specific Storage)](_7_context)
+3. [串行线程封闭模式 - Serial Thread Confinement(Thread-Per-Message) ](_10_thread_per_message)
 
 ### 优雅地停止线程
 4. [两阶段终止 - Two-phase Termination](_11_two_phase_termination)
