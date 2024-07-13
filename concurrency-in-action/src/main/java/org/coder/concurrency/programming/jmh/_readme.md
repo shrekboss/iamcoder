@@ -8,9 +8,9 @@
 
 * `@Benchmark`: 标记基准测试方法 [`ElementType.METHOD`]
 
-JMH 对基准测试的方法使用 `@Benchmark` ([JMHExample01](./src/test/java/org/hui/jmh/JMHExample01.java))注解进行标记，否则方法将被视作普通方法，并不会对其执行基准测试。
+JMH 对基准测试的方法使用 `@Benchmark` ([JMHExample01.java](JMHExample01.java))注解进行标记，否则方法将被视作普通方法，并不会对其执行基准测试。
 
-对一个类如果没有任何基准测试方法(被 `@Benchmark` 标记的方法)，进行基准测试会出现异常([JMHExample02](./src/test/java/org/hui/jmh/JMHExample02.java))。
+对一个类如果没有任何基准测试方法(被 `@Benchmark` 标记的方法)，进行基准测试会出现异常([JMHExample02.java](JMHExample02.java))。
 
 通常每个 `@Benchmark` 注解的方法都运行在独立的进程中，互不干涉。
 
@@ -193,10 +193,10 @@ JMH 提供的 Profiler
 | `HS_RT`     | 通过 Implementation-Specific MBean 进行 HotSpot™ 运行时分析 |
 | `HS_THR`    | 通过 Implementation-Specific MBean 进行 HotSpot™ 线程分析  |
 
-`ChainedOptionsBuilder addProfiler(Class<? extends Profiler> profiler)`
-`ChainedOptionsBuilder addProfiler(Class<? extends Profiler> profiler, String initLine)`
-`ChainedOptionsBuilder addProfiler(String profiler)`
-`ChainedOptionsBuilder addProfiler(String profiler, String initLine)`
+- `ChainedOptionsBuilder addProfiler(Class<? extends Profiler> profiler)`
+- `ChainedOptionsBuilder addProfiler(Class<? extends Profiler> profiler, String initLine)`
+- `ChainedOptionsBuilder addProfiler(String profiler)`
+- `ChainedOptionsBuilder addProfiler(String profiler, String initLine)`
 
 ### StackProfiler
 
