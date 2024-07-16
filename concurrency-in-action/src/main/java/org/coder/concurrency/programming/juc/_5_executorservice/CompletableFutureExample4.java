@@ -90,11 +90,6 @@ import java.util.concurrent.Executors;
  */
 public class CompletableFutureExample4 {
 
-    public static void main(String[] args) {
-        // TODO Auto-generated method stub
-
-    }
-
     @Test
     public void thenApply() throws InterruptedException, ExecutionException {
         ExecutorService executor = Executors.newFixedThreadPool(3);
