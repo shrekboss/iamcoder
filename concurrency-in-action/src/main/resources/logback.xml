@@ -11,7 +11,7 @@
             <pattern>%msg%n</pattern>
         </encoder>
     </appender>
-    <logger name="com.metrics.wangwenjun" level="INFO">
+    <logger name="org.coder.concurrency.programming" level="INFO">
         <appender-ref ref="METRICS"/>
     </logger>
     <root level="debug">

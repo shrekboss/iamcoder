@@ -13,20 +13,20 @@ import java.util.stream.Stream;
  * 6.1.3 Stream之Terminal操作
  * Stream的Terminal操作会终结Stream的流水线（pipeline）的继续执行，最终返回一个非Stream类型的结果（foreach操作可以理解为返回的是void类型的结果）。
  * 因此在一个Stream的流水线中执行了Terminal方法之后，Stream将被关闭。
- *
+ * <p>
  * Stream提供了比较多的Terminal类型的操作，本节将逐个介绍Terminal类型操作的使用方法。
- *
+ * <p>
  * 方法		描述
  * match	match类型的操作返回值为布尔类型，主要用于判断是否存在匹配条件（Predicate）的元素，match类型的具体操作如下。
- * 			allMatch():若所有的元素都匹配条件，则结果为true，否则为false
- * 			anyMatch():只要有一个元素匹配条件，则结果为true，否则为false
- * 			noneMatch():若所有的元素都不匹配条件，则结果为true，否则为false
+ * allMatch():若所有的元素都匹配条件，则结果为true，否则为false
+ * anyMatch():只要有一个元素匹配条件，则结果为true，否则为false
+ * noneMatch():若所有的元素都不匹配条件，则结果为true，否则为false
  * find		find类型的操作会返回Stream中的某个元素Optional，一般情况下，我们会在一个包含filter操作的流水线中使用find操作返回过滤后的某个值，find类型的具体操作如下。
- * 			Optional<T> findFirst(): 返回Stream中的第一个元素
- * 			Optional<T> findAny(): 返回Stream中的任意一个元素
+ * Optional<T> findFirst(): 返回Stream中的第一个元素
+ * Optional<T> findAny(): 返回Stream中的任意一个元素
  * foreach	forEach操作用于对Stream中的每一个元素执行consume函数，Stream提供了两种方式的foreach，具体如下。
- * 			forEach(Consumer<T> consumer):为每一个元素执行consume函数，但是在并发流中，对source stream或者upstream的执行并不会按顺序来
- * 			forEachOrdered(Consumer<T> consumer):为每一个元素执行consumer函数，在并发流中将保持对source stream或者upstream的原始顺序
+ * forEach(Consumer<T> consumer):为每一个元素执行consume函数，但是在并发流中，对source stream或者upstream的执行并不会按顺序来
+ * forEachOrdered(Consumer<T> consumer):为每一个元素执行consumer函数，在并发流中将保持对source stream或者upstream的原始顺序
  * count	count操作用于返回Stream中的元素个数，返回值为一个long型的数值
  * max		max类型的操作会根据Comparator接口的定义，返回Stream中最大的那个元素
  * min		min类型的操作会根据Comparator接口的定义，返回Stream中最小的那个元素
