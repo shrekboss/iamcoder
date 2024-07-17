@@ -15,11 +15,9 @@
 - [open_source_practices](design-patterns-in-action%2Fsrc%2Fmain%2Fjava%2Forg%2Fcoder%2Fdesign%2Fpatterns%2F_5_open_source_practices)
 - [project_practices](design-patterns-in-action%2Fsrc%2Fmain%2Fjava%2Forg%2Fcoder%2Fdesign%2Fpatterns%2F_6_project_practices)
 
-### 管理模块版本
+### 3. [Java 业务开发常见错误](err-in-action)
 
-- 设置新版本号
-  `mvn versions:set -DnewVersion=0.1.2-SNATHOST`
-- 更新所有子 Module 的版本
-  `mvn versions:update-child-modules`
-- 更新顶级项目的parent版本
-  `mvn versions:update-parent`
+- [coder_chapter](err-in-action%2Fsrc%2Fmain%2Fjava%2Forg%2Fcoder%2Ferr%2Fprogramming%2F_1_code_chapter)
+- [design_chapter](err-in-action%2Fsrc%2Fmain%2Fjava%2Forg%2Fcoder%2Ferr%2Fprogramming%2F_2_design_chapter)
+- [security_chapter](err-in-action%2Fsrc%2Fmain%2Fjava%2Forg%2Fcoder%2Ferr%2Fprogramming%2F_3_security_chapter)
+- [other](err-in-action%2Fsrc%2Fmain%2Fjava%2Forg%2Fcoder%2Ferr%2Fprogramming%2F_4_other)
