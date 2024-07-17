@@ -1,6 +1,7 @@
 package org.coder.concurrency.programming.pattern._11_two_phase_termination.alarm;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 可停止的抽象线程。
@@ -9,8 +10,7 @@ import org.apache.log4j.Logger;
  */
 public abstract class AbstractTerminatableThread extends Thread implements Terminatable {
 
-    final static Logger logger =
-            Logger.getLogger(AbstractTerminatableThread.class);
+    final static Logger logger = LoggerFactory.getLogger(AbstractTerminatableThread.class);
     private final boolean DEBUG = true;
 
     // 模式角色：Two-phaseTermination.TerminationToken
@@ -77,7 +77,7 @@ public abstract class AbstractTerminatableThread extends Thread implements Termi
             ex = e;
             if (e instanceof InterruptedException) {
                 if (DEBUG) {
-                    logger.debug(e);
+                    logger.debug(String.valueOf(e));
                 }
             } else {
                 logger.error("", e);

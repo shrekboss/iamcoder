@@ -1,6 +1,7 @@
 package org.coder.concurrency.programming.pattern._12_worker_thread._reusable;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 public class SimplePipeline<T, OUT> extends AbstractPipe<T, OUT> implements
         Pipeline<T, OUT> {
-    private final static Logger logger = Logger.getLogger(SimplePipeline.class);
+    private final static Logger logger = LoggerFactory.getLogger(SimplePipeline.class);
     private final Queue<Pipe<?, ?>> pipes = new LinkedList<Pipe<?, ?>>();
 
     private final ExecutorService helperExecutor;

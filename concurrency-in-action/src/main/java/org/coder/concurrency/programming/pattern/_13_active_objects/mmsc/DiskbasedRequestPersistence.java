@@ -1,7 +1,8 @@
 package org.coder.concurrency.programming.pattern._13_active_objects.mmsc;
 
-import org.apache.log4j.Logger;
 import org.coder.concurrency.programming.util.Tools;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -15,8 +16,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class DiskbasedRequestPersistence implements RequestPersistence {
     // 负责缓存文件的存储管理
     final SectionBasedDiskStorage storage = new SectionBasedDiskStorage();
-    final static Logger logger =
-            Logger.getLogger(DiskbasedRequestPersistence.class);
+    final static Logger logger = LoggerFactory.getLogger(DiskbasedRequestPersistence.class);
 
     @Override
     public void store(MMSDeliverRequest request) {

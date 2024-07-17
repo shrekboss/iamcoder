@@ -1,13 +1,14 @@
 package org.coder.concurrency.programming.pattern._19_half_sync_half_async.alarm;
 
-import org.apache.log4j.Logger;
 import org.coder.concurrency.programming.pattern._11_two_phase_termination.alarm.AlarmMgr;
 import org.coder.concurrency.programming.pattern._6_guarded_suspension.alarm.AlarmType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 
 public class SampleAlarmClient {
-    private final static Logger logger = Logger.getLogger(SampleAlarmClient.class);
+    private final static Logger logger = LoggerFactory.getLogger(SampleAlarmClient.class);
 
     // 告警日志抑制阈值
     private static final int ALARM_MSG_SUPRESS_THRESHOLD = 10;
