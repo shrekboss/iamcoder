@@ -82,8 +82,7 @@ public class RecordGenerator {
         Connection dbConn = null;
         Properties props = Tools.loadProperties(
                 RecordGenerator.class.getPackage().getName().replaceAll("\\.",
-                        "/")
-                        + "/conf.properties");
+                        "/") + "/conf.properties");
         Class.forName(props.getProperty("jdbc.driver"));
 
         dbConn = DriverManager.getConnection(props.getProperty("jdbc.url"),
