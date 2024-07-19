@@ -14,11 +14,16 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static org.coder.err.programming._1_code_chapter.threadpool.threadpoolreuse.ThreadPoolReuseController.ThreadPoolHelper.getRightThreadPool;
+
 @RestController
 @RequestMapping("threadpoolreuse")
 @Slf4j
 public class ThreadPoolReuseController {
 
+    /**
+     * curl http://localhost:45678/threadpoolreuse/wrong
+     */
     @GetMapping("wrong")
     public String wrong() throws InterruptedException {
         ThreadPoolExecutor threadPool = ThreadPoolHelper.getThreadPool();
@@ -26,7 +31,28 @@ public class ThreadPoolReuseController {
             threadPool.execute(() -> {
                 String payload = IntStream.rangeClosed(1, 1000000)
                         .mapToObj(__ -> "a")
-                        .collect(Collectors.joining("")) + UUID.randomUUID().toString();
+                        .collect(Collectors.joining("")) + UUID.randomUUID();
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (InterruptedException e) {
+                }
+                log.debug(payload);
+            });
+        });
+        return "OK";
+    }
+
+    /**
+     * curl http://localhost:45678/threadpoolreuse/right
+     */
+    @GetMapping("right")
+    public String right() throws InterruptedException {
+        ThreadPoolExecutor threadPool = getRightThreadPool();
+        IntStream.rangeClosed(1, 10).forEach(i -> {
+            threadPool.execute(() -> {
+                String payload = IntStream.rangeClosed(1, 1000000)
+                        .mapToObj(__ -> "a")
+                        .collect(Collectors.joining("")) + UUID.randomUUID();
                 try {
                     TimeUnit.SECONDS.sleep(1);
                 } catch (InterruptedException e) {

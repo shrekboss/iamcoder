@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -46,7 +47,7 @@ public class ThreadPoolMixuseController {
      * describe: 模拟一下文件批处理的代码，在程序启动后通过一个线程开启死循环逻辑，不断向线程池提交任务，
      * 任务的逻辑是向一个文件中写入大量的数据：
      **/
-    // @PostConstruct
+    @PostConstruct
     public void init() {
         printStats(threadPool);
 
@@ -59,7 +60,7 @@ public class ThreadPoolMixuseController {
                     try {
                         Files.write(
                                 Paths.get("demo.txt"),
-                                Collections.singletonList(LocalTime.now().toString() + ":" + payload),
+                                Collections.singletonList(LocalTime.now() + ":" + payload),
                                 UTF_8, CREATE, TRUNCATE_EXISTING);
                     } catch (IOException e) {
                         e.printStackTrace();

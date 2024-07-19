@@ -21,6 +21,8 @@ public class ThreadPoolOOMController {
 
     /**
      * Exception in thread "http-nio-45678-ClientPoller" java.lang.OutOfMemoryError: GC overhead limit exceeded
+     *
+     * curl http://localhost:45678/threadpooloom/oom1
      */
     @GetMapping("oom1")
     public void oom1() throws InterruptedException {
@@ -50,6 +52,8 @@ public class ThreadPoolOOMController {
 
     /**
      * newCachedThreadPool() 工作队列默认使用 SynchronousQueue 是一个没有存储空间的阻塞队列
+     * <p>
+     * curl http://localhost:45678/threadpooloom/oom2
      */
     @GetMapping("/oom2")
     public void oom2() throws InterruptedException {
@@ -71,6 +75,9 @@ public class ThreadPoolOOMController {
         threadPool.awaitTermination(1, TimeUnit.HOURS);
     }
 
+    /**
+     * curl http://localhost:45678/threadpooloom/right
+     */
     @GetMapping("/right")
     public int right() throws InterruptedException {
         AtomicInteger atomicInteger = new AtomicInteger();
@@ -110,6 +117,9 @@ public class ThreadPoolOOMController {
         return atomicInteger.intValue();
     }
 
+    /**
+     * curl http://localhost:45678/threadpooloom/better
+     */
     @GetMapping("/better")
     public int better() throws InterruptedException {
         // 激进线程池的实现
