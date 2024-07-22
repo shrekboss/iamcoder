@@ -1,18 +1,168 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<configuration scan="true">
-    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <file>app.log</file>
-        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>[%d{HH:mm:ss.SSS}] [%thread] [%-5level] [%logger{40}:%-4.4line] - %msg%n</pattern>
-        </encoder>
-    </appender>
-    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>[%d{HH:mm:ss.SSS}] [%thread] [%-5level] [%logger{40}:%-4.4line] - %msg%n</pattern>
-        </encoder>
-    </appender>
-    <root level="INFO">
-        <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="FILE"/>
-    </root>
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    参考:
+    https://blog.csdn.net/forwujinwei/article/details/79977479
+    https://blog.csdn.net/baidu_39322753/article/details/118085672
+-->
+<!--
+    scan,当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true。
+
+    scanPeriod,设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒。当scan为true时，此属性生效。默认的时间间隔为1分钟。
+
+    debug,当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。
+-->
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+
+    <!-- contextName设置日志上下文名称，可以通过%contextName来打印日志上下文名称 -->
+    <contextName>logback</contextName>
+
+    <!--
+        property可以用来设置变量，可以通过${name}来访问，有以下的属性
+
+        name，用于${name}访问的key
+
+        value，用于${name}访问的value
+
+        file ，用于指定配置文件的路径，他的作用在于，如果你有多个配置信息的话，可以直接写在配置文件中，然后通过file引入
+        <property file="src/main/java/chapters/configuration/variables.properties" />
+
+        resource作用和file一样，但是，它是可以直接从classpath路径下引入配置文件
+        <property resource="resource.properties" />
+    -->
+    <springProperty scope="context" name="springAppName" source="spring.application.name"/>
+
+    <property name="log.path" value="logs/${springAppName}"/>
+    <property name="local.log.path" value="log/${springAppName}"/>
+    <property name="log.maxHistory" value="15"/>
+    <property name="log.colorPattern"
+              value="%magenta(%d{MM-dd HH:mm:ss.SSS}) %highlight(%-5level) %blue[%mdc{msgId}] %boldCyan(${springAppName:-}) %yellow(%thread) %green(%logger) %msg%n"/>
+    <property name="log.pattern" value="[%d{MM-dd HH:mm:ss.SSS}] %-5level [%mdc{msgId}] ${springAppName:-} %thread %logger %msg%n"/>
+
+    <!--输出到控制台-->
+    <!-- 脱敏 -->
+    <springProfile name="local">
+        <!--
+            appender格式化日志输出节点，有俩个属性name和class，class用来指定哪种输出策略，
+            常用就是控制台输出策略和文件输出策略。
+        -->
+        <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>
+                    <!--%d{HH:mm:ss.SSS}输出日志的打印日志，模式语法与java.text.SimpleDateFormat 兼容-->
+                    <!--%msg%n 其中msg表示打印输出的消息， %n表示换行-->
+                    <!--%-0-9表示最小宽度，会自动补齐-->
+                    <!--
+                    Conversion specifier	Logger name	                Result
+                    %logger     	        mainPackage.sub.sample.Bar	mainPackage.sub.sample.Bar
+                    %logger{0}	            mainPackage.sub.sample.Bar	Bar
+                    %logger{5}	            mainPackage.sub.sample.Bar	m.s.s.Bar
+                    %logger{10}	            mainPackage.sub.sample.Bar	m.s.s.Bar
+                    %logger{15}	            mainPackage.sub.sample.Bar	m.s.sample.Bar
+                    %logger{16}	            mainPackage.sub.sample.Bar	m.sub.sample.Bar
+                    %logger{26}	            mainPackage.sub.sample.Bar	mainPackage.sub.sample.Bar
+                    -->
+                    <!--
+                    thread 输出产生日志的线程名。
+                    level输出日志级别。
+                    -->
+                    <!--默认%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n-->
+                    <pattern>${log.colorPattern}</pattern>
+                </pattern>
+            </encoder>
+        </appender>
+        <root level="info">
+            <appender-ref ref="console"/>
+        </root>
+
+        <!--logger节点，可选节点，用来具体指明包的日志输出级别，它将会覆盖root的输出级别-->
+        <!--OFF 不打印-->
+        <logger name="org.apache.zookeeper.ClientCnxn" level="OFF"/>
+    </springProfile>
+
+    <!--输出到文件-->
+    <!-- 脱敏 -->
+    <springProfile name="!local">
+        <!--        <appender name="file_info" class="pers.liuchengyin.logbackadvice.LcyRollingFileAppender">-->
+        <appender name="file_info" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>${log.path}/info/info.log</file>
+            <!--rollingPolicy日志回滚策略，在这里我们用了TimeBasedRollingPolicy，基于时间的回滚策略,有以下子节点-->
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <!--fileNamePattern，必要节点，可以用来设置指定时间的日志归档，例如我们上面的例子是每天将日志归档成一个zip包-->
+                <fileNamePattern>${log.path}/info/info.%d{yyyy-MM-dd}.log</fileNamePattern>
+                <MaxHistory>${log.maxHistory}</MaxHistory>
+            </rollingPolicy>
+            <encoder>
+                <pattern>${log.pattern}</pattern>
+            </encoder>
+            <!--filter，日志输出拦截器，可以自定义拦截器也可以用系统一些定义好的拦截器-->
+            <!-- <filter class="com.example.logback.filter.MyFilter" /> -->
+            <!--它可以提供最大的自定义输出，如果需要用到系统定义的拦截器，例如我们用ThresholdFilter来过滤掉ERROR级别以下的日志不输出到文件中-->
+<!--            <filter class="Xxx.aa.bb.common.starter.logging.configure.ManyLevelFilter">-->
+<!--                <threadFilter>cat-TcpSocketSender</threadFilter>-->
+<!--                <classFilter>com.banniuyun.work.dynamic.datasource,com.dianping.cat,RocketmqRemoting,druid</classFilter>-->
+<!--                &lt;!&ndash; 不匹配时的操作：拒绝（不记录） &ndash;&gt;-->
+<!--                <onMatch>DENY</onMatch>-->
+<!--                &lt;!&ndash; 匹配时的操作：接收（记录） &ndash;&gt;-->
+<!--                <onMismatch>ACCEPT</onMismatch>-->
+<!--                <level>INFO</level>-->
+<!--            </filter>-->
+            <!--<filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>info</level>
+            &lt;!&ndash;
+            DENY：日志将立即被抛弃不再经过其他过滤器；
+
+　　         NEUTRAL：有序列表里的下个过滤器过接着处理日志；（该级别既不处理，也不抛弃，相当于没有任何处理，日志会被保存下来并在本appender被执行）
+
+　　         ACCEPT：日志会被立即处理，不再经过剩余过滤器。
+            &ndash;&gt;
+            &lt;!&ndash;
+            onMatch：对符合过滤级别的日志的操作。（DENY，NEUTRAL，ACCEPT）
+            onMismatch：对不符合过滤级别的日志的操作。（DENY，NEUTRAL，ACCEPT）
+            &ndash;&gt;
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>-->
+        </appender>
+
+        <appender name="file_error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>${log.path}/error/error.log</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${log.path}/error/error.%d{yyyy-MM-dd}.log</fileNamePattern>
+            </rollingPolicy>
+            <encoder>
+                <pattern>${log.pattern}</pattern>
+            </encoder>
+<!--            <filter class="Xxx.aa.bb.common.starter.logging.configure.ManyLevelFilter">-->
+<!--                <threadFilter>cat-TcpSocketSender</threadFilter>-->
+<!--                <classFilter>com.banniuyun.work.dynamic.datasource,com.dianping.cat,RocketmqRemoting,druid</classFilter>-->
+<!--                &lt;!&ndash; 不匹配时的操作：拒绝（不记录） &ndash;&gt;-->
+<!--                <onMatch>DENY</onMatch>-->
+<!--                &lt;!&ndash; 匹配时的操作：接收（记录） &ndash;&gt;-->
+<!--                <onMismatch>ACCEPT</onMismatch>-->
+<!--                <level>ERROR</level>-->
+<!--            </filter>-->
+        </appender>
+
+        <!--root节点，必选节点，用来指定最基础的日志输出级别，他有俩个点可以用来应用appender，格式化日志输出-->
+        <root level="info">
+            <appender-ref ref="file_info"/>
+            <appender-ref ref="file_error"/>
+        </root>
+        <!--logger节点，可选节点，用来具体指明包的日志输出级别，它将会覆盖root的输出级别-->
+        <!--OFF 不打印-->
+        <logger name="org.apache.zookeeper.ClientCnxn" level="OFF"/>
+        <!--
+            logger中有一个additivity属性，作用在于 children-logger是否使用 rootLogger配置的appender进行输出。
+            false：表示只用当前logger的appender-ref。
+            true：表示当前logger的appender-ref和rootLogger的appender-ref都有效。
+            这样logger名字匹配com.taobao.jingwei.monitor的信息就只在MONITOR的appender输出，而不会在root logger中输出了
+        -->
+    </springProfile>
 </configuration>
+        <!--
+            Logger可以被分配级别。级别包括：TRACE、DEBUG、INFO、WARN和ERROR，
+            定义于ch.qos.logback.classic.Level类。程序会打印高于或等于所设置级别的日志，
+            设置的日志等级越高，打印出来的日志就越少。如果设置级别为INFO，则优先级高于等于INFO级别
+            （如：INFO、WARN、ERROR）的日志信息将可以被输出,小于该级别的如DEBUG将不会被输出。
+            为确保所有logger都能够最终继承一个级别，根logger总是有级别，默认情况下，这个级别是DEBUG。
+        -->
