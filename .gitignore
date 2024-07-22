@@ -38,3 +38,6 @@ build/
 *.json
 *.rq
 *.csv
+
+### File ####
+.flattened-pom.xml

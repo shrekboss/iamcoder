@@ -1,0 +1,396 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.coder</groupId>
+    <artifactId>common-basic-dependencies</artifactId>
+    <name>${project.artifactId}</name>
+    <description>基础 bom 文件，管理整个项目的依赖版本</description>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <skipTests>true</skipTests>
+<!--        <revision>1.0.0-SNAPSHOT</revision>-->
+        <!-- 业务组件版本定义 -->
+        <component-web-controller.version>1.0.0-SNAPSHOT</component-web-controller.version>
+        <component-def-event.version>1.0.0-SNAPSHOT</component-def-event.version>
+        <component-spring-util.version>1.0.0-SNAPSHOT</component-spring-util.version>
+        <component-dubbo-util.version>1.0.0-SNAPSHOT</component-dubbo-util.version>
+        <!-- spring boot autoconfigure 版本定义 -->
+        <starter-extend-datasource.version>1.0.0-SNAPSHOT</starter-extend-datasource.version>
+        <starter-extend-mq.version>1.0.0-SNAPSHOT</starter-extend-mq.version>
+        <starter-extend-doc.version>1.0.0-SNAPSHOT</starter-extend-doc.version>
+        <starter-extend-logging.version>1.0.0-SNAPSHOT</starter-extend-logging.version>
+        <starter-extend-security.version>1.0.0-SNAPSHOT</starter-extend-security.version>
+
+        <!--项目版本-->
+        <!--spring-boot、spring-cloud、spring-cloud-alibaba-->
+        <spring-boot.version>2.3.7.RELEASE</spring-boot.version>
+        <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.2.6.RELEASE</spring-cloud-alibaba.version>
+        <spring-data.version>Moore-SR6</spring-data.version>
+
+        <!-- APM -->
+        <spring-boot-admin-server.version>2.3.1</spring-boot-admin-server.version>
+        <spring-boot-admin-server-ui.version>2.3.1</spring-boot-admin-server-ui.version>
+        <spring-boot-admin-starter-client.version>2.3.1</spring-boot-admin-starter-client.version>
+        <spring-boot-admin-client.version>2.3.1</spring-boot-admin-client.version>
+
+        <!-- Middleware -->
+        <dubbo.version>2.7.8</dubbo.version>
+        <zookeeper.version>3.4.12</zookeeper.version>
+
+        <!-- 辅助库相关 -->
+        <mybatis.version>3.5.16</mybatis.version>
+        <dynamic-datasource.version>3.4.1</dynamic-datasource.version>
+        <p6spy.version>3.9.1</p6spy.version>
+        <fastjson.version>2.0.25</fastjson.version>
+        <junit.version>4.13.2</junit.version>
+        <jmockdata.version>3.1.0</jmockdata.version>
+        <commons-lang.version>2.6</commons-lang.version>
+        <commons-collections4.version>4.4</commons-collections4.version>
+        <hibernate-validator.version>6.2.0.Final</hibernate-validator.version>
+        <guava.version>33.0.0-jre</guava.version>
+
+        <!-- Maven Plugins 版本 -->
+        <compiler.plugin.version>3.6.1</compiler.plugin.version>
+
+        <!-- swagger -->
+        <swagger.more.version>1.0.0-BN</swagger.more.version>
+        <swagger-bootstrap-ui.version>1.9.4</swagger-bootstrap-ui.version>
+        <swagger-annotations.version>1.6.8</swagger-annotations.version>
+        <springfox-swagger2.version>3.0.0</springfox-swagger2.version>
+        <knife4j-micro-spring-boot-starter.version>3.0.3</knife4j-micro-spring-boot-starter.version>
+        <knife4j-spring-boot-starter.version>3.0.3</knife4j-spring-boot-starter.version>
+        <springfox-bean-validators.version>3.0.0</springfox-bean-validators.version>
+        <swagger-models.version>1.6.8</swagger-models.version>
+
+        <!-- 日志 logging -->
+        <slf4j.version>2.0.13</slf4j.version>
+        <logback.version>1.3.14</logback.version>
+
+        <!-- Testing 版本 -->
+        <junit.version>4.13.1</junit.version>
+        <metrics.version>3.2.6</metrics.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- 统一依赖管理 Start-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-releasetrain</artifactId>
+                <version>${spring-data.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- 统一依赖管理 End-->
+
+            <!-- 公共模块相关依赖-->
+            <!--            <dependency>-->
+            <!--                <groupId>${project.groupId}</groupId>-->
+            <!--                <artifactId>common-basic-core</artifactId>-->
+            <!--                <version>${revision}</version>-->
+            <!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>${project.groupId}</groupId>-->
+            <!--                <artifactId>component-web-controller</artifactId>-->
+            <!--                <version>${component-web-controller.version}</version>-->
+            <!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>${project.groupId}</groupId>-->
+            <!--                <artifactId>component-def-event</artifactId>-->
+            <!--                <version>${component-def-event.version}</version>-->
+            <!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>${project.groupId}</groupId>-->
+            <!--                <artifactId>component-spring-util</artifactId>-->
+            <!--                <version>${component-spring-util.version}</version>-->
+            <!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>${project.groupId}</groupId>-->
+            <!--                <artifactId>component-dubbo-util</artifactId>-->
+            <!--                <version>${component-dubbo-util.version}</version>-->
+            <!--            </dependency>-->
+
+            <!--            <dependency>-->
+            <!--                <groupId>${project.groupId}</groupId>-->
+            <!--                <artifactId>common-aggregation-spring-boot-starter</artifactId>-->
+            <!--                <version>${revision}</version>-->
+            <!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>${project.groupId}</groupId>-->
+            <!--                <artifactId>starter-extend-datasource</artifactId>-->
+            <!--                <version>${starter-extend-datasource.version}</version>-->
+            <!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>${project.groupId}</groupId>-->
+            <!--                <artifactId>mq-spring-boot-autoconfigure</artifactId>-->
+            <!--                <version>${starter-extend-mq.version}</version>-->
+            <!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>${project.groupId}</groupId>-->
+            <!--                <artifactId>starter-extend-doc</artifactId>-->
+            <!--                <version>${starter-extend-doc.version}</version>-->
+            <!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>${project.groupId}</groupId>-->
+            <!--                <artifactId>starter-extend-logging</artifactId>-->
+            <!--                <version>${starter-extend-logging.version}</version>-->
+            <!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>${project.groupId}</groupId>-->
+            <!--                <artifactId>starter-extend-security</artifactId>-->
+            <!--                <version>${starter-extend-security.version}</version>-->
+            <!--            </dependency>-->
+            <!-- 公共模块相关依赖 End-->
+
+            <!-- ========================================== 分割线 ================================================== -->
+
+            <!-- 中间件组件-->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper.version}</version>
+                <optional>true</optional>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>log4j</artifactId>
+                        <groupId>log4j</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+            <!-- 中间件组件 End-->
+
+            <!-- ========================================== 分割线 ================================================== -->
+
+            <!-- swagger 相关依赖 Start-->
+            <dependency>
+                <groupId>com.github.uhfun</groupId>
+                <artifactId>swagger-more-annotations</artifactId>
+                <version>${swagger.more.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.uhfun</groupId>
+                <artifactId>swagger-more-core</artifactId>
+                <version>${swagger.more.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>swagger-bootstrap-ui</artifactId>
+                <version>${swagger-bootstrap-ui.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger-annotations.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-micro-spring-boot-starter</artifactId>
+                <version>${knife4j-micro-spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${knife4j-spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox-swagger2.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>io.swagger</groupId>
+                        <artifactId>swagger-models</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-bean-validators</artifactId>
+                <version>${springfox-bean-validators.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-models</artifactId>
+                <version>${swagger-models.version}</version>
+            </dependency>
+            <!-- swagger 相关依赖 End-->
+
+            <!-- 辅助相关依赖 Start-->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>p6spy</groupId>
+                <artifactId>p6spy</artifactId>
+                <version>${p6spy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>${commons-lang.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons-collections4.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.jsonzou</groupId>
+                <artifactId>jmockdata</artifactId>
+                <version>${jmockdata.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validator.version}</version>
+            </dependency>
+
+            <!-- APM -->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-server</artifactId>
+                <version>${spring-boot-admin-server.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-server-ui</artifactId>
+                <version>${spring-boot-admin-server-ui.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-client</artifactId>
+                <version>${spring-boot-admin-client.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-spring-boot-actuator</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+
+            <!-- 日志 logging -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>log4j-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jul-to-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-access</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+
+            <!-- Test -->
+            <!-- https://mvnrepository.com/artifact/io.dropwizard.metrics/metrics-core -->
+            <dependency>
+                <groupId>io.dropwizard.metrics</groupId>
+                <artifactId>metrics-core</artifactId>
+                <version>${metrics.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.dropwizard.metrics</groupId>
+                <artifactId>metrics-healthchecks</artifactId>
+                <version>${metrics.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.dropwizard.metrics</groupId>
+                <artifactId>metrics-jvm</artifactId>
+                <version>${metrics.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+        </dependencies>
+
+    </dependencyManagement>
+
+</project>
