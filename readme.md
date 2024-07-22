@@ -20,4 +20,5 @@
 - [code_chapter](err-in-action%2Fsrc%2Fmain%2Fjava%2Forg%2Fcoder%2Ferr%2Fprogramming%2F_1_code_chapter)
 - [design_chapter](err-in-action%2Fsrc%2Fmain%2Fjava%2Forg%2Fcoder%2Ferr%2Fprogramming%2F_2_design_chapter)
 - [security_chapter](err-in-action%2Fsrc%2Fmain%2Fjava%2Forg%2Fcoder%2Ferr%2Fprogramming%2F_3_security_chapter)
-- [other](err-in-action%2Fsrc%2Fmain%2Fjava%2Forg%2Fcoder%2Ferr%2Fprogramming%2F_4_other)
+- [troubleshooting_tools](err-in-action%2Fsrc%2Fmain%2Fjava%2Forg%2Fcoder%2Ferr%2Fprogramming%2F_4_troubleshooting_tools)
+- [other](err-in-action%2Fsrc%2Fmain%2Fjava%2Forg%2Fcoder%2Ferr%2Fprogramming%2F_5_other)

@@ -10,6 +10,10 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping("ribbonretryissueserver")
 @Slf4j
 public class RibbonRetryIssueServerController {
+
+    /**
+     * curl http://localhost:45678/ribbonretryissueserver/wrong
+     */
     @GetMapping("wrong")
     public void sendSmsWrong(@RequestParam("mobile") String mobile,
                              @RequestParam("message") String message,
@@ -18,6 +22,9 @@ public class RibbonRetryIssueServerController {
         TimeUnit.SECONDS.sleep(2);
     }
 
+    /**
+     * curl http://localhost:45678/ribbonretryissueserver/right
+     */
     @PostMapping("right")
     public void sendSmsRight(@RequestParam("mobile") String mobile,
                              @RequestParam("message") String message,

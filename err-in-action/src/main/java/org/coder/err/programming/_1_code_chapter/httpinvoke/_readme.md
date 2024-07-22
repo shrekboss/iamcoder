@@ -55,10 +55,13 @@
 - 结论三，单独的超时可以覆盖全局超时，这符合预期，不算坑。
 
   ```properties
+  # 修改 Feign 客户端默认的两个全局超时时间，只修改读取超时，这样的配置是无法生效的！
   feign.client.config.default.readTimeout=3000
   feign.client.config.default.connectTimeout=3000
-  feign.client.config.clientsdk.readTimeout=2000
-  feign.client.config.clientsdk.connectTimeout=2000
+  
+  # 针对单独的 Feign Client 设置超时时间，可以把 default 替换为 Client 的 name
+  #feign.client.config.clientsdk.readTimeout=2000
+  #feign.client.config.clientsdk.connectTimeout=2000
   ```
 
 - 结论四，除了可以配置 Feign，也可以配置 Ribbon 组件的参数来修改两个超时时间。有点坑的是，参数首字母要大写，和 Feign 的配置不同。

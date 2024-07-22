@@ -5,6 +5,6 @@ import org.springframework.context.annotation.Configuration;
 
 
 @Configuration
-@EnableFeignClients(basePackages = "org.crayzer.err.coding.httpinvoke.ribbonretry.feign")
+@EnableFeignClients(basePackages = "org.coder.err.programming._1_code_chapter.httpinvoke.ribbonretry.feign")
 public class AutoConfig {
 }

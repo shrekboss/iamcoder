@@ -24,8 +24,8 @@ public class MyProxy {
     // 构建代理类
     private static String generateSrc(Class<?>[] interfaces) {
         StringBuffer sb = new StringBuffer();
-        sb.append("package org.crayzer.demo.proxy.customJDKProxy;" + ln);
-        sb.append("import org.crayzer.demo.proxy.IUserDao;" + ln);
+        sb.append("package org.coder.design.patterns._4_design_patterns._2_structural._1_proxy._2_dynamic_proxy.customJDKProxy;" + ln);
+        sb.append("import org.coder.design.patterns._4_design_patterns._2_structural._1_proxy._2_dynamic_proxy.simulate.IUserDao;" + ln);
         sb.append("import java.lang.reflect.Method;" + ln);
         sb.append("public final class $Proxy0 implements " + interfaces[0].getSimpleName() + " {" + ln);
 

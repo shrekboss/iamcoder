@@ -57,7 +57,7 @@ public final class HungrySingleton {
 //
 //        /** 通过反射 那么这个实例仍然初始化 */
 //        // try {
-//        //     Class<?> clazz = Class.forName("org.crayzer.demo.singleton.hungry.HungrySingleton");
+//        //     Class<?> clazz = Class.forName("org.coder.design.patterns._4_design_patterns._1_creation._1_singleton._template_code.HungrySingleton");
 //        //     Object instance1 = clazz.newInstance();
 //        //     Object instance2 = clazz.newInstance();
 //        //

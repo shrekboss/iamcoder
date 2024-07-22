@@ -34,11 +34,11 @@ public class RedisCounter {
 ```xml
 
 <beans>
-    <bean id="rateLimiter" class="org.crayzer.RateLimiter">
+    <bean id="rateLimiter" class="org.coder.RateLimiter">
         <constructor-arg ref="redisCounter"/>
     </bean>
 
-    <bean id="redisCounter" class="org.crayzer.redisCounter">
+    <bean id="redisCounter" class="org.coder.redisCounter">
         <constructor-arg type="String" value="127.0.0.1">
         <constructor-arg type="int" value=1234>
     </bean>
@@ -52,11 +52,11 @@ public class RedisCounter {
 ```xml
 
 <beans>
-    <bean id="rateLimiter" class="org.crayzer.RateLimiter">
+    <bean id="rateLimiter" class="org.coder.RateLimiter">
         <constructor-arg ref="redisCounter"/>
     </bean>
 
-    <bean id="redisCounter" class="org.crayzer.redisCounter" scope="singleton" lazy-init="true">
+    <bean id="redisCounter" class="org.coder.redisCounter" scope="singleton" lazy-init="true">
         <constructor-arg type="String" value="127.0.0.1">
         <constructor-arg type="int" value=1234>
     </bean>

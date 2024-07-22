@@ -17,6 +17,9 @@ public class RibbonRetryIssueClientController {
     @Autowired
     private SmsClient smsClient;
 
+    /**
+     * curl http://localhost:45678/ribbonretryissueclient/wrong
+     */
     @GetMapping("wrong")
     public String wrong() {
         log.info("client is called");
