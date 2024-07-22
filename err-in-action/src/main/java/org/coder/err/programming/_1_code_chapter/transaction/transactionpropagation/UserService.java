@@ -26,7 +26,6 @@ public class UserService {
         return userRepository.findByName(name).size();
     }
 
-
     //  - createUserWrong2 failed, reason:Transaction silently rolled back because it has been marked as rollback-only
     @Transactional
     public void createUserWrong2(UserEntity entity) {
@@ -39,7 +38,6 @@ public class UserService {
             log.error("create sub user error:{}", ex.getMessage());
         }
     }
-
 
     @Transactional
     public void createUserRight(UserEntity entity) {

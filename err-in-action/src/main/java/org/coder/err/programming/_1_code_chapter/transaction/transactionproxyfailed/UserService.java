@@ -22,6 +22,7 @@ public class UserService {
 
     /**
      * 私有方法
+     *
      * @Transactional 生效原则 1，除非特殊配置（比如使用 AspectJ 静态织入实现 AOP），否则只有定义
      * 在 public 方法上的 @Transactional 才能生效
      * <p>
@@ -39,10 +40,9 @@ public class UserService {
 
     /**
      * 自调用
-     * @Transactional 生效原则 2，必须通过代理过的类从外部调用目标方法才能生效。
+     * <p>
+     * 生效原则 2，必须通过代理过的类从外部调用目标方法才能生效。
      * spring 通过 AOP 技术对方法进行增s强，要调用增强过的方法必然是调用代理后的对象。
-     * @param name
-     * @return
      */
     public int createUserWrong2(String name) {
         try {
@@ -54,21 +54,21 @@ public class UserService {
         return userRepository.findByName(name).size();
     }
 
-    //重新注入自己
-    public int createUserRight(String name) {
+    // 不出异常
+    @Transactional
+    public int createUserWrong3(String name) {
         try {
-            self.createUserPublic(new UserEntity(name));
+            this.createUserPublic(new UserEntity(name));
         } catch (Exception ex) {
             log.error("create user failed because {}", ex.getMessage());
         }
         return userRepository.findByName(name).size();
     }
 
-    //不出异常
-    @Transactional
-    public int createUserWrong3(String name) {
+    // 重新注入自己
+    public int createUserRight(String name) {
         try {
-            this.createUserPublic(new UserEntity(name));
+            self.createUserPublic(new UserEntity(name));
         } catch (Exception ex) {
             log.error("create user failed because {}", ex.getMessage());
         }

@@ -16,7 +16,6 @@ public class UserService {
     @Autowired
     private SubUserService subUserService;
 
-
     @Transactional
     public void createUser(String name) {
         createMainUser(name);
@@ -25,7 +24,7 @@ public class UserService {
         } catch (Exception ex) {
             log.error("create sub user error:{}", ex.getMessage());
         }
-        //如果createSubUser是NESTED模式，这里抛出异常会导致嵌套事务无法『提交』
+        //如果 createSubUser 是 NESTED 模式，这里抛出异常会导致嵌套事务无法『提交』
         throw new RuntimeException("create main user error");
     }
 

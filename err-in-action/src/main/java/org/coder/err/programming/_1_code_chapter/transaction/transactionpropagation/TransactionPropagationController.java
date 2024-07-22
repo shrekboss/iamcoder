@@ -15,6 +15,9 @@ public class TransactionPropagationController {
     @Autowired
     private UserService userService;
 
+    /**
+     * curl http://localhost:45678/transactionpropagation/wrong1?name=test
+     */
     @GetMapping("wrong1")
     public int wrong(@RequestParam("name") String name) {
         try {
@@ -25,6 +28,9 @@ public class TransactionPropagationController {
         return userService.getUserCount(name);
     }
 
+    /**
+     * curl http://localhost:45678/transactionpropagation/wrong2?name=test
+     */
     @GetMapping("wrong2")
     public int wrong2(@RequestParam("name") String name) {
         try {
@@ -35,6 +41,9 @@ public class TransactionPropagationController {
         return userService.getUserCount(name);
     }
 
+    /**
+     * curl http://localhost:45678/transactionpropagation/right1?name=test
+     */
     @GetMapping("right1")
     public int right(@RequestParam("name") String name) {
         userService.createUserRight(new UserEntity(name));

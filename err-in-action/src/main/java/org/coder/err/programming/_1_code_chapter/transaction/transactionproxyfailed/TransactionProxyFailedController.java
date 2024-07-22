@@ -15,27 +15,41 @@ public class TransactionProxyFailedController {
     @Autowired
     private UserService userService;
 
+    /**
+     * curl http://localhost:45678/transactionproxyfailed/wrong1?name=test
+     */
     @GetMapping("wrong1")
     public int wrong1(@RequestParam("name") String name) {
         return userService.createUserWrong1(name);
     }
 
+    /**
+     * curl http://localhost:45678/transactionproxyfailed/wrong2?name=test
+     */
     @GetMapping("wrong2")
     public int wrong2(@RequestParam("name") String name) {
         return userService.createUserWrong2(name);
     }
 
-
+    /**
+     * curl http://localhost:45678/transactionproxyfailed/wrong3?name=test
+     */
     @GetMapping("wrong3")
     public int wrong3(@RequestParam("name") String name) {
         return userService.createUserWrong3(name);
     }
 
+    /**
+     * curl http://localhost:45678/transactionproxyfailed/right1?name=test
+     */
     @GetMapping("right1")
     public int right1(@RequestParam("name") String name) {
         return userService.createUserRight(name);
     }
 
+    /**
+     * curl http://localhost:45678/transactionproxyfailed/right2?name=test
+     */
     @GetMapping("right2")
     public int right2(@RequestParam("name") String name) {
         try {
