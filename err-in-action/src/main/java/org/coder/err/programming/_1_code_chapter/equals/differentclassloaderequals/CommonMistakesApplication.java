@@ -24,7 +24,6 @@ public class CommonMistakesApplication {
             }
         };
 
-
         Object point1 = classLoader.loadClass(Point.class.getName()).newInstance();
         Point point2 = new Point();
         Point point3 = (Point) ClassLoader.getSystemClassLoader().loadClass(Point.class.getName()).newInstance();
