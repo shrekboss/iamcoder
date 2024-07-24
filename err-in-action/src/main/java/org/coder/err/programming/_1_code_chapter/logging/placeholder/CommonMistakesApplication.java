@@ -1,0 +1,16 @@
+package org.coder.err.programming._1_code_chapter.logging.placeholder;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class CommonMistakesApplication {
+
+    public static void main(String[] args) {
+        System.setProperty("logging.config", "classpath:org/coder/err/programming/logging/placeholder/logger_debug.xml");
+
+        System.setProperty("org.springframework.boot.logging.LoggingSystem", "none");
+        SpringApplication.run(CommonMistakesApplication.class, args);
+    }
+}
+
