@@ -16,6 +16,7 @@
         <module>concurrency-in-action</module>
         <module>design-patterns-in-action</module>
         <module>err-in-action</module>
+        <module>io-in-action</module>
     </modules>
 
     <properties>
