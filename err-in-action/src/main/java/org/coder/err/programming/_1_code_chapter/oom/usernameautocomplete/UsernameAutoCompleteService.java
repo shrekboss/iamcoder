@@ -23,10 +23,11 @@ public class UsernameAutoCompleteService {
     @Autowired
     private UserRepository userRepository;
 
-    @PostConstruct
+//    @PostConstruct
     public void wrong() {
         //先保存10000个用户名随机的用户到数据库中
-        userRepository.saveAll(LongStream.rangeClosed(1, 10000).mapToObj(i -> new UserEntity(i, randomName())).collect(Collectors.toList()));
+        userRepository.saveAll(LongStream.rangeClosed(1, 10000)
+                .mapToObj(i -> new UserEntity(i, randomName())).collect(Collectors.toList()));
 
         //从数据库加载所有用户
         userRepository.findAll().forEach(userEntity -> {
@@ -40,18 +41,19 @@ public class UsernameAutoCompleteService {
             }
         });
         log.info("autoCompleteIndex size:{} count:{}", autoCompleteIndex.size(),
-                autoCompleteIndex.entrySet().stream().map(item -> item.getValue().size()).reduce(0, Integer::sum));
+                autoCompleteIndex.values().stream().map(List::size).reduce(0, Integer::sum));
     }
 
     @PostConstruct
     public void right() {
-        userRepository.saveAll(LongStream.rangeClosed(1, 10000).mapToObj(i -> new UserEntity(i, randomName())).collect(Collectors.toList()));
+        userRepository.saveAll(LongStream.rangeClosed(1, 10000)
+                .mapToObj(i -> new UserEntity(i, randomName())).collect(Collectors.toList()));
 
         HashSet<UserDTO> cache = userRepository.findAll().stream()
                 .map(item -> new UserDTO(item.getName()))
                 .collect(Collectors.toCollection(HashSet::new));
 
-        cache.stream().forEach(userDTO -> {
+        cache.forEach(userDTO -> {
             int len = userDTO.getName().length();
             for (int i = 0; i < len; i++) {
                 String key = userDTO.getName().substring(0, i + 1);
@@ -59,7 +61,7 @@ public class UsernameAutoCompleteService {
             }
         });
         log.info("autoCompleteIndex size:{} count:{}", autoCompleteIndex.size(),
-                autoCompleteIndex.entrySet().stream().map(item -> item.getValue().size()).reduce(0, Integer::sum));
+                autoCompleteIndex.values().stream().map(List::size).reduce(0, Integer::sum));
     }
 
 

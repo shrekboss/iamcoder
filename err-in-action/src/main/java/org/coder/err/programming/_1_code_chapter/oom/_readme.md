@@ -26,9 +26,9 @@
 
 ```JAVA
 private static class Entry<K, V> extends WeakReference<Object> {
-  ...
+    // ...
 
-    /
+    /**
      * Creates new entry.
      */
     Entry(Object key, V value,
@@ -39,6 +39,7 @@ private static class Entry<K, V> extends WeakReference<Object> {
         this.hash = hash;
         this.next = next;
     }
+}
 ```
 
 queue 是一个 ReferenceQueue，被 GC 的对象会被丢进这个 queue 里面。
@@ -65,7 +66,7 @@ private Entry<K, V>[] getTable() {
     return table;
 }
 
-/
+/**
  * Expunges stale entries from the table.
  */
 private void expungeStaleEntries() {
