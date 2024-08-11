@@ -18,5 +18,5 @@
 16. [用好Java 8的日期时间类，少踩一些“老三样”的坑](datetime)
 17. [别以为“自动挡”就不可能出现OOM](oom)
 18. [当反射、注解和泛型遇到OOP时，会有哪些坑？](advancedfeatures)
-19. spring框架：IoC和AOP是扩展的核心
-20. spring框架：框架帮我们做了很多工作也带来了复杂度
+19. [spring框架：IoC和AOP是扩展的核心](springpart1)
+20. [spring框架：框架帮我们做了很多工作也带来了复杂度](springpart2)
