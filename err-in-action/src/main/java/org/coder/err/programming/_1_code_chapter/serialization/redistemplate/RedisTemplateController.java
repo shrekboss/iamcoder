@@ -90,9 +90,9 @@ public class RedisTemplateController {
     /**
      * curl http://localhost:45678/redistemplate/right3
      * <p/>
-     * userRedisTemplate get User(name=crayzer, age=36) class org.crayzer.err.coding.serialization.redistemplate.User
+     * userRedisTemplate get User(name=crayzer, age=36) class serialization.redistemplate.User
      * <p/>
-     * stringRedisTemplate get {"@class":"org.crayzer.err.coding.serialization.redistemplate.User","name":"crayzer","age":36}
+     * stringRedisTemplate get {"@class":"org.coder.err.programming._1_code_chapter.serialization.redistemplate.User","name":"crayzer","age":36}
      * <p/>
      * redis-cli: get crayzer
      */
