@@ -42,20 +42,20 @@ public class CommonMistakesApplication {
 
     public static void main(String[] args) throws Exception {
         System.out.println("===============test===============");
-         test();
+        test();
 
         System.out.println("===============wrong1===============");
-         wrong1();
+        wrong1();
         System.out.println("===============wrong1fix===============");
-         wrong1fix();
+        wrong1fix();
         System.out.println("===============better===============");
-         better();
+        better();
 
         // SimpleDateFormat parse | format 线程非安全
         System.out.println("===============wrong2===============");
-         wrong2();
+        wrong2();
         System.out.println("===============wrong2fix===============");
-         wrong2fix();
+        wrong2fix();
 
         // dateTimeFormatter 测试
         System.out.println("===============dateTimeFormatterDemo===============");

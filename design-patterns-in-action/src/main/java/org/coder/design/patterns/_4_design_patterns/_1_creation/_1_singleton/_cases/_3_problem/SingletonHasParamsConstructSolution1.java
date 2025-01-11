@@ -25,7 +25,7 @@ public class SingletonHasParamsConstructSolution1 {
     }
 
     public synchronized static SingletonHasParamsConstructSolution1 init(int paramA, int paramB) {
-        if (instance != null){
+        if (instance != null) {
             throw new RuntimeException("Singleton has been created!");
         }
         instance = new SingletonHasParamsConstructSolution1(paramA, paramB);

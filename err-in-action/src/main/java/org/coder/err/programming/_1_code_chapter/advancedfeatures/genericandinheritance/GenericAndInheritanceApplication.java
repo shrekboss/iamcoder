@@ -94,12 +94,12 @@ public class GenericAndInheritanceApplication {
                 // 使用 Stream 时，如果希望只匹配 0 或 1 项的话，可以考虑配合 ifPresent 来使用
                 // findFirst 方法。
                 .findFirst().ifPresent(method -> {
-            try {
-                method.invoke(child2, "test");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
+                    try {
+                        method.invoke(child2, "test");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
         System.out.println(child2);
     }
 }

@@ -14,6 +14,7 @@ public class FunctionalProgramming {
 
     // 有状态函数: 执行结果依赖b的值是多少，即便入参相同，多次执行函数，函数的返回值有可能不同，因为b值有可能不同。
     int b;
+
     int increase(int a) {
         return a + b;
     }

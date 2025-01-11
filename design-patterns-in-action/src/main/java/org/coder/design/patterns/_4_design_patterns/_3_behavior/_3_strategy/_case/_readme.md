@@ -64,6 +64,7 @@ public class SortingTool {
 - [Sorter1.java](Sorter1.java)
 
 对于 Java 语言来说，可以通过反射来避免对策略工厂类的修改。具体是这么做的：
+
 - 通过一个配置文件或者自定义的 annotation 来标注都有哪些策略类；
 - 策略工厂类读取配置文件或者搜索被 annotation 标注的策略类，然后通过反射动态地加载这些策略类、创建策略对象；
 - 当新添加一个策略的时候，只需要将这个新添加的策略类添加到配置文件或者用 annotation 标注即可。

@@ -70,8 +70,9 @@ public class ApplicationMain {
 ```
 
 - 为了能用快照恢复 InputText 对象，在 InputText 类中定义了 setText() 函数，但这个函数有可能会被其他业务使用，所以，暴露不应该暴露的函数违背了封装原则；
-- 快照本身是不可变的，理论上讲，不应该包含任何 set() 等修改内部状态的函数，但在上面的代码实现中，“快照“这个业务模型复用了 InputText 类的定义，而 InputText 类本身有一系列修改内部状态的函数，所以，用 InputText 类来表示快照违背了封装原则。
+- 快照本身是不可变的，理论上讲，不应该包含任何 set() 等修改内部状态的函数，但在上面的代码实现中，“快照“这个业务模型复用了
+  InputText 类的定义，而 InputText 类本身有一系列修改内部状态的函数，所以，用 InputText 类来表示快照违背了封装原则。
 
 - 针对以上问题，我们对代码做两点修改
-  - 定义一个独立的类（Snapshot 类）来表示快照，而不是复用 InputText 类。这个类只暴露 get() 方法，没有 set() 等任何修改内部状态的方法。
-  - 在 InputText 类中，把 setText() 方法重命名为 restoreSnapshot() 方法，用意更加明确，只用来恢复对象。
+    - 定义一个独立的类（Snapshot 类）来表示快照，而不是复用 InputText 类。这个类只暴露 get() 方法，没有 set() 等任何修改内部状态的方法。
+    - 在 InputText 类中，把 setText() 方法重命名为 restoreSnapshot() 方法，用意更加明确，只用来恢复对象。

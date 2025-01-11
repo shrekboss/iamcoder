@@ -20,8 +20,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  */
 public class MonitorClient {
 
-    public static void main(String[] args) throws Exception
-    {
+    public static void main(String[] args) throws Exception {
         ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(
                 Runtime.getRuntime().availableProcessors() * 2);
 

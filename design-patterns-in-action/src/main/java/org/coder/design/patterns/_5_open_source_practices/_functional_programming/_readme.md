@@ -90,6 +90,7 @@ public interface Predicate<T> {
     }
 }
 ```
+
 ### Guava 对函数式编程的增强
 
 Google Guava 并没有提供太多函数式编程的支持，仅仅封装了几个遍历集合操作的接口。

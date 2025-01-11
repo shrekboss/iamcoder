@@ -32,8 +32,8 @@ public final class HungrySingleton {
     /**
      * 防止序列化和反序列化后，破坏单例模式规则，启用 readResolve() 方法
      **/
-    public  Object readResolve() throws ObjectStreamException {
-        return  INSTANCE;
+    public Object readResolve() throws ObjectStreamException {
+        return INSTANCE;
     }
 
 //    public static void main(String[] args) {

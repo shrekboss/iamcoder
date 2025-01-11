@@ -16,9 +16,12 @@ public class CapeMario implements IMario {
 
     private static final CapeMario instance = new CapeMario();
 
-    private CapeMario() {}
+    private CapeMario() {
+    }
 
-    public static CapeMario getInstance() { return instance; }
+    public static CapeMario getInstance() {
+        return instance;
+    }
 
     @Override
     public State getName() {

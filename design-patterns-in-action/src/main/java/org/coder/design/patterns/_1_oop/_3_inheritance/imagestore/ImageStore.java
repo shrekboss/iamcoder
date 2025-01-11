@@ -8,5 +8,6 @@ import org.coder.design.patterns._1_oop._3_inheritance.imagestore.pojo.Image;
  */
 public interface ImageStore {
     String upload(Image image, String bucketName);
+
     Image download(String url);
 }

@@ -160,17 +160,19 @@ public class ToolApplication {
 参考代码：
 
 - [Extractor.java](alternative_solution%2FExtractor.java)
-  - [WordExtractor.java](alternative_solution%2FWordExtractor.java)
-  - [PdfExtractor.java](alternative_solution%2FPdfExtractor.java)
-  - [PPTExtractor.java](alternative_solution%2FPPTExtractor.java)
+    - [WordExtractor.java](alternative_solution%2FWordExtractor.java)
+    - [PdfExtractor.java](alternative_solution%2FPdfExtractor.java)
+    - [PPTExtractor.java](alternative_solution%2FPPTExtractor.java)
 - [ExtractorFactory.java](alternative_solution%2FExtractorFactory.java)
 - [ResourceFile.java](alternative_solution%2FResourceFile.java)
-  - [PdfFile.java](alternative_solution%2FPdfFile.java)
-  - [PPTFile.java](alternative_solution%2FPPTFile.java)
-  - [WordFile.java](alternative_solution%2FWordFile.java)
+    - [PdfFile.java](alternative_solution%2FPdfFile.java)
+    - [PPTFile.java](alternative_solution%2FPPTFile.java)
+    - [WordFile.java](alternative_solution%2FWordFile.java)
 - [ResourceFileType.java](alternative_solution%2FResourceFileType.java)
 - [ToolApplication.java](alternative_solution%2FToolApplication.java)
 
-当需要添加新的功能的时候，比如压缩资源文件，类似抽取文本内容功能的代码实现，只需要添加一个 Compressor 接口，PdfCompressor、PPTCompressor、WordCompressor 三个实现类，以及创建它们的 CompressorFactory 工厂类即可。唯一需要修改的只有最上层的 ToolApplication 类。基本上符合“对扩展开放、对修改关闭”的设计原则。
+当需要添加新的功能的时候，比如压缩资源文件，类似抽取文本内容功能的代码实现，只需要添加一个 Compressor
+接口，PdfCompressor、PPTCompressor、WordCompressor 三个实现类，以及创建它们的 CompressorFactory 工厂类即可。唯一需要修改的只有最上层的
+ToolApplication 类。基本上符合“对扩展开放、对修改关闭”的设计原则。
 
 

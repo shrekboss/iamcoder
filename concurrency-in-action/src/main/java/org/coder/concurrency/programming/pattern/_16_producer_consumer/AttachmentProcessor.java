@@ -70,14 +70,14 @@ public class AttachmentProcessor {
     }
 
     private File saveAsFile(InputStream in, String documentId,
-            String originalFileName) throws IOException {
+                            String originalFileName) throws IOException {
         String dirName = ATTACHMENT_STORE_BASE_DIR + documentId;
         File dir = new File(dirName);
         dir.mkdirs();
         File file =
                 new File(dirName + '/'
                         + Normalizer.normalize(originalFileName,
-                                Normalizer.Form.NFC));
+                        Normalizer.Form.NFC));
 
         // 防止目录跨越攻击
         if (!new File(dirName)

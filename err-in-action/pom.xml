@@ -252,14 +252,14 @@
             </resource>
         </resources>
         <plugins>
-<!--            <plugin>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--                <version>2.5.4</version>-->
-<!--                <configuration>-->
-<!--                    <mainClass>org.coder.err.troubleshootingtools.jdktool.CommonMistakesApplication</mainClass>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
+            <!--            <plugin>-->
+            <!--                <groupId>org.springframework.boot</groupId>-->
+            <!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+            <!--                <version>2.5.4</version>-->
+            <!--                <configuration>-->
+            <!--                    <mainClass>org.coder.err.troubleshootingtools.jdktool.CommonMistakesApplication</mainClass>-->
+            <!--                </configuration>-->
+            <!--            </plugin>-->
         </plugins>
     </build>
 </project>

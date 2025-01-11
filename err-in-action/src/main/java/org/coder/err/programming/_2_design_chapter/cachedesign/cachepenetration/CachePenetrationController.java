@@ -3,7 +3,6 @@ package org.coder.err.programming._2_design_chapter.cachedesign.cachepenetration
 import com.google.common.hash.BloomFilter;
 import com.google.common.hash.Funnels;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -22,7 +22,7 @@ import java.util.stream.IntStream;
 @RestController
 public class CachePenetrationController {
 
-    @Autowired
+    @Resource
     private StringRedisTemplate stringRedisTemplate;
     private AtomicInteger atomicInteger = new AtomicInteger();
     private BloomFilter<Integer> bloomFilter;
@@ -61,8 +61,7 @@ public class CachePenetrationController {
             //校验从数据库返回的数据是否有效
             if (!StringUtils.isEmpty(data)) {
                 stringRedisTemplate.opsForValue().set(key, data, 30, TimeUnit.SECONDS);
-            }
-            else {
+            } else {
                 //如果无效，直接在缓存中设置一个NODATA，这样下次查询时即使是无效用户还是可以命中缓存
                 stringRedisTemplate.opsForValue().set(key, "NODATA", 30, TimeUnit.SECONDS);
             }

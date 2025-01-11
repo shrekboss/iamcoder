@@ -30,6 +30,7 @@ public class ProductController {
 
     /**
      * 创建商品
+     *
      * @return
      */
     @PostMapping(value = "/create")
@@ -51,6 +52,7 @@ public class ProductController {
 
     /**
      * 参数校验：责任链模式
+     *
      * @param param
      * @return
      */
@@ -75,6 +77,7 @@ public class ProductController {
 
     /**
      * 获取处理器配置：通常配置使用统一配置中心存储，支持动态变更
+     *
      * @return
      */
     private ProductCheckHandlerConfig getHandlerConfigFile() {
@@ -87,10 +90,11 @@ public class ProductController {
 
     /**
      * 获取处理器
+     *
      * @param config
      * @return
      */
-    private AbstractCheckHandler getHandler (ProductCheckHandlerConfig config) {
+    private AbstractCheckHandler getHandler(ProductCheckHandlerConfig config) {
         //配置检查：没有配置处理器链路，则不执行校验逻辑
         if (Objects.isNull(config)) {
             return null;

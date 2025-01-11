@@ -45,8 +45,8 @@ public class Driver extends NonRegisteringDriver implements java.sql.Driver {
 ```
 
 - 当执行 Class.forName(“com.mysql.jdbc.Driver”) 这条语句的时候，实际上是做了两件事情：
-  - 要求 JVM 查找并加载指定的 Driver 类；
-  - 执行该类的静态代码，也就是将 MySQL Driver 注册到 DriverManager 类中。
+    - 要求 JVM 查找并加载指定的 Driver 类；
+    - 执行该类的静态代码，也就是将 MySQL Driver 注册到 DriverManager 类中。
 
 DriverManager 类是干什么用的。具体的代码如下所示：
 
@@ -94,6 +94,7 @@ public class DriverManager {
 - “实现”：具体的 Driver（比如，com.mysql.jdbc.Driver）就相当于“实现”。注意，这里所说的“实现”，也并非指“接口的实现类”，而是跟具体数据库相关的一套“类库”。
 
 参考代码：
+
 - [Notification.java](..%2F..%2F..%2Fcommon%2FNotification.java)
 - [SevereNotification.java](SevereNotification.java)
 - [NormalNotification.java](NormalNotification.java)

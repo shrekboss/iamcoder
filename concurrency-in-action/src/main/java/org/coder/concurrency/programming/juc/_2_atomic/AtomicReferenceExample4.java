@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * 4.性能大PK
  * AtomicReference所提供的非阻塞原子性对象引用读写解决方案，被应用在很多高并发容器中，比如ConcurrentHashMap。
  * 为了让读者更加直观地看到阻塞与非阻塞的性能对比，本节将使用JMH工具对比两者的性能，参赛双方分别是synchronized关键字和AtomicReference。
- * 
+ * <p>
  * 对于基准测试的代码，此处不做过多解释，第1章已经非常详细地讲解了JMH的使用。
  * 执行上面的基准测试代码，会看到两者之间的性能差异。
  * Benchmark                            Mode  Cnt  Score   Error  Units
@@ -26,10 +26,10 @@ import java.util.concurrent.atomic.AtomicReference;
  * Synchronized关键字的线程堆栈
  * 88.9%         BLOCKED
  * 10.5%         RUNNABLE
- *  0.6%         WAITING
+ * 0.6%         WAITING
  * AtomicReference的线程堆栈
  * 98.8%         RUNNABLE
- *  1.2%         WAITING
+ * 1.2%         WAITING
  */
 @Measurement(iterations = 20)
 @Warmup(iterations = 20)
@@ -37,59 +37,62 @@ import java.util.concurrent.atomic.AtomicReference;
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
 public class AtomicReferenceExample4 {
 
-	@State(Scope.Group)
-	public static class MonitorRace {
-		public MonitorRace() {
-			System.out.println("111111");
-		}
-		private DebitCard debitCard = new DebitCard("Alex", 0);
-		public void syncInc() {
-			synchronized (AtomicReferenceExample4.class) {
-				final DebitCard dc = debitCard;
-				final DebitCard newDC = new DebitCard(dc.getAccount(), dc.getAmount() + 10);
-				
-				this.debitCard = newDC;
-			}
-		}
-	}
-	
-	@State(Scope.Group)
-	public static class AtomicReferenceRace {
-		public AtomicReferenceRace() {
-			System.out.println("222222");
-		}
-		private AtomicReference<DebitCard> ref = new AtomicReference<>(new DebitCard("Alex", 0));
-		
-		public void casInc() {
-			final DebitCard dc = ref.get();
-			final DebitCard newDC = new DebitCard(dc.getAccount(), dc.getAmount() + 10);
-			ref.compareAndSet(dc, newDC);
-		}
-	}
-	
-	@GroupThreads(10)
-	@Group("sync")
-	@Benchmark
-	public void syncInc(MonitorRace monitor) {
-		monitor.syncInc();
-	}
-	
-	@GroupThreads(10)
-	@Group("cas")
-	@Benchmark
-	public void casInc(AtomicReferenceRace casRace) {
-		casRace.casInc();
-	}
-	
-	public static void main(String[] args) throws RunnerException {
-		Options opts = new OptionsBuilder()
-				.include(AtomicReferenceExample4.class.getSimpleName())
-				.forks(1)
-				.timeout(TimeValue.seconds(10))
-				.addProfiler(StackProfiler.class)
-				.build();
-		new Runner(opts).run();
-	}
+    @State(Scope.Group)
+    public static class MonitorRace {
+        public MonitorRace() {
+            System.out.println("111111");
+        }
+
+        private DebitCard debitCard = new DebitCard("Alex", 0);
+
+        public void syncInc() {
+            synchronized (AtomicReferenceExample4.class) {
+                final DebitCard dc = debitCard;
+                final DebitCard newDC = new DebitCard(dc.getAccount(), dc.getAmount() + 10);
+
+                this.debitCard = newDC;
+            }
+        }
+    }
+
+    @State(Scope.Group)
+    public static class AtomicReferenceRace {
+        public AtomicReferenceRace() {
+            System.out.println("222222");
+        }
+
+        private AtomicReference<DebitCard> ref = new AtomicReference<>(new DebitCard("Alex", 0));
+
+        public void casInc() {
+            final DebitCard dc = ref.get();
+            final DebitCard newDC = new DebitCard(dc.getAccount(), dc.getAmount() + 10);
+            ref.compareAndSet(dc, newDC);
+        }
+    }
+
+    @GroupThreads(10)
+    @Group("sync")
+    @Benchmark
+    public void syncInc(MonitorRace monitor) {
+        monitor.syncInc();
+    }
+
+    @GroupThreads(10)
+    @Group("cas")
+    @Benchmark
+    public void casInc(AtomicReferenceRace casRace) {
+        casRace.casInc();
+    }
+
+    public static void main(String[] args) throws RunnerException {
+        Options opts = new OptionsBuilder()
+                .include(AtomicReferenceExample4.class.getSimpleName())
+                .forks(1)
+                .timeout(TimeValue.seconds(10))
+                .addProfiler(StackProfiler.class)
+                .build();
+        new Runner(opts).run();
+    }
 
 }
 

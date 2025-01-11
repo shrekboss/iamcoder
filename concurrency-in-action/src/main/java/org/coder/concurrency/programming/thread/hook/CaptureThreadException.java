@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
  * <p>
  * 解决的问题：线程在执行单元中是不允许抛出 checked 异常的，而且线程运行在自己的上下文中，派生它的线程无法直接获得它运行中出现的异常信息。
  * </p>
+ *
  * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @see Thread.UncaughtExceptionHandler
  * @see Thread#setUncaughtExceptionHandler(Thread.UncaughtExceptionHandler)：为某个特定线程指定 UncaughtExceptionHandler

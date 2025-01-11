@@ -49,7 +49,7 @@ public final class EnumLazySingleton {
     }
 
     public static void main(String[] args) {
-        IntStream.range(0,5).mapToObj(i -> new Thread(() -> {
+        IntStream.range(0, 5).mapToObj(i -> new Thread(() -> {
             System.out.println(Thread.currentThread().getName() + " --> " + (EnumLazySingleton.getInstance().data[i] = (byte) i));
         }, "Test-Tread-" + i)).forEach(Thread::start);
     }

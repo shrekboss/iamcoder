@@ -1,4 +1,5 @@
 ## 如何实现线程唯一的单例？
+
 > 参考代码：[IdGeneratorForClusterUnique.java](IdGeneratorForClusterUnique.java)
 
 ## 如何实现集群环境下的单例？
@@ -10,6 +11,7 @@
 经典的单例模式是进程内唯一的
 
 集群环境下的单例模式伪代码
+
 ```java
 import java.util.concurrent.atomic.AtomicLong;
 

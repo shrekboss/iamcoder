@@ -11,7 +11,7 @@
 
     <properties>
         <skipTests>true</skipTests>
-<!--        <revision>1.0.0-SNAPSHOT</revision>-->
+        <!--        <revision>1.0.0-SNAPSHOT</revision>-->
         <!-- 业务组件版本定义 -->
         <component-web-controller.version>1.0.0-SNAPSHOT</component-web-controller.version>
         <component-def-event.version>1.0.0-SNAPSHOT</component-def-event.version>

@@ -1,11 +1,12 @@
 package org.coder.err.programming._1_code_chapter.springpart1.aopmetrics;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 @Slf4j
 @RestController //自动进行监控
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 // 将MetricsAspect这个Bean的优先级设置为最高 值越大优先级反而越低
 // @Order(Ordered.HIGHEST_PRECEDENCE)
 public class MetricsController {
-    @Autowired
+    @Resource
     private UserService userService;
 
     /**

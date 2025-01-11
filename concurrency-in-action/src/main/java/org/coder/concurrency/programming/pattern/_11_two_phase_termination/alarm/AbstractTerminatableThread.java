@@ -25,6 +25,7 @@ public abstract class AbstractTerminatableThread extends Thread implements Termi
 
     /**
      * 多个可停止线程实例
+     *
      * @param terminationToken 线程间共享的线程终止标志实例
      */
     public AbstractTerminatableThread(TerminationToken terminationToken) {

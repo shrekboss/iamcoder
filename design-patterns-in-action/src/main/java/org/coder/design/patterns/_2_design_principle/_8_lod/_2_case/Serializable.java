@@ -6,5 +6,5 @@ package org.coder.design.patterns._2_design_principle._8_lod._2_case;
  */
 public interface Serializable {
 
-  String serialize(Object object);
+    String serialize(Object object);
 }

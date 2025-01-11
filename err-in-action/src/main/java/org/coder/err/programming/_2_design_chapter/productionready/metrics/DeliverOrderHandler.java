@@ -23,11 +23,13 @@ public class DeliverOrderHandler {
     //配送服务运行状态(开关设置)
     private volatile boolean deliverStatus = true;
     private AtomicLong deliverCounter = new AtomicLong();
+
     //通过一个外部接口来改变配送状态模拟配送服务停工
     @PostMapping("status")
     public void status(@RequestParam("status") boolean status) {
         deliverStatus = status;
     }
+
     @PostConstruct
     public void init() {
         //同样注册一个gauge指标deliverOrder.totalSuccess，代表总的配送单量，只需注册一次即可

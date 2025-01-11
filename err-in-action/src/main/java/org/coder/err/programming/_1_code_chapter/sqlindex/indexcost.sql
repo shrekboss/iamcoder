@@ -16,7 +16,8 @@ CALL insert_person();
 # GRANT ALL PRIVILEGES ON *.* TO 'crayzer'@'%' WITH GRANT OPTION;
 # FLUSH PRIVILEGES;
 
-select count(*) from person;
+select count(*)
+from person;
 
 # 查看数据和索引占用的磁盘：
 select DATA_LENGTH, INDEX_LENGTH

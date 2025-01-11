@@ -1,6 +1,7 @@
 ## Half-sync/Half-async 模式的可复用实现代码
 
 参考代码：
+
 - [AsyncTask.java](AsyncTask.java)
 - [SampleAsyncTask.java](SampleAsyncTask.java)
 

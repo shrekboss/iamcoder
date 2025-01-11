@@ -10,14 +10,14 @@ import java.util.stream.LongStream;
  * Fork/Join框架是在JDK1.7版本中被Doug Lea引入的，Fork/Join计算模型旨在充分利用多核CPU的并行运算能力，
  * 将一个复杂的任务拆分（fork）成若干个并行计算，然后将结果合并（join），以下是有关Fork Join算法计算模型的伪代码。
  * Result solve(Problem problem){
- * 		if(problem is small)
- * 			directly solve problem
- * 		else {
- * 			split problem into independent parts
- * 			fork new subtasks to solve each part
- * 			join all subtasks
- * 			compose result from subresults
- * 		}
+ * if(problem is small)
+ * directly solve problem
+ * else {
+ * split problem into independent parts
+ * fork new subtasks to solve each part
+ * join all subtasks
+ * compose result from subresults
+ * }
  * }
  * <p>
  * 上述伪代码摘自Doug Lea发表的同名论文http://gee.cs.oswego.edu/dl/papers/fj.pdf。
@@ -47,63 +47,63 @@ import java.util.stream.LongStream;
  */
 public class RecursiveTaskSum extends RecursiveTask<Long> {
 
-	private static final long serialVersionUID = -678252632937542771L;
-	private final long[] numbers;
-	private final int startIndex;
-	private final int endIndex;
-	//每个子任务运算的最多元素数量
-	private static final long THRESHOLD = 10_000L;
+    private static final long serialVersionUID = -678252632937542771L;
+    private final long[] numbers;
+    private final int startIndex;
+    private final int endIndex;
+    //每个子任务运算的最多元素数量
+    private static final long THRESHOLD = 10_000L;
 
-	public RecursiveTaskSum(long[] numbers) {
-		this(numbers, 0, numbers.length);
-	}
+    public RecursiveTaskSum(long[] numbers) {
+        this(numbers, 0, numbers.length);
+    }
 
-	public RecursiveTaskSum(long[] numbers, int startIndex, int endIndex) {
-		this.numbers = numbers;
-		this.startIndex = startIndex;
-		this.endIndex = endIndex;
-	}
+    public RecursiveTaskSum(long[] numbers, int startIndex, int endIndex) {
+        this.numbers = numbers;
+        this.startIndex = startIndex;
+        this.endIndex = endIndex;
+    }
 
 
-	@Override
-	protected Long compute() {
-		int length = endIndex - startIndex;
-		//当元素数量少于等于THRESHOLD时，任务将不必再拆分
-		if (length <= THRESHOLD) {
-			//直接计算
-			long result = 0L;
-			for (int i = startIndex; i < endIndex; i++) {
-				result += numbers[i];
-			}
-			return result;
-		}
-		//拆分任务（一分为二，被拆分后的任务有可能还会被拆分：递归）
-		int tempEndIndex = startIndex + length / 2;
-		//第一个子任务
-		RecursiveTaskSum firstTask = new RecursiveTaskSum(numbers, startIndex, tempEndIndex);
-		//异步执行第一个被拆分的子任务（子任务有可能还会被拆，这将取决于元素数量）
-		firstTask.fork();
-		//拆分第二个子任务
-		RecursiveTaskSum secondTask = new RecursiveTaskSum(numbers, tempEndIndex, endIndex);
-		//异步执行第二个被拆分的子任务（子任务有可能还会被拆，这将取决于元素数量）
-		secondTask.fork();
-		//join等待子任务的运算结果
-		Long secondTaskResult = secondTask.join();
-		Long firstTaskResult = firstTask.join();
-		//将子任务的结果相加然后返回
-		return (secondTaskResult + firstTaskResult);
-	}
+    @Override
+    protected Long compute() {
+        int length = endIndex - startIndex;
+        //当元素数量少于等于THRESHOLD时，任务将不必再拆分
+        if (length <= THRESHOLD) {
+            //直接计算
+            long result = 0L;
+            for (int i = startIndex; i < endIndex; i++) {
+                result += numbers[i];
+            }
+            return result;
+        }
+        //拆分任务（一分为二，被拆分后的任务有可能还会被拆分：递归）
+        int tempEndIndex = startIndex + length / 2;
+        //第一个子任务
+        RecursiveTaskSum firstTask = new RecursiveTaskSum(numbers, startIndex, tempEndIndex);
+        //异步执行第一个被拆分的子任务（子任务有可能还会被拆，这将取决于元素数量）
+        firstTask.fork();
+        //拆分第二个子任务
+        RecursiveTaskSum secondTask = new RecursiveTaskSum(numbers, tempEndIndex, endIndex);
+        //异步执行第二个被拆分的子任务（子任务有可能还会被拆，这将取决于元素数量）
+        secondTask.fork();
+        //join等待子任务的运算结果
+        Long secondTaskResult = secondTask.join();
+        Long firstTaskResult = firstTask.join();
+        //将子任务的结果相加然后返回
+        return (secondTaskResult + firstTaskResult);
+    }
 
-	public static void main(String[] args) {
-		//创建一个数组
-		long[] numbers = LongStream.rangeClosed(1, 9_000_000).toArray();
-		//定义RecursiveTask
-		RecursiveTaskSum forkJoinSum = new RecursiveTaskSum(numbers);
-		//创建ForkJoinPool并提交执行RecursiveTask
-		Long sum = ForkJoinPool.commonPool().invoke(forkJoinSum);
-		//输出结果
-		System.out.println(sum);
-		//validation result验证结果的正确性
-		assert sum == LongStream.rangeClosed(1, 9_000_000).sum();
-	}
+    public static void main(String[] args) {
+        //创建一个数组
+        long[] numbers = LongStream.rangeClosed(1, 9_000_000).toArray();
+        //定义RecursiveTask
+        RecursiveTaskSum forkJoinSum = new RecursiveTaskSum(numbers);
+        //创建ForkJoinPool并提交执行RecursiveTask
+        Long sum = ForkJoinPool.commonPool().invoke(forkJoinSum);
+        //输出结果
+        System.out.println(sum);
+        //validation result验证结果的正确性
+        assert sum == LongStream.rangeClosed(1, 9_000_000).sum();
+    }
 }

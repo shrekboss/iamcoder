@@ -45,7 +45,6 @@ public class VirtualWallet {
     // =============================== 新增功能 ===============================
 
 
-
     public BigDecimal balance() {
         return this.balance;
     }

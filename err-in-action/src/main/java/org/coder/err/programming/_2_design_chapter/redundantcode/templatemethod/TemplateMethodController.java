@@ -5,13 +5,13 @@ import org.coder.err.programming._2_design_chapter.redundantcode.templatemethod.
 import org.coder.err.programming._2_design_chapter.redundantcode.templatemethod.wrong.InternalUserCart;
 import org.coder.err.programming._2_design_chapter.redundantcode.templatemethod.wrong.NormalUserCart;
 import org.coder.err.programming._2_design_chapter.redundantcode.templatemethod.wrong.VipUserCart;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,7 +27,7 @@ public class TemplateMethodController {
         items.put(2L, 4);
     }
 
-    @Autowired
+    @Resource
     private ApplicationContext applicationContext;
 
     @GetMapping("wrong")

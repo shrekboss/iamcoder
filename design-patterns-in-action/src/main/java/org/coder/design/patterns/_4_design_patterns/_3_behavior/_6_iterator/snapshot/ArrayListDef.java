@@ -64,7 +64,7 @@ public class ArrayListDef<E> extends java.util.ArrayList<E> implements ListDef<E
         if (i >= totalSize) {
             throw new IndexOutOfBoundsException();
         }
-        return (E)elements[i];
+        return (E) elements[i];
     }
 
     public long getAddTimestamp(int i) {

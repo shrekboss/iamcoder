@@ -32,22 +32,26 @@ import java.util.concurrent.TimeUnit;
 public class JMHExample21 {
     private BlockingQueue<Integer> queue;
     private final static int VALUE = Integer.MAX_VALUE;
+
     @Setup
     public void init() {
         queue = new ArrayBlockingQueue<>(10);
     }
+
     @GroupThreads(5)
     @Group("blockingQueue")
     @Benchmark
     public void put() throws InterruptedException {
         queue.put(VALUE);
     }
+
     @GroupThreads(5)
     @Group("blockingQueue")
     @Benchmark
     public int take() throws InterruptedException {
         return queue.take();
     }
+
     public static void main(String[] args) throws RunnerException {
         final Options opts = new OptionsBuilder()
                 .include(JMHExample21.class.getSimpleName())

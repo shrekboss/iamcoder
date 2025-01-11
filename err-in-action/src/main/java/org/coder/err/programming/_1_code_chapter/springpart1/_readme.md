@@ -49,7 +49,7 @@ Spring 内部通过三个 Map 的方式解决了这个问题，不会出错。�
           @Getter
           private TestD testD;
       
-          @Autowired
+          @Resource
           public TestC(@Lazy TestD testD) {
               this.testD = testD;
           }
@@ -63,7 +63,7 @@ Spring 内部通过三个 Map 的方式解决了这个问题，不会出错。�
 > Spring 创建的 Bean 默认是单例的，但当 Bean 遇到继承的时候，可能会忽略这一点。
 
 开发基类的架构师将基类设计为有状态的，但并不知道子类是怎么使用基类的；而开发子类的同学，没多想就直接标记了 @Service，让类成为了
-Bean，通过 @Autowired 注解来注入这个服务。但这样设置后，有状态的基类就可能产生内存泄露或线程安全问题。
+Bean，通过 @Resource 注解来注入这个服务。但这样设置后，有状态的基类就可能产生内存泄露或线程安全问题。
 
 - 正确的方式是，在为类标记上 @Service 注解把类型交由容器管理前，首先评估一下类是否有状态，然后为
   Bean 设置合适的 Scope。
@@ -87,7 +87,7 @@ Bean，通过 @Autowired 注解来注入这个服务。但这样设置后，有�
     - 如果不希望走代理的话还有一种方式是，每次直接从 ApplicationContext 中获取 Bean
 
       ```JAVA
-      @Autowired
+      @Resource
       private ApplicationContext applicationContext;
       
       @GetMapping("test2")
@@ -124,7 +124,7 @@ Bean，通过 @Autowired 注解来注入这个服务。但这样设置后，有�
 Integer 的最大值。其实，值越大优先级反而越低，这点比较反直觉
 
 - 切入的连接点是方法，注解定义在类上是无法直接从方法上获取到注解的。修复方式是，改为优先从方法获取，如果获取不到再从类获取，如果还是获取不到再使用默认的注解。
-  
+
 ```java
 Metrics metrics = signature.getMethod().getAnnotation(Metrics.class);
 if(metrics ==null){
@@ -154,15 +154,15 @@ getAnnotation(Metrics .class);
 }
 ```
 
-### 4. @Autowired 注入 Bean 外，还可以使用 @Inject 或 @Resource 来注入 Bean。三种方式的区别
+### 4. @Resource 注入 Bean 外，还可以使用 @Inject 或 @Resource 来注入 Bean。三种方式的区别
 
-#### @Autowired
+#### @Resource
 
-- @Autowired是spring自带的注解，通过 AutowiredAnnotationBeanPostProcessor 类实现的依赖注入；
-- @Autowired是根据类型进行自动装配的，如果需要按名称进行装配，则需要配合@Qualifier；
-- @Autowired有个属性为required，可以配置为false，如果配置为false之后，当没有找到相应bean的时候，
+- @Resource是spring自带的注解，通过 AutowiredAnnotationBeanPostProcessor 类实现的依赖注入；
+- @Resource是根据类型进行自动装配的，如果需要按名称进行装配，则需要配合@Qualifier；
+- @Resource有个属性为required，可以配置为false，如果配置为false之后，当没有找到相应bean的时候，
   系统不会抛错；
-- @Autowired可以作用在变量、setter方法、构造函数上。
+- @Resource可以作用在变量、setter方法、构造函数上。
 
 #### @Inject
 
@@ -178,8 +178,8 @@ getAnnotation(Metrics .class);
 
 #### 总结
 
-- @Autowired是spring自带的，@Inject是JSR330规范实现的，@Resource是JSR250规范实现的，需要导入
+- @Resource是spring自带的，@Inject是JSR330规范实现的，@Resource是JSR250规范实现的，需要导入
   不同的包
-- @Autowired、@Inject用法基本一样，不同的是@Autowired有一个request属性
-- @Autowired、@Inject是默认按照类型匹配的，@Resource是按照名称匹配的
-- @Autowired如果需要按照名称匹配需要和@Qualifier一起使用，@Inject和@Name一起使用
+- @Resource、@Inject用法基本一样，不同的是@Resource有一个request属性
+- @Resource、@Inject是默认按照类型匹配的，@Resource是按照名称匹配的
+- @Resource如果需要按照名称匹配需要和@Qualifier一起使用，@Inject和@Name一起使用

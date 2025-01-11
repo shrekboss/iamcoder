@@ -141,31 +141,31 @@
                 </plugin>
 
                 <!-- 检测代码风格的插件 checkstyle（要在项目根目录下配置规则文件checkstyle.xml），然后使用mvn checkstyle::check命令验证-->
-<!--                <plugin>-->
-<!--                    <groupId>org.apache.maven.plugins</groupId>-->
-<!--                    <artifactId>maven-checkstyle-plugin</artifactId>-->
-<!--                    <version>3.0.0</version>-->
-<!--                    <configuration>-->
-<!--                        <configLocation>/gitlab-ci/checkstyle.xml</configLocation>-->
-<!--                        <consoleOutput>true</consoleOutput>-->
-<!--                        <encoding>UTF-8</encoding>-->
-<!--                        <failsOnError>true</failsOnError>-->
-<!--                        <linkXRef>false</linkXRef>-->
-<!--                        &lt;!&ndash;跳过子module&ndash;&gt;-->
-<!--                        <skip>false</skip>-->
-<!--                        <skipExec>false</skipExec>-->
-<!--                        <violationSeverity>error</violationSeverity>-->
-<!--                    </configuration>-->
-<!--                    <executions>-->
-<!--                        <execution>-->
-<!--                            <id>checkstyle</id>-->
-<!--                            <phase>validate</phase>-->
-<!--                            <goals>-->
-<!--                                <goal>checkstyle</goal>-->
-<!--                            </goals>-->
-<!--                        </execution>-->
-<!--                    </executions>-->
-<!--                </plugin>-->
+                <!--                <plugin>-->
+                <!--                    <groupId>org.apache.maven.plugins</groupId>-->
+                <!--                    <artifactId>maven-checkstyle-plugin</artifactId>-->
+                <!--                    <version>3.0.0</version>-->
+                <!--                    <configuration>-->
+                <!--                        <configLocation>/gitlab-ci/checkstyle.xml</configLocation>-->
+                <!--                        <consoleOutput>true</consoleOutput>-->
+                <!--                        <encoding>UTF-8</encoding>-->
+                <!--                        <failsOnError>true</failsOnError>-->
+                <!--                        <linkXRef>false</linkXRef>-->
+                <!--                        &lt;!&ndash;跳过子module&ndash;&gt;-->
+                <!--                        <skip>false</skip>-->
+                <!--                        <skipExec>false</skipExec>-->
+                <!--                        <violationSeverity>error</violationSeverity>-->
+                <!--                    </configuration>-->
+                <!--                    <executions>-->
+                <!--                        <execution>-->
+                <!--                            <id>checkstyle</id>-->
+                <!--                            <phase>validate</phase>-->
+                <!--                            <goals>-->
+                <!--                                <goal>checkstyle</goal>-->
+                <!--                            </goals>-->
+                <!--                        </execution>-->
+                <!--                    </executions>-->
+                <!--                </plugin>-->
             </plugins>
         </pluginManagement>
     </build>

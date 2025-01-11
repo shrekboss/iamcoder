@@ -20,7 +20,7 @@ public class ApplicationContext {
     @Getter
     private Alert alert;
 
-    public void initializeBeans () {
+    public void initializeBeans() {
         alertRule = new AlertRule(/*.省略参数.*/);
         //省略一些初始化代码
         EmailMsgSender msgSender = new EmailMsgSender(Collections.singletonList("crayzer.chen@gmail.com"));

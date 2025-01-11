@@ -53,7 +53,6 @@ public class APIResponseController {
 //        }
 //        return response;
 //    }
-
     @GetMapping("server")
     public OrderInfo server(@RequestParam("userId") Long userId) {
         if (userId == null) {

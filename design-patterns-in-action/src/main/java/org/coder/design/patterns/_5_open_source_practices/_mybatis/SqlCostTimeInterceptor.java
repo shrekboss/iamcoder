@@ -24,7 +24,7 @@ import java.util.Properties;
 /**
  * 明确地标明拦截的目标方法。{@link Intercepts} 注解实际上就是起了这个作用。其中，{@link Intercepts} 注解又可以嵌套 {@link Signature} 注解。
  * 一个 {@link Signature} 注解标明一个要拦截的目标方法
- *
+ * <p>
  * {@link Signature} 注解包含三个元素：type、method、args。
  * type 指明要拦截的类
  * method 指明方法名

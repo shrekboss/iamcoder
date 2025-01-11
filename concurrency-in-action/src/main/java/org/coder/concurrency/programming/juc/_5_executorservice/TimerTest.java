@@ -6,15 +6,16 @@ import java.util.TimerTask;
 
 public class TimerTest {
 
-	public static void main(String[] args) {
-		Timer timer = new Timer();
-		timer.scheduleAtFixedRate(new TimerTask() {
+    public static void main(String[] args) {
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
 
-			@Override
-			public void run() {
-				System.out.println(new Date());
-				
-			}}, 1000, 60 * 1000);//根据固定周期来执行TimerTask
-	}
+            @Override
+            public void run() {
+                System.out.println(new Date());
+
+            }
+        }, 1000, 60 * 1000);//根据固定周期来执行TimerTask
+    }
 
 }

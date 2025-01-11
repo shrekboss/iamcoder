@@ -1,7 +1,6 @@
 package org.coder.err.programming._2_design_chapter.nosqluse.esvsmyql;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.data.elasticsearch.core.query.UpdateQuery;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -10,19 +9,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.stream.IntStream;
 
 @RestController
 @Slf4j
 @RequestMapping("esvsmysql")
 public class PerformanceController {
-    @Autowired
+    @Resource
     private NewsESRepository newsESRepository;
-    @Autowired
+    @Resource
     private NewsMySQLRepository newsMySQLRepository;
-    @Autowired
+    @Resource
     private ElasticsearchRestTemplate elasticsearchTemplate;
-    @Autowired
+    @Resource
     private JdbcTemplate jdbcTemplate;
 
     @GetMapping("mysql")

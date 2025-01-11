@@ -1,18 +1,18 @@
 package org.coder.err.programming._1_code_chapter.springpart2.propertysource;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.env.StandardEnvironment;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import java.util.Arrays;
 
 @SpringBootApplication
 @Slf4j
 public class CommonMistakesApplication {
-    @Autowired
+    @Resource
     private StandardEnvironment env;
 
     public static void main(String[] args) {

@@ -25,9 +25,9 @@ public class LoggingController {
         log.error("error");
     }
 
-     /**
-      * curl http://localhost:45678/placeholder/
-      */
+    /**
+     * curl http://localhost:45678/placeholder/
+     */
     @GetMapping
     public void index() {
         StopWatch stopWatch = new StopWatch();

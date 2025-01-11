@@ -11,7 +11,7 @@ public class CommonMistakesApplicationNoRetryServer {
     public static void main(String[] args) {
         System.setProperty("server.port", "45678");
         System.setProperty("management.server.port", "12345");
-        Utils.loadPropertySource(CommonMistakesApplicationNoRetryServer.class,"noretry-ribbon.properties");
+        Utils.loadPropertySource(CommonMistakesApplicationNoRetryServer.class, "noretry-ribbon.properties");
 
         System.setProperty("org.springframework.boot.logging.LoggingSystem", "none");
         SpringApplication.run(CommonMistakesApplicationNoRetryServer.class, args);

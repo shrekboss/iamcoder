@@ -18,7 +18,7 @@ public class CaseRunner {
 
     public static void main(String[] args) throws IOException {
         Properties config = Tools.loadProperties(
-                CaseRunner.class.getPackage().getName().replaceAll("\\.", "/")+ "/conf.properties");
+                CaseRunner.class.getPackage().getName().replaceAll("\\.", "/") + "/conf.properties");
 
         DataSyncTask dst;
         // dst = new DataSyncTask(config);
@@ -28,6 +28,7 @@ public class CaseRunner {
                 System.setProperty("ftp.client.impl",
                         "org.coder.concurrency.programming.pattern._5_future.FakeFTPUploader");
             }
+
             @Override
             protected RecordSource makeRecordSource(Properties config)
                     throws Exception {
@@ -43,6 +44,7 @@ public class CaseRunner {
     private static class FakeRecordSource implements RecordSource {
         private final Scanner scanner;
         private final GZIPInputStream gis;
+
         public FakeRecordSource() throws IOException {
             this.gis = new GZIPInputStream(
                     new BufferedInputStream(Objects.requireNonNull(CaseRunner.class.getResourceAsStream("subscriptions.csv.gz"))));

@@ -23,10 +23,13 @@ slf4j-log4j12 实现 SLF4J 适配到 Log4j，也把它们画到了一列，但�
     - ThresholdFilter 的源码发现 ：
         - 当日志级别大于等于配置的级别时返回 NEUTRAL，继续调用过滤器链上的下一个过滤器；否则，返回 DENY 直接拒绝记录日志：
     - LevelFilter 的源码发现：
-        - 用来比较日志级别，然后进行相应处理：如果匹配就调用 onMatch 定义的处理方式，默认是交给下一个过滤器处理（AbstractMatcherFilter 基类中定义的默认值）；否则，调用 onMismatch 定义的处理方式，默认也是交给下一个过滤器处理
-        - 和 ThresholdFilter 不同的是，LevelFilter 仅仅配置 level 是无法真正起作用的。由于没有配置 onMatch 和 onMismatch 属性，所以相当于这个过滤器是无用的，导致 INFO 以上级别的日志都记录了
+        - 用来比较日志级别，然后进行相应处理：如果匹配就调用 onMatch 定义的处理方式，默认是交给下一个过滤器处理（AbstractMatcherFilter
+          基类中定义的默认值）；否则，调用 onMismatch 定义的处理方式，默认也是交给下一个过滤器处理
+        - 和 ThresholdFilter 不同的是，LevelFilter 仅仅配置 level 是无法真正起作用的。由于没有配置 onMatch 和 onMismatch
+          属性，所以相当于这个过滤器是无用的，导致 INFO 以上级别的日志都记录了
     - EvaluatorFilter 的源码发现：
-        - 求值过滤器，用于判断日志是否符合某个条件。大量日志输出到文件中，日志文件会非常大，如果性能测试结果也混在其中的话，就很难找到那条日志。所以，使用 EvaluatorFilter 对日志按照标记进行过滤，并将过滤出的日志单独输出到控制台上。
+        - 求值过滤器，用于判断日志是否符合某个条件。大量日志输出到文件中，日志文件会非常大，如果性能测试结果也混在其中的话，就很难找到那条日志。所以，使用
+          EvaluatorFilter 对日志按照标记进行过滤，并将过滤出的日志单独输出到控制台上。
 
 ### 2. 使用异步日志改善性能的坑
 
@@ -80,6 +83,7 @@ public class OutputStreamAppender<E> extends UnsynchronizedAppenderBase<E> {
     }
 }
 ```
+
 #### AsyncAppender 异步日志的坑
 
 - 记录异步日志撑爆内存；
@@ -172,9 +176,12 @@ public class AsyncAppenderBase<E> extends UnsynchronizedAppenderBase<E> implemen
 分析下异步记录日志出现坑的原因：
 
 - queueSize 设置得特别大，就可能会导致 OOM
-- queueSize 设置得比较小（默认值就非常小），且 discardingThreshold 设置为大于 0 的值（或者为默认值），队列剩余容量少于 discardingThreshold 的配置就会丢弃 <=INFO 的日志。这里的坑点有两个：
-    - 一是，因为 discardingThreshold 的存在，设置 queueSize 时容易踩坑。比如，本例中最大日志并发是 1000，即便设置 queueSize 为 1000 同样会导致日志丢失
-    - 二是，discardingThreshold 参数容易有歧义，它不是百分比，而是日志条数。对于总容量 10000 的队列，如果希望队列剩余容量少于 1000 条的时候丢弃，需要配置为 1000
+- queueSize 设置得比较小（默认值就非常小），且 discardingThreshold 设置为大于 0 的值（或者为默认值），队列剩余容量少于
+  discardingThreshold 的配置就会丢弃 <=INFO 的日志。这里的坑点有两个：
+    - 一是，因为 discardingThreshold 的存在，设置 queueSize 时容易踩坑。比如，本例中最大日志并发是 1000，即便设置 queueSize 为
+      1000 同样会导致日志丢失
+    - 二是，discardingThreshold 参数容易有歧义，它不是百分比，而是日志条数。对于总容量 10000 的队列，如果希望队列剩余容量少于
+      1000 条的时候丢弃，需要配置为 1000
 - neverBlock 默认为 false，意味着总可能会出现阻塞
     - 如果 discardingThreshold 为 0，那么队列满时再有日志写入就会阻塞
     - 如果 discardingThreshold 不为 0，也只会丢弃 <=INFO 级别的日志，那么出现大量错误日志时，还是会阻塞程序
@@ -182,16 +189,16 @@ public class AsyncAppenderBase<E> extends UnsynchronizedAppenderBase<E> implemen
 可以看出 queueSize、discardingThreshold 和 neverBlock 这三个参数息息相关，务必按需进行设置和取舍，到底是性能为先，还是数据不丢为先：
 
 - 如果考虑绝对性能为先，那就设置 neverBlock 为 true，永不阻塞。
-- 如果考虑绝对不丢数据为先，那就设置 discardingThreshold 为 0，即使是 <=INFO 的级别日志也不会丢，但最好把 queueSize 设置大一点，毕竟默认的 queueSize 显然太小，太容易阻塞。
+- 如果考虑绝对不丢数据为先，那就设置 discardingThreshold 为 0，即使是 <=INFO 的级别日志也不会丢，但最好把 queueSize
+  设置大一点，毕竟默认的 queueSize 显然太小，太容易阻塞。
 - 如果希望兼顾两者，可以丢弃不重要的日志，把 queueSize 设置大一点，再设置一个合理的 discardingThreshold。
-
-
 
 ### 3. 使用日志占位符就不需要进行日志级别判断了?
 
 参考代码：[placeholder](placeholder)
 
 SLF4J 的{}占位符语法，到真正记录日志时才会获取实际参数，因此解决了日志数据获取的性能问题?
+
 - 使用{}占位符语法不能通过延迟参数值获取，来解决日志数据获取的性能问题。
 - 事先判断日志级别。
 - 通过 lambda 表达式进行延迟参数内容获取。但，SLF4J 的 API 还不支持 lambda，因此需要使用 Log4j2
@@ -255,8 +262,6 @@ SLF4J 的{}占位符语法，到真正记录日志时才会获取实际参数，
       <levels>INFO|WARN</levels>
   </filter>
   ```
-
-
 
 #### 生产级项目的文件日志肯定需要按时间和日期进行分割和归档处理，以避免单个文件太大，同时保留一定天数的历史日志，你知道如何配置吗？
 

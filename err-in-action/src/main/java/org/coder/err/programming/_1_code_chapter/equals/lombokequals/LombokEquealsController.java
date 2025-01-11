@@ -43,7 +43,7 @@ public class LombokEquealsController {
     }
 
     @Data
-    // @EqualsAndHashCode(callSuper = true)
+            // @EqualsAndHashCode(callSuper = true)
     class Employee extends Person {
 
         private String company;

@@ -18,14 +18,14 @@ public class CommonMistakesApplication {
         SpringApplication.run(CommonMistakesApplication.class, args);
     }
 
-   @Bean
-   public ObjectMapper objectMapper() {
-       ObjectMapper objectMapper = new ObjectMapper();
-       objectMapper.configure(SerializationFeature.WRITE_ENUMS_USING_INDEX, true);
-       // 第二种解决方案
-        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false);
-       return objectMapper;
-   }
+    @Bean
+    public ObjectMapper objectMapper() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(SerializationFeature.WRITE_ENUMS_USING_INDEX, true);
+        // 第二种解决方案
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        return objectMapper;
+    }
 
     // 第三种解决方案
     // @Bean

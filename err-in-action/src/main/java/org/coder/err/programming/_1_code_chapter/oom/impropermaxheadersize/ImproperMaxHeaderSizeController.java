@@ -1,12 +1,12 @@
 package org.coder.err.programming._1_code_chapter.oom.impropermaxheadersize;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
 
@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping("impropermaxheadersize")
 @Slf4j
 public class ImproperMaxHeaderSizeController {
-    @Autowired
+    @Resource
     private Environment env;
 
     //wrk -t10 -c100 -d 60s http://localhost:45678/impropermaxheadersize/oom

@@ -7,7 +7,7 @@ import java.sql.Connection;
  * 5. volatile + Double-Check的单例模式
  * <p>
  * volatile + Double-Check的单例模式可满足多线程下的单例、懒加载
- *
+ * <p>
  * 缺点：
  * 1. 禁止指令重排，导致性能下降
  *

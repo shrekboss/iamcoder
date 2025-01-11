@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * (在第7章“Metrics”中，构造Reporter内部线程池时就通过自定义ThreadFactory的方式将所有工作线程设置为守护线程)。
  * package java.util.concurrent;
  * public interface ThreadFactory {
- *      Thread newThread(Runnable r);
+ * Thread newThread(Runnable r);
  * }
  * <p>
  * 在ThreadFactory中只有一个接口方法newThread，参数为Runnable，任务接口返回值为Thread实例，下面是ThreadFactory的一个简单实现，并将其应用与创建ThreadExecutorPool的示例。

@@ -3,24 +3,25 @@ package org.coder.err.programming._1_code_chapter.springpart2.aopfeign;
 import lombok.extern.slf4j.Slf4j;
 import org.coder.err.programming._1_code_chapter.springpart2.aopfeign.feign.Client;
 import org.coder.err.programming._1_code_chapter.springpart2.aopfeign.feign.ClientWithUrl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 @Slf4j
 @RequestMapping("feignaop")
 @RestController
 public class FeignAopController {
 
-    @Autowired
+    @Resource
     private Client client;
 
-    @Autowired
+    @Resource
     private ClientWithUrl clientWithUrl;
 
-    @Autowired
+    @Resource
     private ApplicationContext applicationContext;
 
     /**

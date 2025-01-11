@@ -12,14 +12,14 @@ import static java.lang.Math.PI;
 
 /**
  * (what) DCE(Dead Code Elimination) : 指 JVM 擦去一些上下文无关，甚至经过计算之后确定压根不会用到的代码。
- *
+ * <p>
  * eg：
  * public void test() {
- *     int x = 10;
- *     int y = 10;
- *     int z = x + y;
+ * int x = 10;
+ * int y = 10;
+ * int z = x + y;
  * }
- *
+ * <p>
  * JVM 很有可能会将 test() 方法当作一个空的方法来看待
  *
  * <p>
@@ -39,24 +39,24 @@ import static java.lang.Math.PI;
 public class JMHExample13 {
 
     @Benchmark
-    public void baseline(){
+    public void baseline() {
 
     }
 
     @Benchmark
-    public void measureLog1(){
+    public void measureLog1() {
         Math.log(PI);
     }
 
     @Benchmark
-    public void measureLog2(){
+    public void measureLog2() {
         double result = Math.log(PI);
         Math.log(result);
     }
 
     // 不是 Dead Code
     @Benchmark
-    public double measureLog3(){
+    public double measureLog3() {
         return Math.log(PI);
     }
 

@@ -2,7 +2,6 @@ package org.coder.err.programming._1_code_chapter.springpart2.custompropertysour
 
 import lombok.extern.slf4j.Slf4j;
 import org.coder.err.programming.common.Utils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -12,6 +11,7 @@ import org.springframework.core.env.EnumerablePropertySource;
 import org.springframework.core.env.PropertiesPropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +25,7 @@ public class CommonMistakesApplication {
     private static final String MYSQL_URL_PLACEHOLDER = "%%MYSQL.URL%%";
     private static final String MYSQL_USERNAME_PLACEHOLDER = "%%MYSQL.USERNAME%%";
     private static final String MYSQL_PASSWORD_PLACEHOLDER = "%%MYSQL.PASSWORD%%";
-    @Autowired
+    @Resource
     private JdbcTemplate jdbcTemplate;
 
     public static void main(String[] args) {

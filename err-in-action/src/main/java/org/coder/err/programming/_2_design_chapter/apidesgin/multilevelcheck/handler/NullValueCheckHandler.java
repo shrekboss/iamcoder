@@ -14,7 +14,7 @@ import java.util.Objects;
  * @since 1.0.0
  */
 @Component
-public class NullValueCheckHandler extends AbstractCheckHandler{
+public class NullValueCheckHandler extends AbstractCheckHandler {
 
     @Override
     public Result handle(ProductVO param) {

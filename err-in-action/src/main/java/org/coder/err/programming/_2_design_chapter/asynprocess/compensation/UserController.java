@@ -2,11 +2,11 @@ package org.coder.err.programming._2_design_chapter.asynprocess.compensation;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
 
@@ -15,9 +15,9 @@ import java.util.stream.IntStream;
 @Slf4j
 @RequestMapping("user")
 public class UserController {
-    @Autowired
+    @Resource
     private UserService userService;
-    @Autowired
+    @Resource
     private RabbitTemplate rabbitTemplate;
 
     /**

@@ -17,31 +17,31 @@ package org.coder.concurrency.programming.juc._2_atomic;
  * ...
  * 看起来很简单，通过调用静态方法Unsafe.getUnsafe()就可以获取一个Unsafe的实例，但是在我们自己的类中执行同样的代码却会抛出SecurityException异常。
  * Exception in thread "main" java.lang.SecuityException: Unsafe
- * 		at sun.misc.Unsafe.getUnsafe(Unsafe.java:90)
- * 		at org.coder.concurrency.programming.juc.automic.UnsafeExample.main(UnsafeExample.java:9)
+ * at sun.misc.Unsafe.getUnsafe(Unsafe.java:90)
+ * at org.coder.concurrency.programming.juc.automic.UnsafeExample.main(UnsafeExample.java:9)
  * <p>
  * 为什么在AtomicInteger中可以，在我们自己的代码中就不行呢？下面深入源码一探究竟。
- * @CallerSensitive
- * public static Unsafe getUnsafe() {
- * 		Class var0 = Reflection.getCallerClass();
- * 		//如果对getUnsafe方法的调用类不是由系统类加载器加载的，则会抛出异常
- * 		if(!VM.isSystemDomainLoader(var0.getClassLoader())){
- * 			throw new SecurityException("Unsafe");
- * 		}else{
- * 			return theUnsafe;
- * 		}
+ *
+ * @CallerSensitive public static Unsafe getUnsafe() {
+ * Class var0 = Reflection.getCallerClass();
+ * //如果对getUnsafe方法的调用类不是由系统类加载器加载的，则会抛出异常
+ * if(!VM.isSystemDomainLoader(var0.getClassLoader())){
+ * throw new SecurityException("Unsafe");
+ * }else{
+ * return theUnsafe;
+ * }
  * }
  * <p>
  * 通过getUnsafe()方法的源码，我们可以得知，如果调用该方法的类不是被系统类加载器加载的就会抛出异常，通常情况下开发者所开发的Java类都会被应用类加载器进行加载。
  * 在Unsafe类中存在一个Unsafe的实例theUnsafe，该实例是类私有成员，并且在Unsafe类的静态代码块中已经被初始化了，因此我们可以通过反射的方式尝试获取该成员的属性，代码如下所示。
  * private static Unsafe getUnsafe() {
- * 		try{
- * 			Field f = Unsafe.class.getDeclareField("theUnsafe");
- * 			f.setAccessible(true);
- * 			return (Unsafe) f.get(null);
- * 		}catch(Exception e){
- * 			throw new RuntimeException("can't initial the unsafe instance.", e);
- * 		}
+ * try{
+ * Field f = Unsafe.class.getDeclareField("theUnsafe");
+ * f.setAccessible(true);
+ * return (Unsafe) f.get(null);
+ * }catch(Exception e){
+ * throw new RuntimeException("can't initial the unsafe instance.", e);
+ * }
  * }
  * <p>
  * 2.8.2 JNI、Java和C/C++混合编程
@@ -51,12 +51,12 @@ package org.coder.concurrency.programming.juc._2_atomic;
  * 1.编写包含本地方法的Java类
  * 第一步，我们需要开发包含本地方法的Java类，定义本地方法接口，并且在该类中加载稍后生成的so库文件，代码如下所示。
  * public class HelloJNI {
- * 		static {
- * 			//加载so库文件，注意该名称需要根据规范命名，后面会说到
- * 			System.loadLibrary("helloJNI");
- * 		}
- * 		//定义本地方法
- * 		public native void sayHello(String name);
+ * static {
+ * //加载so库文件，注意该名称需要根据规范命名，后面会说到
+ * System.loadLibrary("helloJNI");
+ * }
+ * //定义本地方法
+ * public native void sayHello(String name);
  * }
  * Native方法的定义与普通的接口方法定义极为类似，只不过多了一个native关键字用于对该方法进行修饰，在Unsafe类中有大量类似的声明。
  * <p>
@@ -71,8 +71,8 @@ package org.coder.concurrency.programming.juc._2_atomic;
  * #define _Included_HelloJNI
  * #ifdef __cplusplus
  * extern "C"  {
- * 		JNIEXPORT void JNICALL Java_HelloJNI_sayHello (JNIEnv *, jobject, jstring);
- * 		#ifdef __cplusplus
+ * JNIEXPORT void JNICALL Java_HelloJNI_sayHello (JNIEnv *, jobject, jstring);
+ * #ifdef __cplusplus
  * }
  * #endif
  * #endif
@@ -86,10 +86,10 @@ package org.coder.concurrency.programming.juc._2_atomic;
  * #include "HelloJNI.h"
  * <p>
  * JNIEXPORT void JNICALL Java_HelloJNI_sayHello (JNIEnv *env, jobject obj, jstring name) {
- *		//将jstring转换为string，使用UTF8格式
- * 		std::string s = env->GetStringUTFChars(name, NULL);
- *		//控制台输出
- * 		std::cout<<"Hello "<<s <<std::end;
+ * //将jstring转换为string，使用UTF8格式
+ * std::string s = env->GetStringUTFChars(name, NULL);
+ * //控制台输出
+ * std::cout<<"Hello "<<s <<std::end;
  * }
  * 在该C++文件中，我们不仅需要引入HelloJNI.h这个头文件，还需要引入C++的输入输出流头文件iostream，然后实现Java_HelloJNI_sayHello方法，简单做一个打印输出即可。
  * <p>
@@ -104,32 +104,33 @@ package org.coder.concurrency.programming.juc._2_atomic;
  * 5.在Java中调试C++程序
  * 一切准备就绪，现在可以编写另外一个Java类，然后在main方法中调用HelloJNI的本地方法，就如同我们使用普通的Java类一样。
  * public class HelloExample {
- * 		public static void main(String[] args) {
- * 			HelloJNI jni = new HelloJNI();
- * 			jni.sayHello("alex");
- * 		}
+ * public static void main(String[] args) {
+ * HelloJNI jni = new HelloJNI();
+ * jni.sayHello("alex");
+ * }
  * }
  * 编译HelloExample.java文件并且运行，你会发现出现了链接库找不到的问题。
  * Exception in thread "main" java.lang.UnsatisfiedLinkError: no helloJNI in java.library.path
- * 		at java.lang.ClassLoader.loadLibrary(ClassLoader.java:1867)
- * 		at java.lang.Runtime.loadLibrary0(Runtime.java:870)
- * 		at java.lang.System.loadLibrary(System.java:1122)
- * 		at org.coder.concurrency.programming.juc._2_atomic.HelloJNI.<clinit>(HelloJNI.java:95)
- * 		at org.coder.concurrency.programming.juc._2_atomic.HelloExample.main(HelloExample.java:6)
+ * at java.lang.ClassLoader.loadLibrary(ClassLoader.java:1867)
+ * at java.lang.Runtime.loadLibrary0(Runtime.java:870)
+ * at java.lang.System.loadLibrary(System.java:1122)
+ * at org.coder.concurrency.programming.juc._2_atomic.HelloJNI.<clinit>(HelloJNI.java:95)
+ * at org.coder.concurrency.programming.juc._2_atomic.HelloExample.main(HelloExample.java:6)
  * <p>
  * 根据提示，你需要设置JVM系统属性java.library.path指明链接库所在的地址，但是一般情况下，我们会采用配置操作系统变量的方式来完成。
  * export LD_LIBRARY_PATH="."
  * 将链接库的地址设置为当前路径，再次运行HelloExample，会得到正常的输出，但是该输出来自我们的C++代码，而不是Java程序。
  * crayzer@crayzer:~/jni$ java HelloExample
  * Hello alex
- * 
+ * <p>
  * 好了，我们已经顺利地完成了Java程序调用C++接口的编程实践，相信通过本节内容的学习，大家应该明白了Unsafe中声明的本地方法是如何被其他Java程序所使用的了。
  */
 public class HelloJNI {
-	static {
-		//加载so库文件，注意该名称需要根据规范命名，后面会说到
-		System.loadLibrary("helloJNI");
-	}
-	//定义本地方法
-	public native void sayHello(String name);
+    static {
+        //加载so库文件，注意该名称需要根据规范命名，后面会说到
+        System.loadLibrary("helloJNI");
+    }
+
+    //定义本地方法
+    public native void sayHello(String name);
 }

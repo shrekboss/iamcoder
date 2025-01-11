@@ -1,7 +1,6 @@
 package org.coder.err.programming._2_design_chapter.cachedesign.cacheinvalid;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadLocalRandom;
@@ -21,7 +21,7 @@ import java.util.stream.IntStream;
 @RestController
 public class CacheInvalidController {
 
-    @Autowired
+    @Resource
     private StringRedisTemplate stringRedisTemplate;
     private AtomicInteger atomicInteger = new AtomicInteger();
 
@@ -34,7 +34,7 @@ public class CacheInvalidController {
         }, 0, 1, TimeUnit.SECONDS);
     }
 
-//    @PostConstruct
+    //    @PostConstruct
     public void rightInit1() {
         // 设置缓存的过期时间是 30 秒 + 10 秒以内的随机延迟（扰动值）
         IntStream.rangeClosed(1, 1000).forEach(i -> stringRedisTemplate.opsForValue().set("city" + i, getCityFromDb(i), 30 + ThreadLocalRandom.current().nextInt(10), TimeUnit.SECONDS));
@@ -44,7 +44,7 @@ public class CacheInvalidController {
         }, 0, 1, TimeUnit.SECONDS);
     }
 
-     @PostConstruct
+    @PostConstruct
     public void rightInit2() throws InterruptedException {
         CountDownLatch countDownLatch = new CountDownLatch(1);
         // 让缓存不主动过期

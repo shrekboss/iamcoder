@@ -16,9 +16,12 @@ public class FireMario implements IMario {
 
     private static final FireMario instance = new FireMario();
 
-    private FireMario() {}
+    private FireMario() {
+    }
 
-    public static FireMario getInstance() { return instance; }
+    public static FireMario getInstance() {
+        return instance;
+    }
 
     @Override
     public State getName() {

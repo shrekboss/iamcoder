@@ -1,14 +1,14 @@
 package org.coder.err.programming._1_code_chapter.connPool.datasource;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
 @Service
 public class UserService {
-    @Autowired
+    @Resource
     private UserRepository userRepository;
 
     @Transactional

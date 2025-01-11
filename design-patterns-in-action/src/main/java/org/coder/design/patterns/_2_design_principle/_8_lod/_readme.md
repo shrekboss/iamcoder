@@ -78,6 +78,7 @@ public class Serialization {
 ```
 
 第二次重构后，代码如下：
+
 ```java
 public class Serializer {
   public String serialize(Object object) {
@@ -106,8 +107,9 @@ public class Deserializer {
 - [DemoClass_1.java](_2_case%2FDemoClass_1.java)
 - [DemoClass_2.java](_2_case%2FDemoClass_2.java)
 
+对于刚刚这个 Serialization 类来说，只包含两个操作，确实没有太大必要拆分成两个接口。但是，如果我们对 Serialization
+类添加更多的功能，实现更多更好用的序列化、反序列化函数，我们来重新考虑一下这个问题。修改之后的具体的代码如下：
 
-对于刚刚这个 Serialization 类来说，只包含两个操作，确实没有太大必要拆分成两个接口。但是，如果我们对 Serialization 类添加更多的功能，实现更多更好用的序列化、反序列化函数，我们来重新考虑一下这个问题。修改之后的具体的代码如下：
 ```java
 public class Serializer { // 参看JSON的接口定义
   public String serialize(Object object) { //... }

@@ -3,7 +3,6 @@ package org.coder.err.programming._1_code_chapter.serialization.redistemplate;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,21 +10,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("redistemplate")
 @Slf4j
 public class RedisTemplateController {
 
-    @Autowired
+    @Resource
     private RedisTemplate redisTemplate;
-    @Autowired
+    @Resource
     private StringRedisTemplate stringRedisTemplate;
-    @Autowired
+    @Resource
     private ObjectMapper objectMapper;
-    @Autowired
+    @Resource
     private RedisTemplate<String, User> userRedisTemplate;
-    @Autowired
+    @Resource
     private RedisTemplate<String, Long> countRedisTemplate;
 
 

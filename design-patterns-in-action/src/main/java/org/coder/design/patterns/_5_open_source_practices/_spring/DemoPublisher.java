@@ -1,8 +1,9 @@
 package org.coder.design.patterns._5_open_source_practices._spring;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 /**
  * (what) Publisher发送者
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class DemoPublisher {
-    @Autowired
+    @Resource
     private ApplicationContext applicationContext;
 
     public void publishEvent(DemoEvent demoEvent) {

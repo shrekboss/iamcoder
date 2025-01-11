@@ -57,7 +57,7 @@ public class JMHExample01 {
                 .warmupIterations(10)
                 .build();
 
-                new Runner(opts).run();
+        new Runner(opts).run();
     }
 
 }

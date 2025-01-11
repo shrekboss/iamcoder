@@ -3,7 +3,6 @@ package org.coder.err.programming._2_design_chapter.apidesgin.apiresponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.http.MediaType;
@@ -15,12 +14,13 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 @RestControllerAdvice
 @Slf4j
 public class APIResponseAdvice implements ResponseBodyAdvice<Object> {
-    @Autowired
+    @Resource
     private ObjectMapper objectMapper;
 
     //自动处理APIException，包装为APIResponse

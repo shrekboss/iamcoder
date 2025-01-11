@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @since 1.0.0
  */
 @Component
-public class StockCheckHandler extends AbstractCheckHandler{
+public class StockCheckHandler extends AbstractCheckHandler {
     @Override
     public Result handle(ProductVO param) {
         System.out.println("库存校验 Handler 开始...");

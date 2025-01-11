@@ -7,7 +7,6 @@ import org.influxdb.InfluxDB;
 import org.influxdb.InfluxDBFactory;
 import org.influxdb.dto.Point;
 import org.influxdb.dto.Query;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.env.StandardEnvironment;
@@ -15,6 +14,7 @@ import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -31,9 +31,9 @@ public class CommonMistakesApplication {
 
     //测试数据量
     public static final int ROWS = 10000000;
-    @Autowired
+    @Resource
     private JdbcTemplate jdbcTemplate;
-    @Autowired
+    @Resource
     private StandardEnvironment standardEnvironment;
 
     public static void main(String[] args) {
@@ -96,9 +96,9 @@ public class CommonMistakesApplication {
             //批量插入，10000条数据刷一次，或1秒刷一次
             influxDB.enableBatch(BatchOptions.DEFAULTS.actions(10000).flushDuration(1000));
             IntStream.rangeClosed(1, ROWS).mapToObj(i -> Point
-                    .measurement("m")
-                    .addField("value", ThreadLocalRandom.current().nextInt(10000))
-                    .time(LocalDateTime.now().minusSeconds(5 * i).toInstant(ZoneOffset.UTC).toEpochMilli(), TimeUnit.MILLISECONDS).build())
+                            .measurement("m")
+                            .addField("value", ThreadLocalRandom.current().nextInt(10000))
+                            .time(LocalDateTime.now().minusSeconds(5 * i).toInstant(ZoneOffset.UTC).toEpochMilli(), TimeUnit.MILLISECONDS).build())
                     .forEach(influxDB::write);
             influxDB.flush();
             log.info("init influxdb finished with count {} took {}ms", influxDB.query(new Query("SELECT COUNT(*) FROM m")).getResults().get(0).getSeries().get(0).getValues().get(0).get(1), System.currentTimeMillis() - begin);

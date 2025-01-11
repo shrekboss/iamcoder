@@ -13,12 +13,16 @@ public enum ErrorCode {
     PARAM_STOCK_ILLEGAL_ERROR(104, "PARAM_STOCK_ILLEGAL_ERROR"),
     PARAM_NULL_ERROR(105, "PARAM_NULL_ERROR");
 
-    /**自定义状态码**/
+    /**
+     * 自定义状态码
+     **/
     private final int code;
-    /**自定义描述**/
+    /**
+     * 自定义描述
+     **/
     private final String message;
 
-    ErrorCode(int code, String message){
+    ErrorCode(int code, String message) {
         this.code = code;
         this.message = message;
     }

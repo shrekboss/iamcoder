@@ -1,14 +1,18 @@
 ## 实验一：
-    
+
 **client: port 45678**
 [02:00:43.060] [INFO ] [RibbonRetryIssueClientController:22  ] - client is called
-[02:00:44.083] [INFO ] [RibbonRetryIssueServerController:17  ] - http://localhost:45678/ribbonretryissueserver/wrong is called, 13600000000=>c71df0f0-040b-4195-a77f-fa6aecac7ef5
-[02:00:45.077] [ERROR] [RibbonRetryIssueClientController:26  ] - send sms failed : Read timed out executing GET http://SmsClient/ribbonretryissueserver/wrong?mobile=13600000000&message=c71df0f0-040b-4195-a77f-fa6aecac7ef5
+[02:00:44.083] [INFO ] [RibbonRetryIssueServerController:17  ] - http://localhost:45678/ribbonretryissueserver/wrong is
+called, 13600000000=>c71df0f0-040b-4195-a77f-fa6aecac7ef5
+[02:00:45.077] [ERROR] [RibbonRetryIssueClientController:26  ] - send sms failed : Read timed out executing
+GET http://SmsClient/ribbonretryissueserver/wrong?mobile=13600000000&message=c71df0f0-040b-4195-a77f-fa6aecac7ef5
 **server: port 45679**
-[02:00:43.074] [http-nio-45679-exec-2] [INFO ] [o.b.c.c.h.r.RibbonRetryIssueServerController:17  ] - http://localhost:45679/ribbonretryissueserver/wrong is called, 13600000000=>c71df0f0-040b-4195-a77f-fa6aecac7ef5
+[02:00:43.074] [http-nio-45679-exec-2] [INFO ] [o.b.c.c.h.r.RibbonRetryIssueServerController:17  ] - http://localhost:45679/ribbonretryissueserver/wrong
+is called, 13600000000=>c71df0f0-040b-4195-a77f-fa6aecac7ef5
 
 这说明客户端自作主张进行了一次重试，导致短信重复发送。
 解决办法
+
 - 第一种：接口从 Get 改为 Post
 - 第二种：将 MaxAutoRetriesNextServer 参数配置为 0
 

@@ -1,7 +1,6 @@
 package org.coder.err.programming._1_code_chapter.serialization.enumusedinapi;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -9,6 +8,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping("enumusedinapi")
 @RestController
 public class EnumUsedInAPIController {
-    @Autowired
+    @Resource
     private RestTemplate restTemplate;
 
     // 使用 RestTemplate 来发起请求，让服务端返回客户端不存在的枚举值：

@@ -274,17 +274,23 @@ public void func2() throws Exception2 {
 
 ### 重构 generate() 函数
 
-ID 由三部分构成：本机名、时间戳和随机数。时间戳和随机数的生成函数不会出错，唯独主机名有可能获取失败。在目前的代码实现中，如果主机名获取失败，substrOfHostName 为 NULL，那 generate() 函数会返回类似“null-16723733647-83Ab3uK6”这样的数据。如果主机名获取失败，substrOfHostName 为空字符串，那 generate() 函数会返回类似“-16723733647-83Ab3uK6”这样的数据。
+ID 由三部分构成：本机名、时间戳和随机数。时间戳和随机数的生成函数不会出错，唯独主机名有可能获取失败。在目前的代码实现中，如果主机名获取失败，substrOfHostName
+为 NULL，那 generate() 函数会返回类似“null-16723733647-83Ab3uK6”这样的数据。如果主机名获取失败，substrOfHostName 为空字符串，那
+generate() 函数会返回类似“-16723733647-83Ab3uK6”这样的数据。
 
 不过，我更倾向于明确地将异常告知调用者。所以，这里最好是抛出受检异常，而非特殊值。
 
 ### 重构 getLastFieldOfHostName() 函数
 
-getLastFieldOfHostName() 函数用来获取主机名的最后一个字段，UnknownHostException 异常表示主机名获取失败，两者算是业务相关，所以可以直接将 UnknownHostException 抛出，不需要重新包裹成新的异常。
+getLastFieldOfHostName() 函数用来获取主机名的最后一个字段，UnknownHostException 异常表示主机名获取失败，两者算是业务相关，所以可以直接将
+UnknownHostException 抛出，不需要重新包裹成新的异常。
 
 ### 重构 getLastSubstrSplitByDot() 函数
 
-如果函数是 private 类私有的，只在类内部被调用，完全在你自己的掌控之下，自己保证在调用这个 private 函数的时候，不要传递 NULL 值或空字符串就可以了。所以，可以不在 private 函数中做 NULL 值或空字符串的判断。如果函数是 public / protected 的，你无法掌控会被谁调用以及如何调用（有可能某个同事一时疏忽，传递进了 NULL 值，这种情况也是存在的），为了尽可能提高代码的健壮性，我们最好是在 public 函数中做 NULL 值或空字符串的判断。
+如果函数是 private 类私有的，只在类内部被调用，完全在你自己的掌控之下，自己保证在调用这个 private 函数的时候，不要传递 NULL
+值或空字符串就可以了。所以，可以不在 private 函数中做 NULL 值或空字符串的判断。如果函数是 public / protected
+的，你无法掌控会被谁调用以及如何调用（有可能某个同事一时疏忽，传递进了 NULL 值，这种情况也是存在的），为了尽可能提高代码的健壮性，我们最好是在
+public 函数中做 NULL 值或空字符串的判断。
 
 #### 重构 generateRandomAlphameric() 函数
 

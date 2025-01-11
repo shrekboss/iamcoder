@@ -10,7 +10,7 @@ package org.coder.concurrency.programming.pattern._3_read_and_write_separation;
  * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0
  */
-class WriteLock implements Lock{
+class WriteLock implements Lock {
 
     private final ReadWriteLockImpl readWriteLock;
 

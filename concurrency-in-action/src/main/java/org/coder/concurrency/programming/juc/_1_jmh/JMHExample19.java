@@ -32,7 +32,7 @@ public class JMHExample19 {
     private final static int VALUE = Integer.MAX_VALUE;
 
     @Setup
-    public void init(){
+    public void init() {
         this.queue = new ArrayBlockingQueue<>(10);
     }
 

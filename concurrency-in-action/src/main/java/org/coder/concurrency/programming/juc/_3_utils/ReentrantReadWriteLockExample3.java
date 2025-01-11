@@ -17,7 +17,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * (2) 5个线程读和5个线程写的性能比较
  * 既然读写锁在高并发只读的情况下性能表现最差，那么在既有读又有写的并发情况下性能又会如何呢？
  * 我们基于3.6.3节中的基准测试代码稍作修改，如下所示。
- * 
+ * <p>
  * 基准测试的结果显而易见，仍旧是读写锁的表现最差，我们将基准测试的每一个批次生成图形报告。
  * Benchmark                                               Mode  Cnt  Score   Error  Units
  * ReentrantReadWriteLockExample3.base                     avgt   10  0.029 ± 0.005  us/op
@@ -32,7 +32,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * ReentrantReadWriteLockExample3.sync                     avgt   10  0.387 ± 0.004  us/op
  * ReentrantReadWriteLockExample3.sync:testSyncGet         avgt   10  0.503 ± 0.008  us/op
  * ReentrantReadWriteLockExample3.sync:testSyncInc         avgt   10  0.271 ± 0.002  us/op
- * 
+ * <p>
  * 3.7.4 读写锁总结
  * 读写锁提供了非常好的思路和解决方案，旨在提高某个时刻都为读操作的并发吞吐量，但是从基准测试的结果来看性能不尽如人意，
  * 因此在JDK1.8版本中引入了StampedLock的解决方案，3.9节中也将会继续介绍，另外推荐读者阅读一篇博客文章，
@@ -47,128 +47,141 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
 public class ReentrantReadWriteLockExample3 {
 
-	@State(Scope.Group)
-	public static class Test {
-		private int x = 10;
-		private final Lock lock = new ReentrantLock();
-		//基准方法
-		public int baseGet() {
-			return x;
-		}
-		public void baseInc() {
-			x++;
-		}
-		//使用lock进行方法同步
-		public int lockGet() {
-			lock.lock();
-			try {
-				return x;
-			}finally {
-				lock.unlock();
-			}
-		}
-		
-		public void lockInc() {
-			lock.lock();
-			try {
-				x++;
-			}finally {
-				lock.unlock();
-			}
-		}
-		//使用关键字synchronized进行方法同步
-		public int syncGet() {
-			synchronized(this) {
-				return x;
-			}
-		}
-		public void syncInc() {
-			synchronized(this) {
-				x++;
-			}
-		}
-		
-		private final ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
-		private final Lock readLock = readWriteLock.readLock();
-		private final Lock writeLock = readWriteLock.writeLock();
-		
-		public void writeLockInc() {
-			writeLock.lock();
-			try {
-				x++;
-			}finally {
-				writeLock.unlock();
-			}
-		}
-		public int readLockGet() {
-			readLock.lock();
-			try {
-				return x;
-			}finally {
-				readLock.unlock();
-			}
-		}
-	}
-	
-	//5个线程进行测试
-	@GroupThreads(5)
-	@Group("base")
-	@Benchmark
-	public void baseGet(Test test, Blackhole hole) {
-		hole.consume(test.baseGet());
-	}
-	@GroupThreads(5)
-	@Group("base")
-	@Benchmark
-	public void baseInc(Test test) {
-		test.baseInc();
-	}
-	//5个线程进行测试
-	@GroupThreads(5)
-	@Group("lock")
-	@Benchmark
-	public void testLockGet(Test test, Blackhole hole) {
-		hole.consume(test.lockGet());
-	}
-	@GroupThreads(5)
-	@Group("lock")
-	@Benchmark
-	public void testLockInc(Test test, Blackhole hole) {
-		test.lockInc();
-	}
-	//5个线程进行测试
-	@GroupThreads(5)
-	@Group("sync")
-	@Benchmark
-	public void testSyncGet(Test test, Blackhole hole) {
-		hole.consume(test.syncGet());
-	}
-	@GroupThreads(5)
-	@Group("sync")
-	@Benchmark
-	public void testSyncInc(Test test, Blackhole hole) {
-		test.syncInc();
-	}
-	
-	//5个线程进行测试
-	@GroupThreads(5)
-	@Group("rwlock")
-	@Benchmark
-	public void testReadLockGet(Test test, Blackhole hole) {
-		hole.consume(test.readLockGet());
-	}
-	@GroupThreads(5)
-	@Group("rwlock")
-	@Benchmark
-	public void testWriteLockInc(Test test, Blackhole hole) {
-		test.writeLockInc();
-	}
-	public static void main(String[] args) throws RunnerException {
-		Options opts = new OptionsBuilder()
-				.include(ReentrantReadWriteLockExample3.class.getSimpleName())
-				.forks(1)
-				.build();
-		new Runner(opts).run();
-	}
+    @State(Scope.Group)
+    public static class Test {
+        private int x = 10;
+        private final Lock lock = new ReentrantLock();
+
+        //基准方法
+        public int baseGet() {
+            return x;
+        }
+
+        public void baseInc() {
+            x++;
+        }
+
+        //使用lock进行方法同步
+        public int lockGet() {
+            lock.lock();
+            try {
+                return x;
+            } finally {
+                lock.unlock();
+            }
+        }
+
+        public void lockInc() {
+            lock.lock();
+            try {
+                x++;
+            } finally {
+                lock.unlock();
+            }
+        }
+
+        //使用关键字synchronized进行方法同步
+        public int syncGet() {
+            synchronized (this) {
+                return x;
+            }
+        }
+
+        public void syncInc() {
+            synchronized (this) {
+                x++;
+            }
+        }
+
+        private final ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
+        private final Lock readLock = readWriteLock.readLock();
+        private final Lock writeLock = readWriteLock.writeLock();
+
+        public void writeLockInc() {
+            writeLock.lock();
+            try {
+                x++;
+            } finally {
+                writeLock.unlock();
+            }
+        }
+
+        public int readLockGet() {
+            readLock.lock();
+            try {
+                return x;
+            } finally {
+                readLock.unlock();
+            }
+        }
+    }
+
+    //5个线程进行测试
+    @GroupThreads(5)
+    @Group("base")
+    @Benchmark
+    public void baseGet(Test test, Blackhole hole) {
+        hole.consume(test.baseGet());
+    }
+
+    @GroupThreads(5)
+    @Group("base")
+    @Benchmark
+    public void baseInc(Test test) {
+        test.baseInc();
+    }
+
+    //5个线程进行测试
+    @GroupThreads(5)
+    @Group("lock")
+    @Benchmark
+    public void testLockGet(Test test, Blackhole hole) {
+        hole.consume(test.lockGet());
+    }
+
+    @GroupThreads(5)
+    @Group("lock")
+    @Benchmark
+    public void testLockInc(Test test, Blackhole hole) {
+        test.lockInc();
+    }
+
+    //5个线程进行测试
+    @GroupThreads(5)
+    @Group("sync")
+    @Benchmark
+    public void testSyncGet(Test test, Blackhole hole) {
+        hole.consume(test.syncGet());
+    }
+
+    @GroupThreads(5)
+    @Group("sync")
+    @Benchmark
+    public void testSyncInc(Test test, Blackhole hole) {
+        test.syncInc();
+    }
+
+    //5个线程进行测试
+    @GroupThreads(5)
+    @Group("rwlock")
+    @Benchmark
+    public void testReadLockGet(Test test, Blackhole hole) {
+        hole.consume(test.readLockGet());
+    }
+
+    @GroupThreads(5)
+    @Group("rwlock")
+    @Benchmark
+    public void testWriteLockInc(Test test, Blackhole hole) {
+        test.writeLockInc();
+    }
+
+    public static void main(String[] args) throws RunnerException {
+        Options opts = new OptionsBuilder()
+                .include(ReentrantReadWriteLockExample3.class.getSimpleName())
+                .forks(1)
+                .build();
+        new Runner(opts).run();
+    }
 
 }

@@ -8,10 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ConcurrenceParentApplicationGood {
 
     public static void main(String[] args) {
-    	/* connPool#datasource */
-		Utils.loadPropertySource(ConcurrenceParentApplicationGood.class, "good.properties");
+        /* connPool#datasource */
+        Utils.loadPropertySource(ConcurrenceParentApplicationGood.class, "good.properties");
         System.setProperty("org.springframework.boot.logging.LoggingSystem", "none");
-    	SpringApplication.run(ConcurrenceParentApplicationGood.class, args);
+        SpringApplication.run(ConcurrenceParentApplicationGood.class, args);
     }
 
 }

@@ -11,7 +11,7 @@ public class FileTransferTask implements Callable<File> {
     public final File file2Transfer;
 
     public FileTransferTask(Future<FTPUploader> ftpUtilHolder,
-            File file2Transfer) {
+                            File file2Transfer) {
         this.ftpUtilHodler = ftpUtilHolder;
         this.file2Transfer = file2Transfer;
     }

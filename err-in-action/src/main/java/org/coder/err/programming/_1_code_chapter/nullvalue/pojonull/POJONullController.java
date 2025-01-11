@@ -4,20 +4,20 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 
 @Slf4j
 @RequestMapping("pojonull")
 @RestController
 public class POJONullController {
 
-    @Autowired
+    @Resource
     private UserEntityRepository userEntityRepository;
 
-    @Autowired
+    @Resource
     private UserRepository userRepository;
 
     /**

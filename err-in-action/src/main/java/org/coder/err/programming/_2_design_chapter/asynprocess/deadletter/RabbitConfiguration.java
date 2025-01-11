@@ -10,16 +10,17 @@ import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFacto
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.retry.RepublishMessageRecoverer;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.retry.interceptor.RetryOperationsInterceptor;
+
+import javax.annotation.Resource;
 
 @Configuration
 @Slf4j
 public class RabbitConfiguration {
 
-    @Autowired
+    @Resource
     private RabbitTemplate rabbitTemplate;
 
     @Bean

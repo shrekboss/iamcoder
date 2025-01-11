@@ -12,7 +12,9 @@ package org.coder.design.patterns._4_design_patterns._2_structural._1_proxy._2_d
  */
 public interface IUserDao {
     void save();
+
     void edit();
+
     void delete();
 
     void saveOrUpdate();

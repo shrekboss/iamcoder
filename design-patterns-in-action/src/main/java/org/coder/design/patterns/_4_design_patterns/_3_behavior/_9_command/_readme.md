@@ -5,8 +5,8 @@
 具体的示例代码如下:
 
 - [Command.java](Command.java)
-  - [ArchiveCommand.java](ArchiveCommand.java)
-  - [GotDiamondCommand.java](GotDiamondCommand.java)
-  - [GotStartCommand.java](GotStartCommand.java)
-  - [HitObstacleCommand.java](HitObstacleCommand.java)
+    - [ArchiveCommand.java](ArchiveCommand.java)
+    - [GotDiamondCommand.java](GotDiamondCommand.java)
+    - [GotStartCommand.java](GotStartCommand.java)
+    - [HitObstacleCommand.java](HitObstacleCommand.java)
 - [GameApplication.java](GameApplication.java)

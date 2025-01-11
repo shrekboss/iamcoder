@@ -18,38 +18,32 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0
  */
-class Registry
-{
+class Registry {
     //存储Subscriber集合和topic之间的map关系
     private final ConcurrentHashMap<String, ConcurrentLinkedQueue<Subscriber>> subscriberContainer
             = new ConcurrentHashMap<>();
 
     //获取Subscriber Object的方法集合然后进行绑定
-    public void bind(Object subscriber)
-    {
+    public void bind(Object subscriber) {
         List<Method> subscribeMethods = getSubscribeMethods(subscriber);
         subscribeMethods.forEach(m -> tierSubscriber(subscriber, m));
     }
 
-    public void unbind(Object subscriber)
-    {   //unbind为了提高速度，只对Subscriber进行失效操作
+    public void unbind(Object subscriber) {   //unbind为了提高速度，只对Subscriber进行失效操作
         subscriberContainer.forEach((key, queue) ->
                 queue.forEach(s ->
                 {
-                    if (s.getSubscribeObject() == subscriber)
-                    {
+                    if (s.getSubscribeObject() == subscriber) {
                         s.setDisable(true);
                     }
                 }));
     }
 
-    public ConcurrentLinkedQueue<Subscriber> scanSubscriber(final String topic)
-    {
+    public ConcurrentLinkedQueue<Subscriber> scanSubscriber(final String topic) {
         return subscriberContainer.get(topic);
     }
 
-    private void tierSubscriber(Object subscriber, Method method)
-    {
+    private void tierSubscriber(Object subscriber, Method method) {
         final Subscribe subscribe = method.getDeclaredAnnotation(Subscribe.class);
         String topic = subscribe.topic();
         //当某topic没有Subscriber Queue的时候创建一个
@@ -58,13 +52,11 @@ class Registry
         subscriberContainer.get(topic).add(new Subscriber(subscriber, method));
     }
 
-    private List<Method> getSubscribeMethods(Object subscriber)
-    {
+    private List<Method> getSubscribeMethods(Object subscriber) {
         final List<Method> methods = new ArrayList<>();
         Class<?> temp = subscriber.getClass();
         //不断获取当前类和父类的所有@Subscriber方法
-        while (temp != null)
-        {   //获取所有方法
+        while (temp != null) {   //获取所有方法
             Method[] declaredMethods = temp.getDeclaredMethods();
             //只有public方法 && 有一个入参 && 最重要的是被@Subscriber标记 的方法才符合回调方法
             Arrays.stream(declaredMethods)

@@ -2,13 +2,13 @@ package org.coder.err.programming._2_design_chapter.nosqluse.redisvsmysql;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.concurrent.ThreadLocalRandom;
 
 @RestController
@@ -16,9 +16,9 @@ import java.util.concurrent.ThreadLocalRandom;
 @RequestMapping("redisvsmysql")
 public class PerformanceController {
 
-    @Autowired
+    @Resource
     private JdbcTemplate jdbcTemplate;
-    @Autowired
+    @Resource
     private StringRedisTemplate stringRedisTemplate;
 
     @GetMapping("redis")
@@ -36,7 +36,7 @@ public class PerformanceController {
     @GetMapping("mysql")
     public void mysql() {
         Assert.assertTrue(jdbcTemplate.queryForObject("SELECT data FROM `r` WHERE name=?",
-                new Object[]{("item" + (ThreadLocalRandom.current().nextInt(CommonMistakesApplication.ROWS) + 1))}, String.class)
+                        new Object[]{("item" + (ThreadLocalRandom.current().nextInt(CommonMistakesApplication.ROWS) + 1))}, String.class)
                 .equals(CommonMistakesApplication.PAYLOAD));
     }
 

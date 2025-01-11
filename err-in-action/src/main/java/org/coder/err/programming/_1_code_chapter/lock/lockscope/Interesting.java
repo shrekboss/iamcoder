@@ -25,11 +25,11 @@ public class Interesting {
     /**
      * 这个案例中的 add 方法始终只有一个线程在操作，显然只为 add 方法加锁是没用的。
      * public synchronized void add()
-     *
+     * <p>
      * 正确修改：
      * public synchronized void add()
      * public synchronized void compare()
-     * */
+     */
     public void addWrong() {
         log.info("add start");
         for (int i = 0; i < 10000; i++) {

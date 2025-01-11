@@ -15,7 +15,8 @@ public class IdGeneratorForClusterUnique {
 
     private static final ConcurrentHashMap<Long, IdGeneratorForClusterUnique> instances = new ConcurrentHashMap<>();
 
-    private IdGeneratorForClusterUnique() {}
+    private IdGeneratorForClusterUnique() {
+    }
 
     public static IdGeneratorForClusterUnique getInstance() {
         Long currentThreadId = Thread.currentThread().getId();

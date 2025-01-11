@@ -14,8 +14,8 @@ public class MessageFileDownloader {
     private final WorkerThread workerThread;
 
     public MessageFileDownloader(String outputDir, final String ftpServer,
-            final String userName, final String password,
-            final String servWorkingDir) throws Exception {
+                                 final String userName, final String password,
+                                 final String servWorkingDir) throws Exception {
         Path path = Paths.get(outputDir);
         if (!path.toFile().exists()) {
             Files.createDirectories(path);

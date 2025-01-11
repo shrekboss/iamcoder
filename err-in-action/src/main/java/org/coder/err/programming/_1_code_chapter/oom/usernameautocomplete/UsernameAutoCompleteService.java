@@ -1,10 +1,10 @@
 package org.coder.err.programming._1_code_chapter.oom.usernameautocomplete;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -20,10 +20,10 @@ public class UsernameAutoCompleteService {
     //自动完成的索引，Key是用户输入的部分用户名，Value是对应的用户数据
     private ConcurrentHashMap<String, List<UserDTO>> autoCompleteIndex = new ConcurrentHashMap<>();
 
-    @Autowired
+    @Resource
     private UserRepository userRepository;
 
-//    @PostConstruct
+    //    @PostConstruct
     public void wrong() {
         //先保存10000个用户名随机的用户到数据库中
         userRepository.saveAll(LongStream.rangeClosed(1, 10000)

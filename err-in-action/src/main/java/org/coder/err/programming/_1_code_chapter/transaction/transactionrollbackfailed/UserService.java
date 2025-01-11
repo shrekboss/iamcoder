@@ -1,11 +1,11 @@
 package org.coder.err.programming._1_code_chapter.transaction.transactionrollbackfailed;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 @Service
 @Slf4j
 public class UserService {
-    @Autowired
+    @Resource
     private UserRepository userRepository;
 
     /**

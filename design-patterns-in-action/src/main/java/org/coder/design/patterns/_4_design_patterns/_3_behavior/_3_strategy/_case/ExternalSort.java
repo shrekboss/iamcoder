@@ -11,7 +11,7 @@ package org.coder.design.patterns._4_design_patterns._3_behavior._3_strategy._ca
  * @since 1.0.0
  */
 public class ExternalSort implements ISortAlg {
-    
+
     @Override
     public void sort(String filePath) {
 

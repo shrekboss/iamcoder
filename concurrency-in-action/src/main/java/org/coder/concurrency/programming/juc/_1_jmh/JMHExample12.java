@@ -20,17 +20,17 @@ import static java.lang.Math.log;
 public class JMHExample12 {
 
     /**
-     *  测试jvm编译优化
+     * 测试jvm编译优化
      */
     @Benchmark
-    public void test1(){
+    public void test1() {
 
     }
 
     // 禁止 编译器优化 Dead Code
     @CompilerControl(CompilerControl.Mode.EXCLUDE)
     @Benchmark
-    public void test2(){
+    public void test2() {
         log(PI);
     }
 

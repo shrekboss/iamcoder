@@ -7,13 +7,13 @@ import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.UUID;
 
 @Slf4j
@@ -24,7 +24,7 @@ public class FanoutQueueRight {
     private static final String MEMBER_QUEUE = "newusermember";
     private static final String PROMOTION_QUEUE = "newuserpromotion";
     private static final String EXCHANGE = "newuser";
-    @Autowired
+    @Resource
     private RabbitTemplate rabbitTemplate;
 
     @GetMapping

@@ -137,7 +137,8 @@ public void postBlog(Blog blog);
 
 ## 勿用函数参数来控制逻辑
 
-不要在函数中使用布尔类型的标识参数来控制内部逻辑，true 的时候走这块逻辑，false 的时候走另一块逻辑。这明显违背了单一职责原则和接口隔离原则。建议将其拆成两个函数，可读性上也要更好。
+不要在函数中使用布尔类型的标识参数来控制内部逻辑，true 的时候走这块逻辑，false
+的时候走另一块逻辑。这明显违背了单一职责原则和接口隔离原则。建议将其拆成两个函数，可读性上也要更好。
 
 ```java
 public void buyCourse(long userId, long courseId, boolean isVip);

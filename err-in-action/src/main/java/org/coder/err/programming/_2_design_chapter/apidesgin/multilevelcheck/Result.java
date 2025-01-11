@@ -11,9 +11,9 @@ public class Result<T> {
     private int status;
     private String message;
     private T data;
-    private long timestamp ;
+    private long timestamp;
 
-    public Result (){
+    public Result() {
         this.timestamp = System.currentTimeMillis();
     }
 

@@ -11,7 +11,7 @@ public class SortedDynamicArray extends DynamicArray {
         ensureCapacity();
 
         int i;
-        for (i = size - 1; i >= 0 ; i--) {
+        for (i = size - 1; i >= 0; i--) {
             if (elements[i] >= e) {
                 elements[i + 1] = elements[i];
             } else {
@@ -47,7 +47,7 @@ class DynamicArray {
         elements[size++] = e;
     }
 
-    protected  void ensureCapacity() {
+    protected void ensureCapacity() {
         // //...如果数组满了就扩容...代码省略...
     }
 }

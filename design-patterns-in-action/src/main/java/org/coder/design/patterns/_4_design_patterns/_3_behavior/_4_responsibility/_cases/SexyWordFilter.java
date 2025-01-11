@@ -20,6 +20,6 @@ public class SexyWordFilter implements SensitiveWordFilter {
 
         //...
 
-         return legal;
+        return legal;
     }
 }

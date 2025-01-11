@@ -1,16 +1,17 @@
 package org.coder.err.programming._2_design_chapter.productionready.health;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.Resource;
+
 @Component
 @Slf4j
 public class UserServiceHealthIndicator implements HealthIndicator {
-    @Autowired
+    @Resource
     private RestTemplate restTemplate;
 
     @Override

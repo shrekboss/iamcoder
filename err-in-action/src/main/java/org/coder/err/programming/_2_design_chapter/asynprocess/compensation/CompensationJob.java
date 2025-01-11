@@ -2,10 +2,10 @@ package org.coder.err.programming._2_design_chapter.asynprocess.compensation;
 
 import jodd.util.concurrent.ThreadFactoryBuilder;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -20,9 +20,9 @@ public class CompensationJob {
             1, TimeUnit.HOURS,
             new ArrayBlockingQueue<>(1000),
             new ThreadFactoryBuilder().setNameFormat("compensation-threadpool-%d").get());
-    @Autowired
+    @Resource
     private UserService userService;
-    @Autowired
+    @Resource
     private MemberService memberService;
     //目前补偿到哪个用户ID
     private long offset = 0;

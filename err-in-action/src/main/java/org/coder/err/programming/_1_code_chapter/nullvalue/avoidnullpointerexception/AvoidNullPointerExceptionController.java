@@ -34,9 +34,9 @@ public class AvoidNullPointerExceptionController {
     @GetMapping("right")
     public int right(@RequestParam(value = "test", defaultValue = "1111") String test) {
         return Optional.ofNullable(rightMethod(test.charAt(0) == '1' ? null : new FooService(),
-                test.charAt(1) == '1' ? null : 1,
-                test.charAt(2) == '1' ? null : "OK",
-                test.charAt(3) == '1' ? null : "OK"))
+                        test.charAt(1) == '1' ? null : 1,
+                        test.charAt(2) == '1' ? null : "OK",
+                        test.charAt(3) == '1' ? null : "OK"))
                 .orElse(Collections.emptyList()).size();
     }
 

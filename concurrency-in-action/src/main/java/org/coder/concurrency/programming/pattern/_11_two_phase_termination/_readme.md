@@ -86,7 +86,7 @@ InterruptedException 后没有通过设置 Thread.currentThread().interrupt() �
 参考代码：
 
 - [AlarmMgr.java](alarm%2FAlarmMgr.java)
-  - `private final AlarmSendingThread alarmSendingThread;`
+    - `private final AlarmSendingThread alarmSendingThread;`
 
 ### Reference(Strong/soft/weak/phantom)
 

@@ -19,8 +19,8 @@ enum StatusEnumServer {
         this.desc = desc;
     }
 
-   // @JsonCreator
-   // public static StatusEnumServer parse(Object o) {
-   //     return Arrays.stream(StatusEnumServer.values()).filter(value->o.equals(value.status)).findFirst().orElse(null);
-   // }
+    // @JsonCreator
+    // public static StatusEnumServer parse(Object o) {
+    //     return Arrays.stream(StatusEnumServer.values()).filter(value->o.equals(value.status)).findFirst().orElse(null);
+    // }
 }

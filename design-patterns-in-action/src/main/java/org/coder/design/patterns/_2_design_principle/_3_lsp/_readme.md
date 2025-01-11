@@ -57,6 +57,7 @@ public class Demo {
 
 改造 SecurityTransporter 类中的 sendRequest()
 > 改造后，如果 appId 或者 appToken 没有设置，则直接抛出 NoAuthorizationRuntimeException 未授权异常。
+
 ```java
 // 改造前：
 public class SecurityTransporter extends Transporter {

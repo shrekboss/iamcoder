@@ -83,7 +83,7 @@ public class SimplePipeline<T, OUT> extends AbstractPipe<T, OUT> implements
         firstPipe.process(input);
     }
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
     public void init(final PipeContext ctx) {
         LinkedList<Pipe<?, ?>> pipesList = (LinkedList<Pipe<?, ?>>) pipes;

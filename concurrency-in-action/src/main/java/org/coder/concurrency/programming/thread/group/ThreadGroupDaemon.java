@@ -17,11 +17,9 @@ public class ThreadGroupDaemon {
         ThreadGroup group1 = new ThreadGroup("Group1");
         new Thread(group1, () ->
         {
-            try
-            {
+            try {
                 TimeUnit.SECONDS.sleep(1);
-            } catch (InterruptedException e)
-            {
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }, "group1-thread1").start();
@@ -29,11 +27,9 @@ public class ThreadGroupDaemon {
         ThreadGroup group2 = new ThreadGroup("Group2");
         new Thread(group2, () ->
         {
-            try
-            {
+            try {
                 TimeUnit.SECONDS.sleep(1);
-            } catch (InterruptedException e)
-            {
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }, "group2-thread1").start();

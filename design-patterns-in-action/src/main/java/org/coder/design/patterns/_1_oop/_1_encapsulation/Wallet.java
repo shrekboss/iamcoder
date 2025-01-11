@@ -21,10 +21,21 @@ public class Wallet {
     }
 
     // 注意：下面对get方法做了代码折叠，是为了减少代码所占文章的篇幅
-    public String getId() { return this.id; }
-    public long getCreateTime() { return this.createTime; }
-    public BigDecimal getBalance() { return this.balance; }
-    public long getBalanceLastModifiedTime() { return this.balanceLastModifiedTime;  }
+    public String getId() {
+        return this.id;
+    }
+
+    public long getCreateTime() {
+        return this.createTime;
+    }
+
+    public BigDecimal getBalance() {
+        return this.balance;
+    }
+
+    public long getBalanceLastModifiedTime() {
+        return this.balanceLastModifiedTime;
+    }
 
     public void increaseBalance(BigDecimal increasedAmount) {
         if (increasedAmount.compareTo(BigDecimal.ZERO) < 0) {

@@ -29,21 +29,21 @@ public class JMHExample18 {
     private AtomicInteger counter;
 
     @Setup
-    public void init(){
+    public void init() {
         this.counter = new AtomicInteger();
     }
 
     @GroupThreads(5)
     @Group("q")
     @Benchmark
-    public void inc(){
+    public void inc() {
         this.counter.incrementAndGet();
     }
 
     @GroupThreads(5)
     @Group("q")
     @Benchmark
-    public int get(){
+    public int get() {
         return this.counter.get();
     }
 

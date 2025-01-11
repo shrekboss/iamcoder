@@ -5,7 +5,6 @@ import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import lombok.extern.slf4j.Slf4j;
 import org.coder.err.programming.common.Utils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
@@ -15,6 +14,7 @@ import org.springframework.data.elasticsearch.repository.config.EnableElasticsea
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import java.io.File;
 import java.io.FileReader;
 import java.io.Reader;
@@ -32,11 +32,11 @@ import java.util.stream.IntStream;
 public class CommonMistakesApplication {
 
 
-    @Autowired
+    @Resource
     private StandardEnvironment standardEnvironment;
-    @Autowired
+    @Resource
     private NewsESRepository newsESRepository;
-    @Autowired
+    @Resource
     private NewsMySQLRepository newsMySQLRepository;
 
     public static void main(String[] args) {

@@ -26,7 +26,7 @@ public interface FutureService<IN, OUT> {
     Future<OUT> submit(Task<IN, OUT> task, IN input, Callback<OUT> callback);
 
     /**
-     *  使用静态方法创建一个 FutureService 的实例
+     * 使用静态方法创建一个 FutureService 的实例
      */
     static <T, R> FutureService<T, R> newService() {
         return new FutureServiceImpl<>();

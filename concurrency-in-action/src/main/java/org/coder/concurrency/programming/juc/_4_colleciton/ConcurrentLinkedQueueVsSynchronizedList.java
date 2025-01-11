@@ -28,48 +28,48 @@ import java.util.concurrent.TimeUnit;
  * ...省略
  * //Collections类的部分源码
  * public static <T> List<T> synchronizedList(List<T> list) {
- * 		return (list instanceof RandomAccess ? new SynchronizedRandomAccessList<>(list) : new SynchronizedList<>(list));
+ * return (list instanceof RandomAccess ? new SynchronizedRandomAccessList<>(list) : new SynchronizedList<>(list));
  * }
  * ...省略
  * SynchronizedList(List<E> list) {
- * 		super(list);
- * 		this.list = list;
+ * super(list);
+ * this.list = list;
  * }
  * SynchronizedList(List<E> list, Object mutex) {
- * 		super(list, mutex);
- * 		this.list = list;
+ * super(list, mutex);
+ * this.list = list;
  * }
  * public boolean equals(Object o) {
- * 		if(this == o)
- * 			return true;
- * 		synchronized (mutex) {
- * 			return list.equals(o);
- * 		}
+ * if(this == o)
+ * return true;
+ * synchronized (mutex) {
+ * return list.equals(o);
+ * }
  * }
  * public int hashCode() {
- * 		synchronized (mutex) {
- * 			return list.hashCode();
- * 		}
+ * synchronized (mutex) {
+ * return list.hashCode();
+ * }
  * }
  * public E get(int index) {
- * 		synchronized (mutex) {
- * 			return list.get(index);
- * 		}
+ * synchronized (mutex) {
+ * return list.get(index);
+ * }
  * }
  * public E set(int index, E element) {
- * 		synchronized (mutex) {
- * 			return list.set(index, element);
- * 		}
+ * synchronized (mutex) {
+ * return list.set(index, element);
+ * }
  * }
  * public void add(int index, E element) {
- * 		synchronized (mutex) {
- * 			list.add(index, element);
- * 		}
+ * synchronized (mutex) {
+ * list.add(index, element);
+ * }
  * }
  * public E remove(int index) {
- * 		synchronized (mutex) {
- * 			return list.remove(index);
- * 		}
+ * synchronized (mutex) {
+ * return list.remove(index);
+ * }
  * }
  * ...省略
  * 这种方式虽然可以确保Collection在多线程环境下的线程安全性，但是synchronized关键字相对于显式锁Lock甚至无锁的实现方式来说效率低下，
@@ -77,13 +77,13 @@ import java.util.concurrent.TimeUnit;
  * (在本章的最后，笔者也给出了一个简单的无锁数据结构实现，同样适用于高并发多线程的环境之中)。
  * 1.ConcurrentLinkedQueue：无锁的、线程安全的、性能高效的、基于链表结构实现的FIFO单向队列(在JDK1.5版本中被引入)。
  * 2.ConcurrentLinkedDeque：无锁的、线程安全的、性能高效的、基于链表结构实现的双向队列(在JDK1.7版本中被引入)。
- *
+ * <p>
  * ConcurrentLinkedQueue和ConcurrentLinkedDeque的使用都是比较简单的，
  * 为了节约篇幅，本节不会对每一种方法都展开详细的介绍，读者可以通过阅读JDK帮助文档获得帮助。
- *
+ * <p>
  * 4.3.1 并发队列的性能
  * 并发队列由于采用了无锁算法的实现方式，因此在多线程高并发的场景中其性能表现将会足够优异，下面通过一个简单的基准测试对其性能进行一下对比。
- *
+ * <p>
  * 运行上面的基准测试，在10个线程同时读写的情况下(5个线程向队列尾部插入数据，5个线程从队列头部读取数据)，ConcurrentLinkedQueue的性能明显要出色很多。
  * Benchmark                                                                    Mode  Cnt  Score   Error  Units
  * ConcurrentLinkedQueueVsSynchronizedList.concurrent                           avgt   10  0.870 ± 0.027  us/op

@@ -32,16 +32,19 @@ import java.util.concurrent.TimeUnit;
 public class JMHExample23 {
     private byte[] alexBytes;
     private AlexClassLoader classLoader;
+
     @Setup
     public void init() throws IOException {
         alexBytes = Files.readAllBytes(Paths.get("/Users/crayzer/workspaces/iamcoder/concurrency-in-action/target/classes/org/coder/concurrency/programming/_1_jmh/Alex.class"));
         classLoader = new AlexClassLoader(alexBytes);
     }
+
     @Benchmark
     public Object testLoadClass() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
         Class<?> alexClass = Class.forName("Alex", true, classLoader);
         return alexClass.newInstance();
     }
+
     public static void main(String[] args) throws RunnerException {
         final Options opts = new OptionsBuilder()
                 .include(JMHExample23.class.getSimpleName())

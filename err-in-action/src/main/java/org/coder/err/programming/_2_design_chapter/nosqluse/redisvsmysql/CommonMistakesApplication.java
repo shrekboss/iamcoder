@@ -1,7 +1,6 @@
 package org.coder.err.programming._2_design_chapter.nosqluse.redisvsmysql;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.env.StandardEnvironment;
@@ -10,6 +9,7 @@ import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -23,11 +23,11 @@ public class CommonMistakesApplication {
     //模拟多少数据保存到Redis和MySQL
     public static final int ROWS = 100_000;
     public static final String PAYLOAD = IntStream.rangeClosed(1, 100).mapToObj(__ -> "a").collect(Collectors.joining(""));
-    @Autowired
+    @Resource
     private StringRedisTemplate stringRedisTemplate;
-    @Autowired
+    @Resource
     private JdbcTemplate jdbcTemplate;
-    @Autowired
+    @Resource
     private StandardEnvironment standardEnvironment;
 
 

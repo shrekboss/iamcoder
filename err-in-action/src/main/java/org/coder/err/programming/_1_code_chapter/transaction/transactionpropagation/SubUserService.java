@@ -1,17 +1,18 @@
 package org.coder.err.programming._1_code_chapter.transaction.transactionpropagation;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
 
 
 @Service
 @Slf4j
 public class SubUserService {
 
-    @Autowired
+    @Resource
     private UserRepository userRepository;
 
     @Transactional

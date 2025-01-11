@@ -1,12 +1,12 @@
 package org.coder.err.programming._1_code_chapter.springpart1.beanprototye;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 
@@ -16,9 +16,9 @@ import java.util.List;
 public class BeanSingletonAndOrderController {
 
     // Spring 注入的 SayService 的 List，第一个元素是 SayBye，第二个元素是 SayHello， 存在顺序问题
-    @Autowired
+    @Resource
     List<SayService> sayServiceList;
-    @Autowired
+    @Resource
     private ApplicationContext applicationContext;
 
     /**

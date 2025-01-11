@@ -41,18 +41,25 @@ BEGIN
 
     SET end_idx = LEAST(total, start_idx + batch_size - 1);
 
-    WHILE start_idx <= total DO
+    WHILE start_idx <= total
+        DO
             SET insert_values = '';
-            WHILE start_idx <= end_idx DO
-                    SET insert_values = CONCAT(insert_values, CONCAT('(\'name', start_idx, '\', 0, 0, 0, NOW(), NOW()),'));
+            WHILE start_idx <= end_idx
+                DO
+                    SET insert_values =
+                            CONCAT(insert_values, CONCAT('(\'name', start_idx, '\', 0, 0, 0, NOW(), NOW()),'));
                     SET start_idx = start_idx + 1;
                 END WHILE;
             SET insert_values = LEFT(insert_values, LENGTH(insert_values) - 1); -- Remove the trailing comma
-            SET @sql = CONCAT('INSERT INTO category_info_varchar_50 (name, is_show, sort, deleted, create_time, update_time) VALUES ', insert_values, ';');
+            SET @sql = CONCAT(
+                    'INSERT INTO category_info_varchar_50 (name, is_show, sort, deleted, create_time, update_time) VALUES ',
+                    insert_values, ';');
 
             PREPARE stmt FROM @sql;
             EXECUTE stmt;
-            SET @sql = CONCAT('INSERT INTO category_info_varchar_500 (name, is_show, sort, deleted, create_time, update_time) VALUES ', insert_values, ';');
+            SET @sql = CONCAT(
+                    'INSERT INTO category_info_varchar_500 (name, is_show, sort, deleted, create_time, update_time) VALUES ',
+                    insert_values, ';');
             PREPARE stmt FROM @sql;
             EXECUTE stmt;
 
@@ -64,5 +71,7 @@ DELIMITER ;
 CALL batchInsertData(1000000);
 
 
-select count(*) from category_info_varchar_50;
-select count(*) from category_info_varchar_500;
+select count(*)
+from category_info_varchar_50;
+select count(*)
+from category_info_varchar_500;

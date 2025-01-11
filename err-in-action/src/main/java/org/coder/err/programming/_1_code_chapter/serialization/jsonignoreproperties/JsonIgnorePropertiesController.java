@@ -3,15 +3,16 @@ package org.coder.err.programming._1_code_chapter.serialization.jsonignoreproper
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("jsonignoreproperties")
 @Slf4j
 public class JsonIgnorePropertiesController {
 
-    @Autowired
+    @Resource
     private ObjectMapper objectMapper;
 
     // 重新定义了一个 ObjectMapper Bean，开启了 WRITE_ENUMS_USING_INDEX 功能特性

@@ -3,7 +3,6 @@ package org.coder.err.programming._2_design_chapter.cachedesign.cacheconcurrent;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -20,11 +20,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 @RestController
 public class CacheConcurrentController {
 
-    @Autowired
+    @Resource
     private StringRedisTemplate stringRedisTemplate;
 
     private AtomicInteger atomicInteger = new AtomicInteger();
-    @Autowired
+    @Resource
     private RedissonClient redissonClient;
 
     @PostConstruct

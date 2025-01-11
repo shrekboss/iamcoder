@@ -26,8 +26,8 @@ public class FutureServiceImpl<IN, OUT> implements FutureService<IN, OUT> {
 
         final FutureTask<Void> future = new FutureTask<>();
         new Thread(() -> {
-           runnable.run();
-           future.finish(null);
+            runnable.run();
+            future.finish(null);
         }, getNextName()).start();
 
         return future;

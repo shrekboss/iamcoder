@@ -7,7 +7,6 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -15,6 +14,7 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Array;
 import java.time.Duration;
@@ -33,7 +33,7 @@ import static java.util.stream.Collectors.toMap;
 public class MetricsAspect {
     //让Spring帮我们注入ObjectMapper，以方便通过JSON序列化来记录方法入参和出参
 
-    @Autowired
+    @Resource
     private ObjectMapper objectMapper;
 
     // 实现一个返回Java基本类型默认值的工具。其实，也可以逐一写很多if-else判断类型，然后手动设置其

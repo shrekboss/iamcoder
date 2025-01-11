@@ -21,7 +21,7 @@ public class ThreadPoolOOMController {
 
     /**
      * Exception in thread "http-nio-45678-ClientPoller" java.lang.OutOfMemoryError: GC overhead limit exceeded
-     *
+     * <p>
      * curl http://localhost:45678/threadpooloom/oom1
      */
     @GetMapping("oom1")

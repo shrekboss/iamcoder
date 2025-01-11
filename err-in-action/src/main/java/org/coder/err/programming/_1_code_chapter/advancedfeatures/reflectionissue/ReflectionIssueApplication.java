@@ -24,7 +24,8 @@ public class ReflectionIssueApplication {
     }
 
     /**
-     * 反射调用方法，是以反射获取方法时传入的方法名称和参数类型来确定调用方法的。*/
+     * 反射调用方法，是以反射获取方法时传入的方法名称和参数类型来确定调用方法的。
+     */
     public void wrong() throws Exception {
         //  - int age = 36
         getClass().getDeclaredMethod("age", Integer.TYPE).invoke(this, Integer.valueOf("36"));

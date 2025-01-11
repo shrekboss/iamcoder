@@ -12,6 +12,7 @@ package org.coder.design.patterns._4_design_patterns._3_behavior._7_visitor.doub
  */
 public abstract class ResourceFile {
     protected String filePath;
+
     public ResourceFile(String filePath) {
         this.filePath = filePath;
     }

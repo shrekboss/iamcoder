@@ -13,13 +13,13 @@ import org.coder.design.patterns._4_design_patterns._3_behavior._4_responsibilit
  * @since 1.0.0
  */
 public class PoliticalWordFilter implements SensitiveWordFilter {
-    
+
     @Override
     public boolean doFilter(Content content) {
         boolean legal = true;
 
         //...
 
-         return legal;
+        return legal;
     }
 }

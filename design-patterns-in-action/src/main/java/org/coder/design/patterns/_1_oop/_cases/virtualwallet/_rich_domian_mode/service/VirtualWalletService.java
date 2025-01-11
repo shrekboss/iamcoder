@@ -24,7 +24,7 @@ public class VirtualWalletService {
         return walletRepo.getBalance(walletId);
     }
 
-//    @Transactional
+    //    @Transactional
     public void debit(Long walletId, BigDecimal amount) {
         VirtualWalletEntity walletEntity = walletRepo.getWalletEntity(walletId);
         VirtualWallet wallet = convert(walletEntity);
@@ -38,7 +38,7 @@ public class VirtualWalletService {
         walletRepo.updateBalance(walletId, wallet.balance());
     }
 
-//    @Transactional
+    //    @Transactional
     public void credit(Long walletId, BigDecimal amount) {
         VirtualWalletEntity walletEntity = walletRepo.getWalletEntity(walletId);
         VirtualWallet wallet = convert(walletEntity);
@@ -52,7 +52,7 @@ public class VirtualWalletService {
         walletRepo.updateBalance(walletId, wallet.balance());
     }
 
-//    @Transactional
+    //    @Transactional
     public void transfer(Long fromWalletId, Long toWalletId, BigDecimal amount) {
         VirtualWalletTransactionEntity transactionEntity = new VirtualWalletTransactionEntity();
         transactionEntity.setAmount(amount);

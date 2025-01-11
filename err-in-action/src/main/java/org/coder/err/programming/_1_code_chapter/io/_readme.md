@@ -108,7 +108,6 @@ private static Runnable asUncheckedRunnable(Closeable c) {
 - 在实际代码中每次需要读取的字节数很可能不是固定的，有的时候读取几个字节，有的时候读取几百字节，这个时候有一个固定大小较大的缓冲，也就是使用
   BufferedInputStream 和 BufferedOutputStream 做为后备的稳定的二次缓冲，就非常有意义了
 - 文件操作因为涉及操作系统和文件系统的实现，JDK 并不能确保所有 IO API 在所有平台的逻辑一致性，代码迁移到新的操作系统或文件系统时，要重新进行功能测试和性能测试。
-  
 
 | ns           | %    | Task name                     |
 |--------------|------|-------------------------------|

@@ -22,7 +22,7 @@ public class MyThreadLocalStringDemo {
                 demo.setString(Thread.currentThread().getName());
                 System.out.println(demo.getString());
                 countDownLatch.countDown();
-            },"thread - " + i);
+            }, "thread - " + i);
             thread.start();
         }
     }

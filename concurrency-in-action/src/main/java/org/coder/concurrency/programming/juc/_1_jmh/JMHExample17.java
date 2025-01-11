@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * (what) Fork 用于避免 Profile-guided optimizations
  *
+ * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @Fork(0): 每个基准测试方法都将会与 JMHExample17 使用同一个 JVM 进程
  * @Fork(1): 每一次基准测试时都会开辟一个全新的 JVM 进程对其进行测试，那么多个基准测试之间将不会再存在干扰
  *
@@ -18,8 +19,6 @@ import java.util.concurrent.TimeUnit;
  * (why)
  * <p>
  * (how)
- *
- * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0
  */
 @BenchmarkMode(Mode.AverageTime)
@@ -37,6 +36,7 @@ public class JMHExample17 {
     public static class Inc1 implements Inc {
 
         private int i = 0;
+
         @Override
         public int inc() {
             return ++i;
@@ -46,6 +46,7 @@ public class JMHExample17 {
     public static class Inc2 implements Inc {
 
         private int i = 0;
+
         @Override
         public int inc() {
             return ++i;

@@ -16,9 +16,12 @@ public class SmallMario implements IMario {
 
     private static final SmallMario instance = new SmallMario();
 
-    private SmallMario() {}
+    private SmallMario() {
+    }
 
-    public static SmallMario getInstance() { return instance; }
+    public static SmallMario getInstance() {
+        return instance;
+    }
 
     @Override
     public State getName() {
