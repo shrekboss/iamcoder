@@ -59,7 +59,7 @@ public class GenericAndInheritanceApplication {
                         e.printStackTrace();
                     }
                 });
-        System.out.println(child1.toString());
+        System.out.println(child1);
     }
 
     // Child2.setValue called

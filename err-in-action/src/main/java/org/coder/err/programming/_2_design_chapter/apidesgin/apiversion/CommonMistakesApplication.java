@@ -10,6 +10,7 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 public class CommonMistakesApplication implements WebMvcRegistrations {
 
     public static void main(String[] args) {
+        System.setProperty("org.springframework.boot.logging.LoggingSystem", "none");
         SpringApplication.run(CommonMistakesApplication.class, args);
     }
 

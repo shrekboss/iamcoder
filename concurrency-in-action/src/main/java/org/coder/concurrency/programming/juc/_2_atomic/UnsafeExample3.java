@@ -46,6 +46,7 @@ public class UnsafeExample3 {
 		Object result = c.getMethod("getI").invoke(c.newInstance(), null);
 		assert (Integer) result == 10;
 	}
+
 	//读取class文件的二进制数组
 	private static byte[] getClassContent() throws Exception {
 		File f = new File("/Users/crayzer/workspaces/iamcoder/concurrency-in-action/target/classes/org/coder/concurrency/programming/juc/_2_atomic/A.class");

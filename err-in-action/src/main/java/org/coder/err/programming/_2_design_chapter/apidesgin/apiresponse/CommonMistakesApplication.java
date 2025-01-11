@@ -9,6 +9,7 @@ public class CommonMistakesApplication {
 
     public static void main(String[] args) {
         Utils.loadPropertySource(CommonMistakesApplication.class, "config.properties");
+        System.setProperty("org.springframework.boot.logging.LoggingSystem", "none");
         SpringApplication.run(CommonMistakesApplication.class, args);
     }
 }

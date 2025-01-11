@@ -17,6 +17,7 @@
         <module>design-patterns-in-action</module>
         <module>err-in-action</module>
         <module>io-in-action</module>
+        <module>mysql-in-action</module>
     </modules>
 
     <properties>
