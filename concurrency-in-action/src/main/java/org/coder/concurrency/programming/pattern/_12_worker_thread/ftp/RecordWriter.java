@@ -48,18 +48,18 @@ public class RecordWriter {
         return INSTANCE;
     }
 
-    public File write(Record[] records, int targetFileIndex)
+    public File write(RecordDefinition[] recordDefinitions, int targetFileIndex)
             throws IOException {
-        if (null == records || 0 == records.length) {
+        if (null == recordDefinitions || 0 == recordDefinitions.length) {
             throw new IllegalArgumentException("records is null or empty");
         }
 
-        int recordCount = records.length;
+        int recordCount = recordDefinitions.length;
 
         String recordDay;
 
         recordDay = DIRECTORY_NAME_FORMATTER
-                .format(records[0].getOperationTime());
+                .format(recordDefinitions[0].getOperationTime());
 
         String fileKey = recordDay + '-' + targetFileIndex;
 
@@ -80,32 +80,32 @@ public class RecordWriter {
         }
         StringBuffer strBuf = new StringBuffer(40);
         int i = 0;
-        for (Record record : records) {
+        for (RecordDefinition recordDefinition : recordDefinitions) {
             i++;
 
-            pwr.print(String.valueOf(record.getId()));
+            pwr.print(String.valueOf(recordDefinition.getId()));
             pwr.print(FIELD_SEPARATOR);
-            pwr.print(record.getMsisdn());
+            pwr.print(recordDefinition.getMsisdn());
             pwr.print(FIELD_SEPARATOR);
-            pwr.print(record.getProductId());
-            pwr.print(FIELD_SEPARATOR);
-
-            pwr.print(record.getPackageId());
-            pwr.print(FIELD_SEPARATOR);
-            pwr.print(String.valueOf(record.getOperationType()));
+            pwr.print(recordDefinition.getProductId());
             pwr.print(FIELD_SEPARATOR);
 
-            strBuf.delete(0, 40);
-            pwr.print(sdf.format(record.getOperationTime(), strBuf, FIELD_POS));
+            pwr.print(recordDefinition.getPackageId());
+            pwr.print(FIELD_SEPARATOR);
+            pwr.print(String.valueOf(recordDefinition.getOperationType()));
             pwr.print(FIELD_SEPARATOR);
 
             strBuf.delete(0, 40);
+            pwr.print(sdf.format(recordDefinition.getOperationTime(), strBuf, FIELD_POS));
+            pwr.print(FIELD_SEPARATOR);
 
-            pwr.print(sdf.format(record.getEffectiveDate(), strBuf, FIELD_POS));
+            strBuf.delete(0, 40);
+
+            pwr.print(sdf.format(recordDefinition.getEffectiveDate(), strBuf, FIELD_POS));
             strBuf.delete(0, 40);
             pwr.print(FIELD_SEPARATOR);
 
-            pwr.print(sdf.format(record.getDueDate(), strBuf, FIELD_POS));
+            pwr.print(sdf.format(recordDefinition.getDueDate(), strBuf, FIELD_POS));
             pwr.print('\n');
 
             if (0 == (i % RECORD_JOIN_SIZE)) {

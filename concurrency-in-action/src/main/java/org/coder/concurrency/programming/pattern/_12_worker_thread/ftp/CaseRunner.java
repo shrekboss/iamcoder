@@ -66,15 +66,15 @@ public class CaseRunner {
         }
 
         @Override
-        public Record next() {
+        public RecordDefinition next() {
             String line = scanner.nextLine();
-            Record record = null;
+            RecordDefinition recordDefinition = null;
             try {
-                record = Record.parseCsv(line);
+                recordDefinition = RecordDefinition.parseCsv(line);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            return record;
+            return recordDefinition;
         }
     }
 

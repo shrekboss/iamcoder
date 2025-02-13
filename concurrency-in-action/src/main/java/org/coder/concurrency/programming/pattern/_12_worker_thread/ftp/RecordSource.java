@@ -8,6 +8,6 @@ public interface RecordSource {
 
     boolean hasNext();
 
-    Record next();
+    RecordDefinition next();
 
 }

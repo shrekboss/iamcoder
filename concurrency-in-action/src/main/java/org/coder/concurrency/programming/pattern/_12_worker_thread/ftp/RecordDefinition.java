@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Pattern;
 
-public class Record {
+public class RecordDefinition {
     // 2014-08-10 12:58:08.0
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.S");
     private static final Pattern PATTERN_COMMA = Pattern.compile(",");
@@ -83,7 +83,7 @@ public class Record {
         if (this == obj) return true;
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
-        Record other = (Record) obj;
+        RecordDefinition other = (RecordDefinition) obj;
         if (id != other.id) return false;
         return true;
     }
@@ -104,9 +104,9 @@ public class Record {
         this.dueDate = dueDate;
     }
 
-    public static Record parseCsv(String line) throws ParseException {
+    public static RecordDefinition parseCsv(String line) throws ParseException {
         String[] arr = PATTERN_COMMA.split(line);
-        Record ret = new Record();
+        RecordDefinition ret = new RecordDefinition();
         // ID PRODUCTID PACKAGEID MSISDN OPERATIONTIME EFFECTIVEDATE DUEDATE OPERATIONTYPE
         ret.setId(Integer.valueOf(arr[0]));
         ret.setProductId(arr[1]);

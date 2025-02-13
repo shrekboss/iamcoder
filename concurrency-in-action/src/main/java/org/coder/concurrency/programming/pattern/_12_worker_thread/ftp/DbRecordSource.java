@@ -35,15 +35,15 @@ public class DbRecordSource implements RecordSource {
 
 
     @Override
-    public Record next() {
-        Record record = null;
+    public RecordDefinition next() {
+        RecordDefinition recordDefinition = null;
         try {
             rs.next();
-            record = makeRecordFrom(rs);
+            recordDefinition = makeRecordFrom(rs);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return record;
+        return recordDefinition;
     }
 
     private ResultSet qryRecords(Connection dbConn) throws Exception {
@@ -64,16 +64,16 @@ public class DbRecordSource implements RecordSource {
         return dbConn;
     }
 
-    private static Record makeRecordFrom(ResultSet rs) throws SQLException {
-        Record record = new Record();
-        record.setId(rs.getInt("id"));
-        record.setProductId(rs.getString("productId"));
-        record.setPackageId(rs.getString("packageId"));
-        record.setMsisdn(rs.getString("msisdn"));
-        record.setOperationTime(rs.getTimestamp("operationTime"));
-        record.setOperationType(rs.getInt("operationType"));
-        record.setEffectiveDate(rs.getTimestamp("effectiveDate"));
-        record.setDueDate(rs.getTimestamp("dueDate"));
-        return record;
+    private static RecordDefinition makeRecordFrom(ResultSet rs) throws SQLException {
+        RecordDefinition recordDefinition = new RecordDefinition();
+        recordDefinition.setId(rs.getInt("id"));
+        recordDefinition.setProductId(rs.getString("productId"));
+        recordDefinition.setPackageId(rs.getString("packageId"));
+        recordDefinition.setMsisdn(rs.getString("msisdn"));
+        recordDefinition.setOperationTime(rs.getTimestamp("operationTime"));
+        recordDefinition.setOperationType(rs.getInt("operationType"));
+        recordDefinition.setEffectiveDate(rs.getTimestamp("effectiveDate"));
+        recordDefinition.setDueDate(rs.getTimestamp("dueDate"));
+        return recordDefinition;
     }
 }

@@ -95,13 +95,13 @@ public class DataSyncTask implements Runnable {
                  */
                 File file;
                 final RecordWriter recordWriter = RecordWriter.getInstance();
-                final Record[] records = task.records;
-                if (null == records) {
+                final RecordDefinition[] recordDefinitions = task.recordDefinitions;
+                if (null == recordDefinitions) {
                     file = recordWriter.finishRecords(task.recordDay,
                             task.targetFileIndex);
                 } else {
                     try {
-                        file = recordWriter.write(records,
+                        file = recordWriter.write(recordDefinitions,
                                 task.targetFileIndex);
                     } catch (IOException e) {
                         throw new PipeException(this, task,
@@ -226,8 +226,8 @@ public class DataSyncTask implements Runnable {
 
     private void processRecords(RecordSource recordSource,
                                 Pipeline<RecordSaveTask, String> pipeline) throws Exception {
-        Record record;
-        Record[] records = new Record[Config.RECORD_SAVE_CHUNK_SIZE];
+        RecordDefinition recordDefinition;
+        RecordDefinition[] recordDefinitions = new RecordDefinition[Config.RECORD_SAVE_CHUNK_SIZE];
         int targetFileIndex = 0;
         int nextTargetFileIndex = 0;
         int recordCountInTheDay = 0;
@@ -237,18 +237,18 @@ public class DataSyncTask implements Runnable {
         SimpleDateFormat sdf = new SimpleDateFormat("yyMMdd");
 
         while (recordSource.hasNext()) {
-            record = recordSource.next();
+            recordDefinition = recordSource.next();
             lastRecordDay = recordDay;
-            recordDay = sdf.format(record.getOperationTime());
+            recordDay = sdf.format(recordDefinition.getOperationTime());
             if (recordDay.equals(lastRecordDay)) {
-                records[recordCountInTheFile] = record;
+                recordDefinitions[recordCountInTheFile] = recordDefinition;
                 recordCountInTheDay++;
             } else {
                 // 实际已发生的不同日期记录文件切换
                 if (null != lastRecordDay) {
                     if (recordCountInTheFile >= 1) {
                         pipeline.process(new RecordSaveTask(
-                                Arrays.copyOf(records, recordCountInTheFile),
+                                Arrays.copyOf(recordDefinitions, recordCountInTheFile),
                                 targetFileIndex));
                     } else {
                         pipeline.process(new RecordSaveTask(lastRecordDay,
@@ -256,11 +256,11 @@ public class DataSyncTask implements Runnable {
                     }
 
                     // 在此之前，先将records中的内容写入文件
-                    records[0] = record;
+                    recordDefinitions[0] = recordDefinition;
                     recordCountInTheFile = 0;
                 } else {
                     // 直接赋值
-                    records[0] = record;
+                    recordDefinitions[0] = recordDefinition;
                 }
                 recordCountInTheDay = 1;
             }
@@ -270,7 +270,7 @@ public class DataSyncTask implements Runnable {
                 if (0 == (recordCountInTheFile
                         % Config.RECORD_SAVE_CHUNK_SIZE)) {
                     pipeline.process(new RecordSaveTask(
-                            Arrays.copyOf(records, recordCountInTheFile),
+                            Arrays.copyOf(recordDefinitions, recordCountInTheFile),
                             targetFileIndex));
                     recordCountInTheFile = 0;
                 }
@@ -282,7 +282,7 @@ public class DataSyncTask implements Runnable {
                 // 预测到将发生同日期记录文件切换
                 if (recordCountInTheFile > 1) {
                     pipeline.process(new RecordSaveTask(
-                            Arrays.copyOf(records, recordCountInTheFile),
+                            Arrays.copyOf(recordDefinitions, recordCountInTheFile),
                             targetFileIndex));
                 } else {
                     pipeline.process(
@@ -298,7 +298,7 @@ public class DataSyncTask implements Runnable {
 
         if (recordCountInTheFile > 0) {
             pipeline.process(new RecordSaveTask(
-                    Arrays.copyOf(records, recordCountInTheFile),
+                    Arrays.copyOf(recordDefinitions, recordCountInTheFile),
                     targetFileIndex));
         }
     }

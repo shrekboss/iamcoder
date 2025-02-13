@@ -41,10 +41,10 @@ public class UnsafeExample3 {
 
     public static void main(String[] args) throws Exception {
         byte[] classContents = getClassContent();
-        //调用defineClass方法完成对A的加载
-        Class c = getUnsafe().defineClass(null, classContents, 0, classContents.length, null, null);
-        Object result = c.getMethod("getI").invoke(c.newInstance(), null);
-        assert (Integer) result == 10;
+        //调用defineClass方法完成对A的加载，要求：jdk 1.8
+//        Class c = getUnsafe().defineClass(null, classContents, 0, classContents.length, null, null);
+//        Object result = c.getMethod("getI").invoke(c.newInstance(), null);
+//        assert (Integer) result == 10;
     }
 
     //读取class文件的二进制数组
