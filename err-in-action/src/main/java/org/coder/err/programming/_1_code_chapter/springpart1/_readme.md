@@ -154,15 +154,15 @@ getAnnotation(Metrics .class);
 }
 ```
 
-### 4. @Resource 注入 Bean 外，还可以使用 @Inject 或 @Resource 来注入 Bean。三种方式的区别
+### 4. @Resource 注入 Bean 外，还可以使用 @Inject 或 @Autowired 来注入 Bean。三种方式的区别
 
-#### @Resource
+#### @Autowired
 
-- @Resource是spring自带的注解，通过 AutowiredAnnotationBeanPostProcessor 类实现的依赖注入；
-- @Resource是根据类型进行自动装配的，如果需要按名称进行装配，则需要配合@Qualifier；
-- @Resource有个属性为required，可以配置为false，如果配置为false之后，当没有找到相应bean的时候，
+- @Autowired是spring自带的注解，通过 AutowiredAnnotationBeanPostProcessor 类实现的依赖注入；
+- @Autowired是根据类型进行自动装配的，如果需要按名称进行装配，则需要配合@Qualifier；
+- @Autowired有个属性为required，可以配置为false，如果配置为false之后，当没有找到相应bean的时候，
   系统不会抛错；
-- @Resource可以作用在变量、setter方法、构造函数上。
+- @Autowired可以作用在变量、setter方法、构造函数上。
 
 #### @Inject
 
