@@ -17,16 +17,16 @@ public abstract class AbstractCart {
         Cart cart = new Cart();
 
         List<Item> itemList = new ArrayList<>();
-        items.entrySet().stream().forEach(entry -> {
+        items.forEach((key, value) -> {
             Item item = new Item();
-            item.setId(entry.getKey());
-            item.setPrice(Db.getItemPrice(entry.getKey()));
-            item.setQuantity(entry.getValue());
+            item.setId(key);
+            item.setPrice(Db.getItemPrice(key));
+            item.setQuantity(value);
             itemList.add(item);
         });
         cart.setItems(itemList);
 
-        itemList.stream().forEach(item -> {
+        itemList.forEach(item -> {
             processCouponPrice(userId, item);
             processDeliveryPrice(userId, item);
         });
