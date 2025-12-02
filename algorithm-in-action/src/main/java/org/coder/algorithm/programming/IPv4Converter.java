@@ -212,6 +212,10 @@ public class IPv4Converter {
         }
 
         // 为了确保是32位无符号整数，与0xFFFFFFFFL进行与运算
+        // 在Java中，没有无符号整数类型，所以我们需要确保结果被解释为一个无符号的32位整数。
+        // 当我们使用result & 0xFFFFFFFFL时，我们实际上是将高32位清零，保留低32位。
+        // 注意：0xFFFFFFFFL是一个长整型常量，其低32位都是1，高32位都是0。与这个数进行按位与操作，
+        // 可以确保我们只取低32位，而将高32位置0。
         return result & 0xFFFFFFFFL;
     }
 
