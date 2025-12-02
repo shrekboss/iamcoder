@@ -18,6 +18,7 @@
         <module>err-in-action</module>
         <module>io-in-action</module>
         <module>mysql-in-action</module>
+        <module>algorithm-in-action</module>
     </modules>
 
     <properties>

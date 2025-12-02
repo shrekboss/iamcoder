@@ -1,0 +1,12 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.coder</groupId>
+        <artifactId>iamcoder</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>algorithm-in-action</artifactId>
+    <name>algorithm-in-action</name>
+    <packaging>jar</packaging>
+</project>
