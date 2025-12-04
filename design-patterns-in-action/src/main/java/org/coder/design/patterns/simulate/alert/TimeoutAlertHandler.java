@@ -16,6 +16,12 @@ public class TimeoutAlertHandler extends AlertHandler {
 
     @Override
     public void check(ApiStatInfo apiStatInfo) {
-        //
+
+        if (apiStatInfo.getTimeoutCount() > rule.getMatchedRule(apiStatInfo.getApi()).getMaxErrorCount()) {
+            System.out.println("TimeoutAlertHandler: 不通过");
+            notification.notify("...");
+        } else {
+            System.out.println("TimeoutAlertHandler: 通过");
+        }
     }
 }
