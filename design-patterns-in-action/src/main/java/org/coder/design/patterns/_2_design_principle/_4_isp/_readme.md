@@ -1,5 +1,9 @@
 ## 把“接口”理解为一组 API 接口集合
 
+> 接口隔离原则的英文翻译是“ Interface Segregation Principle”，缩写为 ISP。Robert Martin 在 SOLID 原则中是这样定义它的：“Clients 
+> should not be forced to depend upon interfaces that they do not use。”直译成中文的话就是：客户端不应该被强迫依赖它不需要的接口。
+> 其中的“客户端”，可以理解为接口的调用者或者使用者。
+
 > 微服务用户系统提供了一组跟用户相关的 API 给其他系统使用，比如：注册、登录、获取用户信息等。
 
 具体代码如下所示：

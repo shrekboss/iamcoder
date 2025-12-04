@@ -18,7 +18,7 @@ public class ApplicationContext {
     private AlertRule alertRule;
     private Notification notification;
     @Getter
-    private Alert alert;
+    private AlertChain alertChain;
 
     public void initializeBeans() {
         alertRule = new AlertRule(/*.省略参数.*/);
@@ -30,11 +30,11 @@ public class ApplicationContext {
                 // ...
             }
         }; //省略一些初始化代码
-        alert = new Alert();
-        alert.addAlertHandler(new TpsAlertHandler(alertRule, notification));
-        alert.addAlertHandler(new ErrorAlertHandler(alertRule, notification));
+        alertChain = new AlertChain();
+        alertChain.addAlertHandler(new TpsAlertHandler(alertRule, notification));
+        alertChain.addAlertHandler(new ErrorAlertHandler(alertRule, notification));
         // 改动三：注册handler
-        alert.addAlertHandler(new TimeoutAlertHandler(alertRule, notification));
+        alertChain.addAlertHandler(new TimeoutAlertHandler(alertRule, notification));
     }
 
     @Getter

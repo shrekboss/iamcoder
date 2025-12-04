@@ -1,4 +1,8 @@
-## API 接口监控告警设计
+> 开闭原则的英文全称是 Open Closed Principle，简写为 OCP。它的英文描述是：software entities (modules, classes, functions, etc.) 
+> should be open for extension , but closed for modification。我们把它翻译成中文就是：软件实体（模块、类、方法等）应该“对扩展开放、
+> 对修改关闭”。
+
+# API 接口监控告警设计
 
 - AlertRule 存储告警规则，可以自由设置。
 - Notification 是告警通知类，支持邮件、短信、微信、手机等多种通知渠道。
@@ -64,7 +68,7 @@ public class Alert {
     - 引入 handler 的概念，将 if 判断逻辑分散在各个 handler 中。
 
 - 参考代码：
-    - [Alert.java](Alert.java)
+    - [AlertChain.java](AlertChain.java)
     - [AlertHandler.java](..%2F..%2Fcommon%2Falert%2FAlertHandler.java)
     - [ApiStatInfo.java](ApiStatInfo.java)
     - [TpsAlertHandler.java](..%2F..%2Fcommon%2Falert%2FTpsAlertHandler.java)

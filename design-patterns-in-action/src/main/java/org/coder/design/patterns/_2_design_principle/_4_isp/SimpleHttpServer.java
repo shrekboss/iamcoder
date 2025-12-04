@@ -1,5 +1,7 @@
 package org.coder.design.patterns._2_design_principle._4_isp;
 
+import org.springframework.util.CollectionUtils;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,7 +27,14 @@ public class SimpleHttpServer {
     }
 
     public void run() {
-        //...
+        if (CollectionUtils.isEmpty(viewers)) {
+            return;
+        }
+
+        for (Map.Entry<String, List<Viewer>> entry : viewers.entrySet()) {
+            System.out.println("urlDirectory: " + entry.getKey());
+            System.out.println("viewers: " + entry.getValue());
+        }
     }
 
 }

@@ -29,7 +29,7 @@ public class RedisConfig implements Updater, Viewer {
      */
     @Override
     public void update() {
-        //...
+        System.out.println("RedisConfig update");
     }
 
     @Override

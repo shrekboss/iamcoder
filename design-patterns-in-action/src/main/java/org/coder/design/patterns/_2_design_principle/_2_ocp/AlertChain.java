@@ -9,9 +9,9 @@ import java.util.List;
  * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0
  */
-public class Alert {
+public class AlertChain {
 
-    private List<AlertHandler> alertHandlerList = new ArrayList<>();
+    private final List<AlertHandler> alertHandlerList = new ArrayList<>();
 
     public void addAlertHandler(AlertHandler handler) {
         this.alertHandlerList.add(handler);
