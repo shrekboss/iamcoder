@@ -9,12 +9,30 @@
 > 以实现很多复杂的设计思路，是很多设计原则、设计模式编码实现的基础。
 
 1. 面向对象的四大特性：封装、抽象、继承、多态
+   - 面向对象编程是一种编程范式或编程风格。它以类或对象作为组织代码的基本单元，并将封装、抽象、继承、多态四个特性，作为代码设计和实现的基石。
+   - 面向对象编程语言是支持类或对象的语法机制，并有现成的语法机制，能方便地实现面向对象编程四大特性（封装、抽象、继承、多态）的编程语言。
+   - 封装也叫作信息隐藏或者数据访问保护。类通过暴露有限的访问接口，授权外部仅能通过类提供的方式（或者叫函数）来访问内部信息或者数据。
+   - 抽象讲的是如何隐藏方法的具体实现，让调用者只需要关心方法提供了哪些功能，并不需要知道这些功能是如何实现的。
+   - 继承是用来表示类之间的 is-a 关系，作用就是为了复用代码。
+   - 多态是指子类可以替换父类，在实际的代码运行过程中，调用子类的方法实现。多态特性能提高代码的可扩展性和复用性。
 2. 面向对象编程(oop)与面向过程编程(pop)的区别和联系
 3. 面向对象分析、面向对象设计、面向对象编程
 4. 接口和抽象类的区别以及各自的应用场景
+   - 相对于抽象类的 is-a 关系来说，接口表示一种 has-a 关系，表示具有某些功能。对于接口，有一个更加形象的叫法，那就是协议(contract)。
+   - 抽象类更多的是为了代码复用，而接口就更侧重于解耦。
 5. 基于接口而非实现编程的设计思想
+   - 条原则的设计初衷是，将接口和实现相分离，封装不稳定的实现，暴露稳定的接口。
 6. 多用组合少用继承的设计思想
+   - 如果类之间的继承结构稳定（不会轻易改变），继承层次比较浅（比如，最多有两层继承关系），继承关系不复杂，我们就可以大胆地使用继承。反之，系统
+     越不稳定，继承层次很深，继承关系复杂，我们就尽量使用组合来替代继承。
+   - 除此之外，还有一些设计模式会固定使用继承或者组合。比如，装饰者模式（decorator pattern）、策略模式（strategy pattern）、组合模式等都
+     使用了组合关系，而模板模式（template pattern）使用了继承关系。
+   - 如果你不能改变一个函数的入参类型，而入参又非接口，为了支持多态，只能采用继承来实现。
 7. 面向过程的贫血模型和面向对象的充血模型
+   - 只包含数据，不包含业务逻辑的类，就叫作贫血模型（Anemic Domain Model）。
+   - 充血模型（Rich Domain Model）正好相反，数据和对应的业务逻辑被封装到同一个类中。
+   - 即便你对领域驱动搞得再清楚，但是对业务不熟悉，也并不一定能做出合理的领域设计。所以，不要把领域驱动设计当银弹，不要花太多的时间去过度地研
+     究它。
 
 ### 面向对象的四大特性
 
@@ -32,37 +50,38 @@ balance 和 balanceLastModifiedTime 两个数据的一致性。
 
 - [Wallet.java](_1_encapsulation%2FWallet.java)
 
-- [抽象 - Abstraction](_2_abstraction)
-    - [IPictureStorage.java](_2_abstraction%2FIPictureStorage.java)
-    - [PictureStorage.java](_2_abstraction%2FPictureStorage.java)
-- [继承 - Inheritance](_3_inheritance)
-    - case 1:
-        - [ImageStore.java](_3_inheritance%2Fimagestore%2FImageStore.java)
-        - [AliyunImageStore.java](_3_inheritance%2Fimagestore%2FAliyunImageStore.java)
-        - [PrivateImageStore.java](_3_inheritance%2Fimagestore%2FPrivateImageStore.java)- [IPictureStorage.java](_3_inheritance)
-        - [ImageProcessingJob.java](_3_inheritance%2Fimagestore%2FImageProcessingJob.java)
-    - case 2: 【接口 + 组合 + 委派】 --替换--> 【继承关系】
-        - [Flyable.java](_3_inheritance%2Fbird%2FFlyable.java)
-        - [Tweetable.java](_3_inheritance%2Fbird%2FTweetable.java)
-        - [EggLayable.java](_3_inheritance%2Fbird%2FEggLayable.java)
-        - [FlyAbility.java](_3_inheritance%2Fbird%2FFlyAbility.java)
-        - [TweetAbility.java](_3_inheritance%2Fbird%2FTweetAbility.java)
-        - [EggLayAbility.java](_3_inheritance%2Fbird%2FEggLayAbility.java)
-        - [Ostrich.java](_3_inheritance%2Fbird%2FOstrich.java)
-        - [Sparrow.java](_3_inheritance%2Fbird%2FSparrow.java)
+[抽象 - Abstraction](_2_abstraction)
+  - [IPictureStorage.java](_2_abstraction%2FIPictureStorage.java)
+  - [PictureStorage.java](_2_abstraction%2FPictureStorage.java)
 
-- [多态 - Polymorphism](_4_polymorphism)
-    - case 1:
-        - [SortedDynamicArray.java](_4_polymorphism%2FSortedDynamicArray.java)
-        - [SortedDynamicArrayTest.java](_4_polymorphism%2FSortedDynamicArrayTest.java)
-    - case 2:
-        - [Iterator.java](_4_polymorphism%2FIterator.java)
-        - [Array.java](_4_polymorphism%2FArray.java)
-        - [LinkedList.java](_4_polymorphism%2FLinkedList.java)
-        - [IteratorTest.java](_4_polymorphism%2FIteratorTest.java)
+[继承 - Inheritance](_3_inheritance)
+  - case 1:
+    - [ImageStore.java](_3_inheritance%2Fimagestore%2FImageStore.java)
+    - [AliyunImageStore.java](_3_inheritance%2Fimagestore%2FAliyunImageStore.java)
+    - [PrivateImageStore.java](_3_inheritance%2Fimagestore%2FPrivateImageStore.java)- [IPictureStorage.java](_3_inheritance)
+    - [ImageProcessingJob.java](_3_inheritance%2Fimagestore%2FImageProcessingJob.java)
+  - case 2: 【接口 + 组合 + 委派】 --替换--> 【继承关系】
+    - [Flyable.java](_3_inheritance%2Fbird%2FFlyable.java)
+    - [Tweetable.java](_3_inheritance%2Fbird%2FTweetable.java)
+    - [EggLayable.java](_3_inheritance%2Fbird%2FEggLayable.java)
+    - [FlyAbility.java](_3_inheritance%2Fbird%2FFlyAbility.java)
+    - [TweetAbility.java](_3_inheritance%2Fbird%2FTweetAbility.java)
+    - [EggLayAbility.java](_3_inheritance%2Fbird%2FEggLayAbility.java)
+    - [Ostrich.java](_3_inheritance%2Fbird%2FOstrich.java)
+    - [Sparrow.java](_3_inheritance%2Fbird%2FSparrow.java)
 
-- [案例分析](_cases)
-    - [case 1: 虚拟钱包设计](_cases%2Fvirtualwallet)
-        - [_readme.md](_cases%2Fvirtualwallet%2F_readme.md)
-    - [case 2: 接口鉴权设计](_cases%2Fauthentication)
-        - [_readme.md](_cases%2Fauthentication%2F_readme.md)
+[多态 - Polymorphism](_4_polymorphism)
+  - case 1:
+    - [SortedDynamicArray.java](_4_polymorphism%2FSortedDynamicArray.java)
+    - [SortedDynamicArrayTest.java](_4_polymorphism%2FSortedDynamicArrayTest.java)
+  - case 2:
+    - [Iterator.java](_4_polymorphism%2FIterator.java)
+    - [Array.java](_4_polymorphism%2FArray.java)
+    - [LinkedList.java](_4_polymorphism%2FLinkedList.java)
+    - [IteratorTest.java](_4_polymorphism%2FIteratorTest.java)
+
+[案例分析](_cases)
+  - [case 1: 虚拟钱包设计](_cases%2Fvirtualwallet)
+    - [_readme.md](_cases%2Fvirtualwallet%2F_readme.md)
+  - [case 2: 接口鉴权设计](_cases%2Fauthentication)
+    - [_readme.md](_cases%2Fauthentication%2F_readme.md)
