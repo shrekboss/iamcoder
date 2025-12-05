@@ -1,3 +1,11 @@
+> - Keep It Simple and Stupid.
+> - Keep It Short and Simple.
+> - Keep It Simple and Straightforward.
+> 不过，仔细看你就会发现，它们要表达的意思其实差不多，翻译成中文就是：尽量保持简单。
+> 
+> YAGNI 原则的英文全称是：You Ain’t Gonna Need It。直译就是：你不会需要它。这条原则也算是万金油了。当用在软件开发中的时候，它的意思是：不
+> 要去设计当前用不到的功能；不要去编写当前用不到的代码。实际上，这条原则的核心思想就是：不要做过度设计。
+
 ## 代码行数越少就越“简单”吗？
 
 > 检查输入的字符串 ipAddress 是否是合法的 IP 地址。

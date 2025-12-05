@@ -1,3 +1,10 @@
+> 迪米特法则的英文翻译是：Law of Demeter，缩写是 LOD。单从这个名字上来看，我们完全猜不出这个原则讲的是什么。不过，它还有另外一个更加达意的名
+> 字，叫作最小知识原则，英文翻译为：The Least Knowledge Principle。关于这个设计原则，我们先来看一下它最原汁原味的英文定义：Each unit 
+> should have only limited knowledge about other units: only units “closely” related to the current unit. Or: Each unit 
+> should only talk to its friends; Don’t talk to strangers.我们把它直译成中文，就是下面这个样子：每个模块（unit）只应该了解那些与它
+> 关系密切的模块（units: only units “closely” related to the current unit）的有限知识（knowledge）。或者说，每个模块只和自己的朋
+> 友“说话”（talk），不和陌生人“说话”（talk）。
+
 ## 案例分析一：简化版的搜索引擎爬取网页的功能
 
 - 代码中包含三个主要的类
