@@ -10,6 +10,7 @@ import org.coder.design.patterns._4_design_patterns._3_behavior._5_state.state_m
  */
 public class ApplicationDemo {
     public static void main(String[] args) {
+        // state design pattern
         MarioStateMachine mario = new MarioStateMachine();
         mario.obtainMushRoom();
         int score = mario.getScore();
