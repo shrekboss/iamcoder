@@ -1,5 +1,6 @@
 package org.coder.design.patterns._4_design_patterns._3_behavior._5_state.state_model;
 
+import lombok.Setter;
 import org.coder.design.patterns._4_design_patterns._3_behavior._5_state.State;
 
 /**
@@ -8,6 +9,7 @@ import org.coder.design.patterns._4_design_patterns._3_behavior._5_state.State;
  * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0
  */
+@Setter
 public class MarioStateMachine {
     private int score;
     private IMario currentState; // 不再使用枚举来表示状态
@@ -37,15 +39,8 @@ public class MarioStateMachine {
         return this.score;
     }
 
-    public void setScore(int score) {
-        this.score = score;
-    }
-
     public State getCurrentState() {
         return this.currentState.getName();
     }
 
-    public void setCurrentState(IMario currentState) {
-        this.currentState = currentState;
-    }
 }

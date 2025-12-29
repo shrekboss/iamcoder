@@ -12,6 +12,6 @@ public class ApplicationDemo {
         mario.obtainMushRoom();
         int score = mario.getScore();
         State state = mario.getCurrentState();
-        System.out.println("mario score: " + score + "; state: " + state);
+        System.out.println("Mario score: " + score + "; state: " + state);
     }
 }

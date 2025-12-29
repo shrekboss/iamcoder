@@ -16,7 +16,8 @@ public class MarioStateMachine {
     }
 
     public void obtainMushRoom() {
-        //TODO
+        this.score += 100;
+        this.currentState = State.SUPER;
     }
 
     public void obtainCape() {

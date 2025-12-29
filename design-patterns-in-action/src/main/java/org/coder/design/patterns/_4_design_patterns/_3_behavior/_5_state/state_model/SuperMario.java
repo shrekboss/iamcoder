@@ -1,5 +1,6 @@
 package org.coder.design.patterns._4_design_patterns._3_behavior._5_state.state_model;
 
+import lombok.Getter;
 import org.coder.design.patterns._4_design_patterns._3_behavior._5_state.State;
 
 /**
@@ -10,13 +11,10 @@ import org.coder.design.patterns._4_design_patterns._3_behavior._5_state.State;
  */
 public class SuperMario implements IMario {
 
+    @Getter
     private static final SuperMario instance = new SuperMario();
 
     private SuperMario() {
-    }
-
-    public static SuperMario getInstance() {
-        return instance;
     }
 
     @Override
