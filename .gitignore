@@ -41,3 +41,4 @@ build/
 
 ### File ####
 .flattened-pom.xml
+/concurrency-in-action/src/main/java/org/coder/concurrency/programming/pattern/_8_balking/balking.txt
