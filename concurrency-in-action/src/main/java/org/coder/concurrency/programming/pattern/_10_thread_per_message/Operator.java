@@ -4,11 +4,7 @@ import org.coder.concurrency.programming.thread.threadpool.BasicThreadPool;
 import org.coder.concurrency.programming.thread.threadpool.ThreadPool;
 
 /**
- * (what)
- * <p>
- * (why)
- * <p>
- * (how)
+ * 
  *
  * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0

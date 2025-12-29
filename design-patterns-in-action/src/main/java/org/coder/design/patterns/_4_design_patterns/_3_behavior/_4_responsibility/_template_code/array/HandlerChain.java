@@ -4,17 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * (what)
- * <p>
- * (why)
- * <p>
- * (how)
+ * 
  *
  * @author <a href="mailto:crayzer.chen@gmail.com">夜骐</a>
  * @since 1.0.0
  */
 public class HandlerChain {
-    private List<IHandler> handlers = new ArrayList<>();
+    private final List<IHandler> handlers = new ArrayList<>();
 
     public void addHandler(IHandler handler) {
         this.handlers.add(handler);
