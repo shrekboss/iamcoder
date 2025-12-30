@@ -32,11 +32,11 @@ public class ExpressionInterpreter {
             if (operator.equals("+")) {
                 combinedExp = new AdditionExpression(exp1, exp2);
             } else if (operator.equals("-")) {
-                combinedExp = new AdditionExpression(exp1, exp2);
+                combinedExp = new SubtractionExpression(exp1, exp2);
             } else if (operator.equals("*")) {
-                combinedExp = new AdditionExpression(exp1, exp2);
+                combinedExp = new MultiplicationExpression(exp1, exp2);
             } else if (operator.equals("/")) {
-                combinedExp = new AdditionExpression(exp1, exp2);
+                combinedExp = new DivisionExpression(exp1, exp2);
             }
             long result = combinedExp.interpret();
             numbers.addFirst(new NumberExpression(result));
