@@ -17,6 +17,6 @@ public class SubtractionExpression implements Expression {
 
     @Override
     public long interpret() {
-        return exp1.interpret() + exp2.interpret();
+        return exp1.interpret() - exp2.interpret();
     }
 }
